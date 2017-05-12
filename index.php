@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +39,9 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> AccountA</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="index.php?xem=checkout&id=1"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="index.php?xem=cart&id=1"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="index.php?xem=login&id=1"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
+								<li><a href="index.php?xem=checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="index.php?xem=cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="index.php?xem=login"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
 							</ul>
 						</div>
 					</div>

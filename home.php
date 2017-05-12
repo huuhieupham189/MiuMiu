@@ -1,4 +1,7 @@
 
+	<?php
+		@session_start();
+	?>
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -9,7 +12,7 @@
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
-						
+					
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
@@ -63,7 +66,11 @@
 			</div>
 		</div>
 	</section><!--/slider-->
-	
+		<?php
+					
+						if(isset($_SESSION['ten']))
+						echo "<h1>Xin chao: <h1>".$_SESSION['ten'];
+						?>
 	<section>
 		<div class="container">
 			<div class="row">
