@@ -1,8 +1,5 @@
 
-<?php
-@session_start();
-include('config.php');
-?>
+
 
 <section id="form"><!--form-->
 		
@@ -23,26 +20,15 @@ include('config.php');
 							</span>
 							<button type="submit" name="login" class="btn btn-default">Đăng Nhập</button>
 						</form>
+					
+					<?php					
+						if(isset($_SESSION['ten']))
+						echo "<a href='index.php'>Chúc mừng ".$_SESSION['ten']." đã đăng nhập thành công.";
+					 //kiểm tra đăng nhập
+					 ?> 
 					</div><!--/login form-->
-					<?php
+					
 
-
-if(isset($_POST['login'])){
-	
-
-	$username=$_POST['user'];
-	$password=$_POST['pass'];
-	$sql="SELECT * from taikhoan where username='$username' and password='$password' and loai='nguoidung' limit 1";
-	
-	$result=$conn->query($sql);
-	
-	if($result->num_rows > 0){
-		$_SESSION['ten']=$username;
-		echo "<p><a href='index.php?xem= '>Chuc mung ban dang nhap thanh cong!</a></p>";
-		
-	}
-}
-?>
 				</div>
 				
 				<div class="col-sm-1">
@@ -69,7 +55,7 @@ if(isset($_POST['login'])){
 					$result=$conn->query($sqlstr);
 					if($result)
 					echo "<p><a href='#'>Chuc mung ban dang ki thanh cong!</a></p>";
-					
+					//đăng kí tài khoản
 					}
 					
 					?>

@@ -1,7 +1,4 @@
-
-	<?php
-		@session_start();
-	?>
+	
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -66,11 +63,7 @@
 			</div>
 		</div>
 	</section><!--/slider-->
-		<?php
-					
-						if(isset($_SESSION['ten']))
-						echo "<h1>Xin chao: <h1>".$_SESSION['ten'];
-						?>
+		
 	<section>
 		<div class="container">
 			<div class="row">

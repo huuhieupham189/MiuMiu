@@ -1,4 +1,19 @@
 
+<?php
+@session_start();
+include('config.php');
+if(isset($_POST['login'])){
+	$username=$_POST['user'];
+	$password=$_POST['pass'];
+	$sql="SELECT * from taikhoan where username='$username' and password='$password' and loai='nguoidung' limit 1";
+	
+	$result=$conn->query($sql);
+	
+	if($result->num_rows > 0){
+		$_SESSION['ten']=$username;
+	}
+}//xử lí đăng nhập
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +57,7 @@
 								<li><a href="index.php?xem=checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="index.php?xem=cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="index.php?xem=login"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
+								<li><a href="index.php?xem=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a></li>
 							</ul>
 						</div>
 					</div>
