@@ -46,17 +46,21 @@
 						</form>
 					</div><!--/sign up form-->
 					<?php
+
 					if(isset($_POST['dangky']))
+					{if($_POST['tendangnhap']&&$_POST['matkhau']&&$_POST['email'])
 					{
 						$tendangnhap=$_POST['tendangnhap'];
 						$matkhau=$_POST['matkhau'];
 						$email=$_POST['email'];
-					$sqlstr="INSERT into taikhoan (username,password,loai,email) VALUE ('$tendangnhap','$matkhau','nguoidung','$email')";
+					$sqlstr="INSERT into taikhoan (tendangnhap,matkhau,loaitk,email) VALUE ('$tendangnhap','$matkhau','2','$email')";
 					$result=$conn->query($sqlstr);
 					if($result)
 					echo "<p><a href='#'>Chuc mung ban dang ki thanh cong!</a></p>";
 					//đăng kí tài khoản
+					}else echo "<p style={color:red;}><a href=''>Nhap du tat ca cac truong!</a></p>";
 					}
+					
 					
 					?>
 				</div>

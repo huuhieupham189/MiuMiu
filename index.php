@@ -5,7 +5,7 @@ include('config.php');
 if(isset($_POST['login'])){
 	$username=$_POST['user'];
 	$password=$_POST['pass'];
-	$sql="SELECT * from taikhoan where username='$username' and password='$password' and loai='nguoidung' limit 1";
+	$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk='2' limit 1";
 	
 	$result=$conn->query($sql);
 	
