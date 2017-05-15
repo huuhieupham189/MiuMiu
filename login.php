@@ -23,7 +23,8 @@
 					
 					<?php					
 						if(isset($_SESSION['ten']))
-						echo "<a href='index.php'>Chúc mừng ".$_SESSION['ten']." đã đăng nhập thành công.";
+						echo "<script>window.location.href='index.php?xem=	'</script>";
+						
 					 //kiểm tra đăng nhập
 					 ?> 
 					</div><!--/login form-->

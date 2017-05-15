@@ -19,6 +19,9 @@ if(isset($_POST['login'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!--<meta name="description" content="">
     <meta name="author" content="">-->
     <title>Shop Mỹ Phẩm MiuMiu</title>
@@ -52,7 +55,7 @@ if(isset($_POST['login'])){
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> AccountA</a></li>
+								<li><a href="#"><i class="fa fa-user"></i> <?php if(isset($_SESSION['ten']))echo"Xin chào ".$_SESSION['ten'];else echo"Account";?></a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="index.php?xem=checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="index.php?xem=cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
@@ -80,7 +83,7 @@ if(isset($_POST['login'])){
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.php" class="active">TRANG CHỦ</a></li>
-								<li><a href="shop.php">SẢN PHẨM</a></li> 
+								<li><a href="index.php?xem=sanpham">SẢN PHẨM</a></li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.php">Blog List</a></li>

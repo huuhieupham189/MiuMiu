@@ -4,11 +4,13 @@ if(isset($_GET['xem'])){
 }
 else $tam='';
 if ($tam=='') include("home.php");
+else if ($tam=='sanpham') include_once("shop.php");
 else if ($tam=='login') include("login.php");
 else if($tam=='checkout')include("checkout.php");
 else if ($tam=='logout'){
 	session_destroy();
-	include("home.php");
+	echo "<script>window.location.href='index.php?xem=	'</script>";
 }
+
 else include("cart.php");
 ?>
