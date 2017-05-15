@@ -58,7 +58,7 @@
 					if($result)
 					echo "<p><a href='#'>Chuc mung ban dang ki thanh cong!</a></p>";
 					//đăng kí tài khoản
-					}else echo "<p style={color:red;}><a href=''>Nhap du tat ca cac truong!</a></p>";
+					}else echo "<p><a style='color:red;'  href=''>Nhap du tat ca cac truong!</a></p>";
 					}
 					
 					
