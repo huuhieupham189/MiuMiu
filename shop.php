@@ -158,9 +158,9 @@ include('config.php');
 							<div class='product-image-wrapper'>
 								<div class='single-products'>
 									<div class='productinfo text-center'>
-										<img src='images/shop/product12.jpg' alt='' />
-										<h2>".$row['DonGia']."VND"."</h2>
-										<p>".$row['TenSP']."</p>
+										<img  src='admin/modules/quanlysanpham/uploads/".$row['hinhanh']."' width='250' height='250'/>
+										<h2>".$row['giadexuat']."VND"."</h2>
+										<p>".$row['tensp']."</p>
 										<a href='product-details.php' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
 										<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
 									</div>

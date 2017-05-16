@@ -21,20 +21,20 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 <?php
-include('../config.php');
+include('modules/config.php');
 
 session_start();
 if(isset($_POST['login'])){
 	$username=$_POST['user'];
 	$password=$_POST['pass'];
-	$sql="SELECT * from taikhoan where username='$username' and password='$password' and loai='admin' limit 1";
+	$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk='1' limit 1";
 	
 	$result=$conn->query($sql);
 	if($result->num_rows > 0){
 		$_SESSION['dangnhap']=$username;
 		header('location:index.php');
-	}else 
-	header('location:login.php');
+	}
+	
 }
 ?>
 <body>
@@ -58,9 +58,10 @@ if(isset($_POST['login'])){
 							<button type="submit" name="login" class="btn btn-default">Đăng Nhập</button>
 						</form>
 					</div><!--/login form-->
-				</div>
-				
-				
+					<?php
+					if(!isset($_SESSION['dangnhap'])&&isset($_POST['login'])) echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mặt khẩu không đúng!</a></p>";
+					?>
+				</div>			
 			</div>
 		</div>
 </section><!--/form-->

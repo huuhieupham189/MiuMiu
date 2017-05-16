@@ -24,6 +24,7 @@
 					<?php					
 						if(isset($_SESSION['ten']))
 						echo "<script>window.location.href='index.php?xem=	'</script>";
+						else echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mật khẩu không đúng!</a></p>";
 						
 					 //kiểm tra đăng nhập
 					 ?> 
@@ -57,7 +58,8 @@
 					$sqlstr="INSERT into taikhoan (tendangnhap,matkhau,loaitk,email) VALUE ('$tendangnhap','$matkhau','2','$email')";
 					$result=$conn->query($sqlstr);
 					if($result)
-					echo "<p><a href='#'>Chuc mung ban dang ki thanh cong!</a></p>";
+					echo "<p><a href='#'>Chúc mừng bạn đăng kí thành công!</a></p>";
+					else echo "<p><a style='color:red;'  href=''>Tên tài khoản đã có người sử dụng. Vui lòng nhập tên khác.</a></p>";
 					//đăng kí tài khoản
 					}else echo "<p><a style='color:red;'  href=''>Nhap du tat ca cac truong!</a></p>";
 					}
