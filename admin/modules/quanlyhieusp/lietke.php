@@ -1,5 +1,5 @@
 <?php
-	$sql_lietkesp="select * from hieusp order by idhieusp desc ";
+	$sql_lietkesp="select * from thuonghieu order by MaThuongHieu desc ";
 	$row_lietkesp=$conn->query($sql_lietkesp);
 
 ?>
@@ -11,7 +11,8 @@
   <tr>
     <td>ID</td>
     <td>Tên hiệu sản phẩm</td>
-    <td>Tình trạng</td>
+    <td>Xuất xứ</td>
+    <td>Ghi chú</td>
     <td colspan="2">Quản lý</td>
   </tr>
   <?php
@@ -21,16 +22,11 @@
   ?>
   <tr>
     <td><?php  echo $i;?></td>
-    <td><?php echo $dong['tenhieusp'] ?></td>
-    <td><?php
-	if($dong['tinhtrang'] == 1 ){
-		echo 'Kích hoạt';
-	}else{
-		echo 'Không kích hoạt';
-	}
-    ?></td>
-    <td><a href="index.php?quanly=hieusp&ac=sua&id=<?php echo $dong['idhieusp'] ?>"><center><img src="imgs/edit.png" width="30" height="30" /></center></a></td>
-    <td><a href="modules/quanlyhieusp/xuly.php?id=<?php echo $dong['idhieusp']?>" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30" /></center></a></td>
+    <td><?php echo $dong['TenThuongHieu'] ?></td>
+    <td><?php echo $dong['XuatXu'] ?></td>
+    <td><?php echo $dong['GhiChu'] ?></td>
+    <td><a href="index.php?quanly=hieusp&ac=sua&id=<?php echo $dong['MaThuongHieu'] ?>"><center><img src="imgs/edit.png" width="30" height="30" /></center></a></td>
+    <td><a href="modules/quanlyhieusp/xuly.php?id=<?php echo $dong['MaThuongHieu']?>" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30" /></center></a></td>
   </tr>
   <?php
   $i++;

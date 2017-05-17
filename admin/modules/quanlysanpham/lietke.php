@@ -10,7 +10,7 @@
 	}else{
 		$trang1=($trang*5)-5;
 	}
-	$sql_lietkesp="select * from sanpham,hieusp,loaisp where loaisp.idloaisp=sanpham.loaisp and hieusp.idhieusp=sanpham.nhasx order by sanpham.idsanpham desc limit $trang1,20 ";
+	$sql_lietkesp="select * from sanpham,thuonghieu,loaisp where loaisp.maloaisp=sanpham.maloaisp and thuonghieu.mathuonghieu=sanpham.mathuonghieu order by sanpham.MaSP desc limit $trang1,5";
 	$row_lietkesp=$conn->query($sql_lietkesp);
 
 ?>
@@ -24,12 +24,11 @@
     <td>Tên sản phẩm</td>
     <td>Mã sp</td>
     <td>Hình ảnh</td>
-    <td>Giá đề xuất</td>
-    <td>Giá giảm</td>
-    <td>Số lượng</td>
+    <td>Giá nhập</td>
+    <td>Giá bán</td>
+    <td>Số lượng tồn</td>
     <td>Loại hàng</td>
-    <td>Nhà SX</td>
-    <td>Tình trạng</td>
+    <td>Thương hiệu</td>
     <td colspan="2">Quản lý</td>
   </tr>
   <?php
@@ -40,27 +39,18 @@
   <tr>
   	
     <td><?php  echo $i;?></td>
-    <td><?php echo $dong['tensp'] ?></td>
-    <td><?php echo $dong['masp'] ?></td>
-    <td><img src="modules/quanlysanpham/uploads/<?php echo $dong['hinhanh'] ?>" width="80" height="80" />
-    <a href="index.php?quanly=gallery&ac=lietke&id=<?php echo $dong['idsanpham'] ?>" style="text-align:center;text-decoration:none; font-size:18px;color:#06F;">Gallery</a>
+    <td><?php echo $dong['TenSP'] ?></td>
+    <td><?php echo $dong['MaSP'] ?></td>
+    <td><img src="modules/quanlysanpham/uploads/<?php echo $dong['HinhAnh'] ?>" width="80" height="80" />
+    <a href="index.php?quanly=gallery&ac=lietke&id=<?php echo $dong['MaSP'] ?>" style="text-align:center;text-decoration:none; font-size:18px;color:#06F;">Gallery</a>
     </td>
-    <td><?php echo number_format($dong['giadexuat']) ?></td>
-    <td><?php echo number_format($dong['giagiam']) ?></td>
-    <td><?php echo $dong['soluong'] ?></td>
-    <td><?php echo $dong['tenloaisp'] ?></td>
-    <td><?php echo $dong['tenhieusp'] ?></td>
-    <td><?php $sql_tinhtrang = "select tinhtrang from sanpham";
-	$row_tinhtrang = $conn->query($sql_tinhtrang);
-	$dong_tinhtrang=$row_tinhtrang->fetch_array();
-	if($dong_tinhtrang['tinhtrang'] == 1 ){
-		echo 'Kích hoạt';
-	}elseif($dong_tinhtrang['tinhtrang'] ==2){
-		echo 'Không kích hoạt';
-	}
-    ?></td>
-    <td><a href="index.php?quanly=sanpham&ac=sua&id=<?php echo $dong['idsanpham'] ?>" ><center><img src="imgs/edit.png" width="30" height="30" /></center></a></td>
-    <td><a href="modules/quanlysanpham/xuly.php?id=<?php echo $dong['idsanpham']?>" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30"   /></center></a></td>
+    <td><?php echo number_format($dong['GiaNhap']) ?></td>
+    <td><?php echo number_format($dong['GiaBan']) ?></td>
+    <td><?php echo $dong['SLTon'] ?></td>
+    <td><?php echo $dong['TenLoaiSP'] ?></td>
+    <td><?php echo $dong['TenThuongHieu'] ?></td>    
+    <td><a href="index.php?quanly=sanpham&ac=sua&id=<?php echo $dong['MaSP'] ?>" ><center><img src="imgs/edit.png" width="30" height="30" /></center></a></td>
+    <td><a href="modules/quanlysanpham/xuly.php?id=<?php echo $dong['MaSP']?>" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30"   /></center></a></td>
   </tr>
   <?php
   $i++;

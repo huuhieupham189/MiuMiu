@@ -21,10 +21,11 @@
 							<button type="submit" name="login" class="btn btn-default">Đăng Nhập</button>
 						</form>
 					
-					<?php					
+					<?php
+					if(isset($_post['login']))	{				
 						if(isset($_SESSION['ten']))
 						echo "<script>window.location.href='index.php?xem=	'</script>";
-						else echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mật khẩu không đúng!</a></p>";
+						else echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mật khẩu không đúng!</a></p>";}
 						
 					 //kiểm tra đăng nhập
 					 ?> 

@@ -12,11 +12,8 @@
     <td width="87"><input type="text" name="loaisp"></td>
   </tr>
   <tr>
-    <td>Tình trạng</td>
-    <td><select name="tinhtrang">
-      <option value="1">Kích hoạt</option>
-      <option value="2">Không kích hoạt</option>
-      </select></td>
+    <td width="97">Ghi chú</td>
+    <td width="87"><input type="text" name="ghichu"></td>
   </tr>
   <tr>
     <td colspan="2"><div align="center">
