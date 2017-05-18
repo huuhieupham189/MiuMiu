@@ -22,10 +22,21 @@
 						</form>
 					
 					<?php
-					if(isset($_post['login']))	{				
-						if(isset($_SESSION['ten']))
-						echo "<script>window.location.href='index.php?xem=	'</script>";
-						else echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mật khẩu không đúng!</a></p>";}
+					if(isset($_POST['login'])){
+						$username=$_POST['user'];
+						$password=$_POST['pass'];
+						$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk='2' limit 1";
+						
+						$result=$conn->query($sql);
+						
+						if($result->num_rows > 0){
+							$_SESSION['ten']=$username;
+							echo "<script>window.location.href='index.php'</script>";
+							}
+						else 	echo "<p><a style='color:red;'  href=''>Tài khoản hoặc mật khẩu không đúng!</a></p>";
+						}
+						
+						 
 						
 					 //kiểm tra đăng nhập
 					 ?> 
