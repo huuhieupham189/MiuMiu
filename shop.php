@@ -162,7 +162,7 @@ include('config.php');
 										<h2>".number_format($row['GiaBan'])."VND"."</h2>
 										<p>".$row['TenSP']."</p>
 										<a href='product-details.php' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
-										<a href='index.php?xem=cart&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
+										<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
 									</div>
 									<!--<div class='product-overlay'>
 										<div class='overlay-content'>

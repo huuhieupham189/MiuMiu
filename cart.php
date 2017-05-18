@@ -1,4 +1,4 @@
-	
+
 	
 	<section id="cart_items">
 		<div class="container">
@@ -22,35 +22,39 @@
 					</thead>
 					<tbody>
 					<?php
-					$sql="select * from sanpham where masp='".$_GET['id']."'";
+					if(isset($_SESSION['giohang'])){
+					foreach($_SESSION['giohang'] as $list){
+					$sql="select * from sanpham where masp='".$list['id']."'";
 					$sanpham=$conn->query($sql);
 					if($sanpham->num_rows>0){
 					while($dong=$sanpham->fetch_array()){
+						
+					
 						echo "<tr>
 							<td class='cart_product'>
-								<a href=''><img src='admin/modules/quanlysanpham/uploads/'".$dong['HinhAnh']."></a>
+								<a href=''><img width=60 height=60 src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."'></a>
 							</td>
 							<td class='cart_description'>
 								<h4><a href=''>".$dong['TenSP']."</a></h4>
 							</td>
 							<td class='cart_price'>
-								<p>".number_format($dong['GiaBan'])."</p>
+								<p>".number_format($dong['GiaBan'])."VND 	</p>
 							</td>
 							<td class='cart_quantity'>
 								<div class='cart_quantity_button'>
-									<a class='cart_quantity_up' href=''> + </a>
-									<input class='cart_quantity_input' type='text' name='quantity' value='1' autocomplete='off' size='2'>
-									<a class='cart_quantity_down' href=''> - </a>
+									<a class='cart_quantity_up' href='update_cart.php?cong=".$list['id']."'> + </a>
+									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='2' disabled>
+									<a class='cart_quantity_down' href='update_cart.php?tru=".$list['id']."'> - </a>
 								</div>
 							</td>
 							<td class='cart_total'>
-								<p class='cart_total_price'>".number_format($dong['GiaBan']*$_post['quantity'])."</p>
+								<p class='cart_total_price'>".number_format($dong['GiaBan']*$list['soluong'])."VND </p>
 							</td>
 							<td class='cart_delete'>
-								<a class='cart_quantity_delete' href=''><i class='fa fa-times'></i></a>
+								<a class='cart_quantity_delete' href='update_cart.php?xoa=".$list['id']."'><i class='fa fa-times'></i></a>
 							</td>
-						</tr>";}}
-						else echo "Khong thay gi";
+						</tr>";}}}}
+						
 
 						?>
 					</tbody>
