@@ -55,7 +55,7 @@ if(isset($_POST['login'])){
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> <?php if(isset($_SESSION['ten']))echo"Xin chào ".$_SESSION['ten'];else echo"Account";?></a></li>
+								<li><a href="index.php?xem=profile"><i class="fa fa-user"></i> <?php if(isset($_SESSION['ten']))echo"Xin chào ".$_SESSION['ten'];else echo"Account";?></a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="index.php?xem=checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="index.php?xem=cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
