@@ -3,7 +3,7 @@
 	if(isset($_POST['timkiem'])){
 	$search=$_POST['masp'];
 	echo 'Mã tìm kiếm :<strong>'.' '.$search.'</strong><br/>';
-	$sql_timkiem="select * from sanpham,thuonghieu,loaisp where sanpham.maloaisp=loaisp.maloaisp and sanpham.mathuonghieu=thuonghieu.mathuonghieu and  tenviettat='".$search."'";
+	$sql_timkiem="select * from sanpham,thuonghieu,loaisp where sanpham.maloaisp=loaisp.maloaisp and sanpham.mathuonghieu=thuonghieu.mathuonghieu and  tenviettat like('$search')";
 	$row_timkiem=$conn->query($sql_timkiem);
 	$count=$row_timkiem->num_rows;
 	if($count>0){

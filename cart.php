@@ -1,4 +1,5 @@
 	
+	
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -20,82 +21,38 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
+					<?php
+					$sql="select * from sanpham where masp='".$_GET['id']."'";
+					$sanpham=$conn->query($sql);
+					if($sanpham->num_rows>0){
+					while($dong=$sanpham->fetch_array()){
+						echo "<tr>
+							<td class='cart_product'>
+								<a href=''><img src='admin/modules/quanlysanpham/uploads/'".$dong['HinhAnh']."></a>
 							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+							<td class='cart_description'>
+								<h4><a href=''>".$dong['TenSP']."</a></h4>
 							</td>
-							<td class="cart_price">
-								<p>$59</p>
+							<td class='cart_price'>
+								<p>".number_format($dong['GiaBan'])."</p>
 							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+							<td class='cart_quantity'>
+								<div class='cart_quantity_button'>
+									<a class='cart_quantity_up' href=''> + </a>
+									<input class='cart_quantity_input' type='text' name='quantity' value='1' autocomplete='off' size='2'>
+									<a class='cart_quantity_down' href=''> - </a>
 								</div>
 							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+							<td class='cart_total'>
+								<p class='cart_total_price'>".number_format($dong['GiaBan']*$_post['quantity'])."</p>
 							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							<td class='cart_delete'>
+								<a class='cart_quantity_delete' href=''><i class='fa fa-times'></i></a>
 							</td>
-						</tr>
+						</tr>";}}
+						else echo "Khong thay gi";
 
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
+						?>
 					</tbody>
 				</table>
 			</div>
