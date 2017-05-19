@@ -2,16 +2,21 @@
 	
 	<section id="cart_items">
 		<div class="container">
-		
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="index.php?xem=">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
+			</div>
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Sản Phẩm</td>
+							<td class="image">Item</td>
 							<td class="description"></td>
-							<td class="price">Giá</td>
-							<td class="quantity">Số Lượng</td>
-							<td class="total">Thành Tiền</td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
 							<td></td>
 						</tr>
 					</thead>
@@ -38,7 +43,7 @@
 							<td class='cart_quantity'>
 								<div class='cart_quantity_button'>
 									<a class='cart_quantity_up' href='update_cart.php?cong=".$list['id']."'> + </a>
-									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='1' <disabled></disabled>
+									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='2' disabled>
 									<a class='cart_quantity_down' href='update_cart.php?tru=".$list['id']."'> - </a>
 								</div>
 							</td>
@@ -61,16 +66,16 @@
 	<section id="do_action">
 		<div class="container">
 			<div class="heading">
-				<h3>Bạn Muốn Thanh Toán ?</h3>
-				<p>Vui lòng cung cấp đẩy đủ thông tin bên dưới.</p>
+				<h3>What would you like to do next?</h3>
+				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
 			</div>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="chose_area">
-						<ul>
+						<ul class="user_option">
 							<li>
-								<label>Địa Chỉ</label>
-								<input class="cartinput" type="text" name="DiaChi" placeholder="" autocomplete="off">
+								<input type="checkbox">
+								<label>Use Coupon Code</label>
 							</li>
 							<li>
 								<input type="checkbox">
@@ -83,7 +88,7 @@
 						</ul>
 						<ul class="user_info">
 							<li class="single_field">
-								<label>Loại Vận Chuyển:</label>
+								<label>Country:</label>
 								<select>
 									<option>United States</option>
 									<option>Bangladesh</option>
@@ -96,9 +101,8 @@
 								</select>
 								
 							</li>
-							<li>  </li>
 							<li class="single_field">
-								<label>Loại Thanh Toán:</label>
+								<label>Region / State:</label>
 								<select>
 									<option>Select</option>
 									<option>Dhaka</option>
@@ -111,20 +115,25 @@
 								</select>
 							
 							</li>
-							
+							<li class="single_field zip-field">
+								<label>Zip Code:</label>
+								<input type="text">
+							</li>
 						</ul>
-						<a class="btn btn-default update" href="">Xác Nhận</a>
+						<a class="btn btn-default update" href="">Get Quotes</a>
+						<a class="btn btn-default check_out" href="">Continue</a>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Tạm Tính <span>$59</span></li>
-							<li>Giảm Giá <span>$2</span></li>
-							<li>Phí Vận Chuyển  <span>0</span></li>
-							<li>Tổng Tiền <span>$61</span></li>
+							<li>Cart Sub Total <span>$59</span></li>
+							<li>Eco Tax <span>$2</span></li>
+							<li>Shipping Cost <span>Free</span></li>
+							<li>Total <span>$61</span></li>
 						</ul>
-							<a class="btn btn-default update" href="">Thanh Toán</a>
+							<a class="btn btn-default update" href="">Update</a>
+							<a class="btn btn-default check_out" href="">Check Out</a>
 					</div>
 				</div>
 			</div>

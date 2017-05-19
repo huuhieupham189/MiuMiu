@@ -12,23 +12,23 @@ include('config.php');
 
 						<h2>Danh Mục</h2>
 						<div class='panel-group category-products' id='accordian'><!--category-productsr-->
-							
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
 									<h4 class='panel-title'>
-										<a data-toggle='collapse' data-parent='#accordian' href='#Eyes'>
+										<a data-toggle='collapse' data-parent='#accordian' href='#sportswear'>
 											<span class='badge pull-right'><i class='fa fa-plus'></i></span>
-											Mắt
+											Sportswear
 										</a>
 									</h4>
 								</div>
-								<div id='Eyes' class='panel-collapse collapse'>
+								<div id='sportswear' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Kẻ Mày</a></li>
-											<li><a href=''>Kẻ Mắt</a></li>
-											<li><a href=''>Phấn Mắt</a></li>
-											<li><a href=''>Mascara</a></li>
+											<li><a href=''>Nike </a></li>
+											<li><a href=''>Under Armour </a></li>
+											<li><a href=''>Adidas </a></li>
+											<li><a href=''>Puma</a></li>
+											<li><a href=''>ASICS </a></li>
 										</ul>
 									</div>
 								</div>
@@ -36,57 +36,86 @@ include('config.php');
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
 									<h4 class='panel-title'>
-										<a data-toggle='collapse' data-parent='#accordian' href='#Face'>
+										<a data-toggle='collapse' data-parent='#accordian' href='#mens'>
 											<span class='badge pull-right'><i class='fa fa-plus'></i></span>
-											Mặt
+											Mens
 										</a>
 									</h4>
 								</div>
-								<div id='Face' class='panel-collapse collapse'>
+								<div id='mens' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Kem BB/CC</a></li>
-											<li><a href=''>Kem Nền</a></li>
-											<li><a href=''>Phấn</a></li>
-											<li><a href=''>Tạo Khối</a></li>
-											
+											<li><a href=''>Fendi</a></li>
+											<li><a href=''>Guess</a></li>
+											<li><a href=''>Valentino</a></li>
+											<li><a href=''>Dior</a></li>
+											<li><a href=''>Versace</a></li>
+											<li><a href=''>Armani</a></li>
+											<li><a href=''>Prada</a></li>
+											<li><a href=''>Dolce and Gabbana</a></li>
+											<li><a href=''>Chanel</a></li>
+											<li><a href=''>Gucci</a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-
+							
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
 									<h4 class='panel-title'>
-										<a data-toggle='collapse' data-parent='#accordian' href='#Lip'>
+										<a data-toggle='collapse' data-parent='#accordian' href='#womens'>
 											<span class='badge pull-right'><i class='fa fa-plus'></i></span>
-											Môi
+											Womens
 										</a>
 									</h4>
 								</div>
-								<div id='Lip' class='panel-collapse collapse'>
+								<div id='womens' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Son Màu </a></li>
-											<li><a href=''>Son Dưỡng </a></li>
+											<li><a href=''>Fendi</a></li>
+											<li><a href=''>Guess</a></li>
+											<li><a href=''>Valentino</a></li>
+											<li><a href=''>Dior</a></li>
+											<li><a href=''>Versace</a></li>
 										</ul>
-
 									</div>
-
-								</div>
-							</div>
-							
-							<div class='panel panel-default'>
-								<div class='panel-heading'>
-									<h4 class='panel-title'><a href='#'>Tẩy Trang</a></h4>
 								</div>
 							</div>
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
-									<h4 class='panel-title'><a href='#'>Mặt Nạ</a></h4>
+									<h4 class='panel-title'><a href='#'>Kids</a></h4>
 								</div>
 							</div>
-							
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Fashion</a></h4>
+								</div>
+							</div>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Households</a></h4>
+								</div>
+							</div>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Interiors</a></h4>
+								</div>
+							</div>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Clothing</a></h4>
+								</div>
+							</div>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Bags</a></h4>
+								</div>
+							</div>
+							<div class='panel panel-default'>
+								<div class='panel-heading'>
+									<h4 class='panel-title'><a href='#'>Shoes</a></h4>
+								</div>
+							</div>
 						</div><!--/category-productsr-->
 					
 						<div class='brands_products'><!--brands_products-->
@@ -95,12 +124,9 @@ include('config.php');
 								<ul class='nav nav-pills nav-stacked'>
 									<li><a href=''> <span class='pull-right'>(50)</span>Maybeline</a></li>
 									<li><a href=''> <span class='pull-right'>(56)</span>Mac</a></li>
-									<li><a href=''> <span class='pull-right'>(27)</span>L'ore'al</a></li>
-									<li><a href=''> <span class='pull-right'>(32)</span>Lancome</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>OLay</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>TheFaceShop</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>Biore'</a></li>
-									<li><a href=''> <span class='pull-right'>(3)</span>Shiseido</a></li>
+									<li><a href=''> <span class='pull-right'>(27)</span>Hisu mùi chuối</a></li>
+									<li><a href=''> <span class='pull-right'>(32)</span>Bun mùi mít</a></li>
+									<li><a href=''> <span class='pull-right'>(5)</span>Moon mùi sầu riêng</a></li>
 								
 								</ul>
 							</div>
@@ -134,12 +160,17 @@ include('config.php');
 									<div class='productinfo text-center'>
 										<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($row['GiaBan'])."VND"."</h2>
-										<p><strong>".$row['TenSP']."<strong></p>
-										<p>".$row['TenCT']."</p>
-										
+										<p>".$row['TenSP']."</p>
 										<a href='product-details.php' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
 										<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
 									</div>
+									<!--<div class='product-overlay'>
+										<div class='overlay-content'>
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
+										</div>
+									</div>-->
 								</div>
 							</div>
 						</div>";
