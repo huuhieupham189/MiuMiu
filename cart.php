@@ -17,11 +17,13 @@
 					</thead>
 					<tbody>
 					<?php
+					$thanhtien=0;
 					if(isset($_SESSION['giohang'])){
 					foreach($_SESSION['giohang'] as $list){
 					$sql="select * from sanpham where masp='".$list['id']."'";
 					$sanpham=$conn->query($sql);
 					if($sanpham->num_rows>0){
+					
 					while($dong=$sanpham->fetch_array()){
 						
 					
@@ -38,12 +40,14 @@
 							<td class='cart_quantity'>
 								<div class='cart_quantity_button'>
 									<a class='cart_quantity_up' href='update_cart.php?cong=".$list['id']."'> + </a>
-									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='1' <disabled></disabled>
+									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='1' disabled>
 									<a class='cart_quantity_down' href='update_cart.php?tru=".$list['id']."'> - </a>
-								</div>
-							</td>
+								</div>";
+								$tien=$dong['GiaBan']*$list['soluong'];
+								$thanhtien+=$tien;
+							echo"</td>
 							<td class='cart_total'>
-								<p class='cart_total_price'>".number_format($dong['GiaBan']*$list['soluong'])."VND </p>
+								<p class='cart_total_price'>".number_format($tien)."VND </p>
 							</td>
 							<td class='cart_delete'>
 								<a class='cart_quantity_delete' href='update_cart.php?xoa=".$list['id']."'><i class='fa fa-times'></i></a>
@@ -65,68 +69,118 @@
 				<p>Vui lòng cung cấp đẩy đủ thông tin bên dưới.</p>
 			</div>
 			<div class="row">
+				<form method="post" action="">
 				<div class="col-sm-6">
+					
 					<div class="chose_area">
 						<ul>
 							<li>
-								<label>Địa Chỉ</label>
-								<input class="cartinput" type="text" name="DiaChi" placeholder="" autocomplete="off">
+								<label>Địa Chỉ: </label>
+								<input class="cartinput" type="text" name="diachi" placeholder="" autocomplete="off">
+								
 							</li>
-							<li>
-								<input type="checkbox">
-								<label>Use Gift Voucher</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Estimate Shipping & Taxes</label>
-							</li>
+							
+							
 						</ul>
 						<ul class="user_info">
 							<li class="single_field">
 								<label>Loại Vận Chuyển:</label>
-								<select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
+								<select name="vanchuyen">
+									<?php
+								$sql="select * from vanchuyen";
+								$vanchuyen=$conn->query($sql);
+								while($dong=$vanchuyen->fetch_array()){
+									echo "<option value='".$dong['MaVC']."' >".$dong['TenVC']."</option>";}
+								?>	
+									
 								</select>
 								
 							</li>
-							<li>  </li>
+							
 							<li class="single_field">
 								<label>Loại Thanh Toán:</label>
-								<select>
-									<option>Select</option>
-									<option>Dhaka</option>
-									<option>London</option>
-									<option>Dillih</option>
-									<option>Lahore</option>
-									<option>Alaska</option>
-									<option>Canada</option>
-									<option>Dubai</option>
+								<select name="loaithanhtoan">
+								<?php
+								$sql="select * from thanhtoan";
+								$thanhtoan=$conn->query($sql);
+								while($dong=$thanhtoan->fetch_array()){
+									echo "<option value='".$dong['MaTT']."' >".$dong['TenTT']."</option>";}
+								?>	
 								</select>
 							
 							</li>
 							
 						</ul>
-						<a class="btn btn-default update" href="">Xác Nhận</a>
+						<ul>
+							<li>
+								<label>Ghi chú: </label>
+								<input class="cartinput" type="text" name="ghichu" placeholder="" autocomplete="off">
+								
+							</li>
+							
+							
+						</ul>
+						
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="total_area">
 						<ul>
-							<li>Tạm Tính <span>$59</span></li>
-							<li>Giảm Giá <span>$2</span></li>
+							<li>Tạm Tính <span>
+							<?php if(isset($_SESSION['giohang'])) echo number_format($thanhtien)."VND";else echo "0VND";?></span></li>
+							<li>Giảm Giá <span>
+							<?php
+							$sql="select * from taikhoan tk ,loaitk ltk where tk.loaitk=ltk.maloaitk and tendangnhap='".$_SESSION['ten']."'";
+							$giamgia=$conn->query($sql);
+							while($dong=$giamgia->fetch_array()){
+								$a=$dong['ChietKhau'];
+							}
+							echo $a."%";
+							?>
+							</span></li>
 							<li>Phí Vận Chuyển  <span>0</span></li>
-							<li>Tổng Tiền <span>$61</span></li>
+							<li>Tổng Tiền <span><?php if(isset($_SESSION['giohang'])){
+							$tongtien=$thanhtien*(1-$a);
+							echo number_format($tongtien)."VND ";
+							}else{ $tongtien=0; echo "0VND";}
+							 ?></span></li>
 						</ul>
-							<a class="btn btn-default update" href="">Thanh Toán</a>
+							
+								<button type="submit" name="thanhtoan" class="btn btn-default update">Thanh toán</button>
+								<?php
+									if(isset($_POST['thanhtoan'])){
+									if($_POST['diachi']=="") echo "<a href='' style='color:red;'>Bạn chưa nhập địa chỉ!</a>";
+									else if($tongtien==0) echo "<a href='' style='color:red;'>Bạn chưa đặt hàng!</a>";
+									else{
+									$vanchuyen=$_POST['vanchuyen'];
+									$loaithanhtoan=$_POST['loaithanhtoan'];
+									$matk=$_SESSION['matk'];
+									$diachi=$_POST['diachi'];
+									$ghichu=$_POST['ghichu'];
+									$sqltr="insert into hoadon (MaVC,MaTT,MaTK,NgayLap,TongTien,DiaChi,TinhTrang,GhiChu)  values('$vanchuyen','$loaithanhtoan','$matk','".date('Y-m-d')."','$tongtien','$diachi','Chờ','$ghichu')";
+									$ketqua=$conn->query($sqltr);
+									if($ketqua){
+										$lastid=$conn->insert_id;
+										foreach($_SESSION['giohang'] as $list){
+											$sql="select * from sanpham where masp='".$list['id']."'";
+											$sanpham=$conn->query($sql);
+											while($dong=$sanpham->fetch_array()){
+												$tien=$dong['GiaBan']*$list['soluong'];
+												$masp=$dong['MaSP'];
+												$soluong=$list['soluong'];
+												$sql="insert into CTHD value('$lastid','$masp','$soluong','$tien')";
+												$conn->query($sql);
+											}}
+											echo "<a href='index.php'>Chúc mừng bạn đặt hàng thành công. Nhấp để mua tiếp!</a>";
+											unset($_SESSION['giohang']);
+										}
+									}
+
+								}
+								?>
 					</div>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</section><!--/#do_action-->

@@ -25,11 +25,12 @@
 					if(isset($_POST['login'])){
 						$username=$_POST['user'];
 						$password=$_POST['pass'];
-						$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk='2' limit 1";
+						$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' limit 1";
 						
 						$result=$conn->query($sql);
-						
+						while($dong=$result->fetch_array()) {$_SESSION['matk']=$dong['MaTK'];}
 						if($result->num_rows > 0){
+							
 							$_SESSION['ten']=$username;
 							echo "<script>window.location.href='index.php'</script>";
 							}
