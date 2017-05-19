@@ -6,6 +6,7 @@ $dbname = "banhangonline";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+mysqli_set_charset($conn, 'UTF8');
+
 
 ?>
