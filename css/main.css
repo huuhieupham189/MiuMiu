@@ -16,7 +16,7 @@ body {
 ul li {
   list-style: none;
 }
-
+.cartinput{ background-color:red;}
 a:hover {
 outline: none;
 text-decoration:none;
@@ -1614,7 +1614,7 @@ h2.title {
 }
 
 
-.login-form form input, .signup-form form input {
+.login-form form input, .signup-form form input , .cartt-form form input{
   background: #F0F0E9;
   border: medium none;
   color: #696763;
