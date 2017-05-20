@@ -46,7 +46,7 @@ include('config.php');
 							<ul class="nav navbar-nav">
 								<?php if(isset($_SESSION['ten'])){ $matk=$_SESSION['matk']; echo "<li><a href='index.php?xem=profile&id=$matk'><i class='fa fa-user'></i> Xin chào ".$_SESSION['ten']."</a></li>
 								<li><a href='index.php?xem=checkout'><i class='fa fa-crosshairs'></i> Checkout</a></li>
-								<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'></i> Cart</a></li>
+								";if(isset($_SESSION['giohang'])) $count=count($_SESSION['giohang']);else $count=''; echo"<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'> ".$count."</i> Cart</a></li>
 								<li><a href='index.php?xem=logout'><i class='fa fa-sign-out' aria-hidden='true'></i> Đăng xuất</a></li>";}?>
 								<?php if(!isset($_SESSION['ten'])) echo "<li><a href='index.php?xem=login'><i class='fa fa-lock'></i> Đăng Nhập</a></li>";?>
 								

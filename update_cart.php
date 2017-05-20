@@ -86,7 +86,7 @@ if(isset($_GET['tru'])){
 		$_SESSION['giohang'][0]['id']=$id;
 		$_SESSION['giohang'][0]['soluong']=$soluong;
 	}
-    header('location:index.php?xem=cart');
+    header('location:index.php?xem=sanpham');
 }
 
 ?>
