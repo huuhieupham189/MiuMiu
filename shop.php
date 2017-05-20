@@ -137,7 +137,7 @@ include('config.php');
 										<p><strong>".$row['TenSP']."<strong></p>
 										<p>".$row['TenCT']."</p>
 										
-										<a href='index.php?xem=product' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+										<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
 										<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
 									</div>
 								</div>

@@ -60,7 +60,9 @@ if(isset($_GET['tru'])){
 		}
 	} 
     //them san pham
-		if(isset($_GET['id'])){
+	if(isset($_GET['id'])){
+		if(isset($_POST['dathang'])){$soluong=$_POST['soluong'];}
+		else $soluong=1;
 	$id=$_GET['id'];
 	if(isset($_SESSION['giohang'])){
 		$count=count($_SESSION['giohang']);
@@ -76,13 +78,13 @@ if(isset($_GET['tru'])){
 		if($kiemtra==false)
 		{
 			$_SESSION['giohang'][$count]['id']=$id;
-			$_SESSION['giohang'][$count]['soluong']=1;
+			$_SESSION['giohang'][$count]['soluong']=$soluong;
 		}
 	}
 	else{
 		
 		$_SESSION['giohang'][0]['id']=$id;
-		$_SESSION['giohang'][0]['soluong']=1;
+		$_SESSION['giohang'][0]['soluong']=$soluong;
 	}
     header('location:index.php?xem=cart');
 }

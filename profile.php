@@ -1,10 +1,5 @@
 
 <section>
-	
-
-
- 
-
 <div class="container">
 	<div class="row">
   		<div class="col-sm-10"><h1></h1></div>
@@ -14,17 +9,25 @@
   		<div class="col-sm-3"><!--left col-->
               
           <ul class="list-group">
-            <li class="list-group-item text-muted">Thông Tin Cá Nhân</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Tên </strong></span> Phạm Hữu Hiếu</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Ngày Sinh</strong></span> 18/09/1997</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Email</strong></span> Hieu@gmail.com</li>
-            
+          <?php if(isset($_GET['id'])) 
+                  {
+                    $id=$_GET['id'];
+                    $sql="select * from taikhoan where matk='$id'";
+                    $ketqua=$conn->query($sql);
+                    
+                  while($dong=$ketqua->fetch_array()){
+                    echo"
+            <li class='list-group-item text-muted'>Thông Tin Cá Nhân</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Tên </strong></span>".$dong['HoTen']."</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Ngày Sinh</strong></span>".$dong['NgaySinh']."</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Email</strong></span>".$dong['Email']."</li>'
+           
           </ul> 
                
-          <div class="panel panel-default">
-            <div class="panel-heading">Địa chỉ nhận hàng mặc định <i class="glyphicon glyphicon-map-marker"></i></div>
-            <div class="panel-body">25 Đường số 5, P4, Q8, TP.HCM</div>
-          </div>
+          <div class='panel panel-default'>
+            <div class='panel-heading'>Địa chỉ nhận hàng mặc định <i class='glyphicon glyphicon-map-marker'></i></div>
+            <div class='panel-body'>".$dong['DiaChi']."</div>
+          </div>";} }?>
           
           
           <ul class="list-group">
@@ -58,7 +61,7 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>#</th>
+                      <th>STT</th>
                       <th>Mã Đơn Hàng</th>
                       <th>Ngày Đặt</th>
                       <th>Thành Tiền</th>
@@ -67,97 +70,24 @@
                       <th>Ghi Chú </th>
                     </tr>
                   </thead>
-                  <tbody id="items">
+                  <?php
+                  $sql="select * from taikhoan tk,hoadon hd where tk.matk=hd.matk and tk.matk='$id' ";
+                  $kq=$conn->query($sql);
+                  $stt=0;
+                  while($dong=$kq->fetch_array()){
+                  $stt++;
+                  echo"<tbody id='items'>
                     <tr>
-                      <td>1</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                     <tr>
-                      <td>8</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                      <td>Table cell</td>
-                    </tr>
+                      <td>".$stt."</td>
+                      <td>".$dong['MaHD']."</td>
+                      <td>".$dong['NgayLap']."</td>
+                      <td>".number_format($dong['TongTien'])."VND</td>
+                      <td>".number_format($dong['TongTien'])."VND</td>
+                      <td>".$dong['TinhTrang']."</td>
+                      <td>".$dong['GhiChu']."</td>
+                    </tr>";}
+                   ?> 
+                   
                   </tbody>
                 </table>
                 <hr>
@@ -187,69 +117,74 @@
             		
                	
                   <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
+                  <form class="form" action="" method="post" id="registrationForm">
                       <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="HoTen"><h4>Họ Và Tên</h4></label>
-                              <input type="text" class="form-control" name="HoTen" id="HoTen" placeholder="Phạm Hữu Hiếu" title="">
+                          <?php
+                            $sql="select * from taikhoan where matk='$id'";
+                    $ketqua=$conn->query($sql);
+                          while ($dong=$ketqua->fetch_array()){
+
+                        echo "<div class='col-xs-6'>
+                              <label for='HoTen'><h4>Họ Và Tên</h4></label>
+                              <input type='text' class='form-control' name='hoten' id='HoTen' value='".$dong['HoTen']."' title=''>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <div class='form-group'>
                           
-                          <div class="col-xs-6">
-                            <label for="NgaySinh"><h4>Ngày Sinh</h4></label>
-                              <input type="date" class="form-control" name="NgaySinh" id="NgaySinh" placeholder="18/9/1997" title="">
+                          <div class='col-xs-6'>
+                            <label for='NgaySinh'><h4>Ngày Sinh</h4></label>
+                              <input type='text' class='form-control' name='ngaysinh' id='NgaySinh' value='".$dong['NgaySinh']."' title=''>
                           </div>
                       </div>
           
-                      <div class="form-group">
+                      <div class='form-group'>
                           
-                          <div class="col-xs-6">
-                              <label for="SDT"><h4>Số Điện Thoại</h4></label>
-                              <input type="text" class="form-control" name="SDT" id="SDT" placeholder="VD: 0123456789" title="">
+                          <div class='col-xs-6'>
+                              <label for='SDT'><h4>Số Điện Thoại</h4></label>
+                              <input type='text' class='form-control' name='sdt' id='SDT' value='".$dong['SDT']."' title=''>
                           </div>
                       </div>
           
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="DiaChi"><h4>Địa Chỉ Nhận Hàng Mặt Định</h4></label>
-                              <input type="text" class="form-control" name="DiaChi" id="DiaChi" placeholder="25 Đường Số 5, P4, Q8, TP HCM." title="">
+                      <div class='form-group'>
+                          <div class='col-xs-6'>
+                             <label for='DiaChi'><h4>Địa Chỉ Nhận Hàng Mặt Định</h4></label>
+                              <input type='text' class='form-control' name='diachi' id='DiaChi' value='".$dong['DiaChi']."' title=''>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <div class='form-group'>
                           
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                          <div class='col-xs-6'>
+                              <label for='email'><h4>Email</h4></label>
+                              <input type='email' class='form-control' name='email' id='email' value='".$dong['Email']."' title='enter your email.'>
                           </div>
                       </div>
-                      <div class="form-group">
+                      <div class='form-group'>
                           
-                          <div class="col-xs-6">
-                              <label for="CMND"><h4>Chứng Minh Nhân Dân</h4></label>
-                              <input type="number" class="form-control" id="CMND" placeholder="VD : 205909070" title="">
+                          <div class='col-xs-6'>
+                              <label for='CMND'><h4>Chứng Minh Nhân Dân</h4></label>
+                              <input type='text' class='form-control' id='CMND' name='cmnd' value='".$dong['CMND']."' title=''>
                           </div>
-                      </div>
-                      <div class="form-group">
+                      </div>";  }
+                          ?>
+                      <!--<div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="password"><h4>Mật Khẩu Mới</h4></label>
                               <input type="password" class="form-control" name="password" id="password" placeholder="Mật Khẩu Mới" title="enter your password.">
                           </div>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group">-->
                           
-                          <div class="col-xs-6">
+                          <!--<div class="col-xs-6">
                             <label for="password2"><h4>Mật Khẩu Xác Nhận</h4></label>
                               <input type="password" class="form-control" name="password2" id="password2" placeholder="Mật Khẩu Cũ" title="enter your password2.">
                           </div>
-                      </div>
+                      </div>-->
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-lg btn-success" type="submit" name="save"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                            
                             </div>
                       </div>
               	</form>
@@ -260,11 +195,18 @@
 
         </div><!--/col-9-->
     </div><!--/row-->
-
-
-
-
-    
-
-
 </section>
+<?php
+if(isset($_POST['save']))
+{
+  $hoten=$_POST['hoten'];
+  $ngaysinh=$_POST['ngaysinh'];
+  
+  $sdt=$_POST['sdt'];
+  $diachi=$_POST['diachi'];
+  $email=$_POST['email'];
+  $cmnd=$_POST['cmnd'];
+  $sql="update taikhoan set hoten='$hoten',ngaysinh='$ngaysinh',sdt='$sdt',diachi='$diachi',email='$email',cmnd='$cmnd' where matk='$id'";
+  $conn->query($sql);
+}
+?>

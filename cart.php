@@ -75,9 +75,16 @@
 					<div class="chose_area">
 						<ul>
 							<li>
+							<?php
+							 $id=$_SESSION['matk'];
+                   			 $sql="select * from taikhoan where matk='$id'";
+                    		$ketqua=$conn->query($sql);
+							while($dong=$ketqua->fetch_array()){
+							echo"
 								<label>Địa Chỉ: </label>
-								<input class="cartinput" type="text" name="diachi" placeholder="" autocomplete="off">
-								
+								<input class='cartinput' type='text' name='diachi' value='".$dong['DiaChi']."' autocomplete='off'>";
+								}
+							?>
 							</li>
 							
 							
