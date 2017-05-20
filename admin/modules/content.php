@@ -13,6 +13,8 @@
 						include('modules/quanlyloaisp/lietke.php');
 					}elseif(($tam == 'hoadon')&&($tam1 == 'lietke')){
 						include('modules/quanlyhoadon/lietke.php');
+					}elseif(($tam == 'hoadon')&&($tam1 == 'sua')){
+						include('modules/quanlyhoadon/sua.php');
 					}elseif(($tam == 'loaisp')&&($tam1 == 'sua')){
 						
 						include('modules/quanlyloaisp/sua.php');

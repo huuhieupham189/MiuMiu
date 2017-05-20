@@ -43,11 +43,30 @@
     <td><?php echo $dong['TinhTrang'] ?></td>
     <td><?php echo $dong['GhiChu'] ?></td>  
     <td><a href="index.php?quanly=hoadon&ac=sua&id=<?php echo $dong['MaHD'] ?>" ><center><img src="imgs/edit.png" width="30" height="30" /></center></a></td>
-    <td><a href="index.php?quanlyhoadon/xuly.php?id=<?php echo $dong['MaHD'] ?>" ><center><img src="imgs/confirm.png" width="30" height="30" /></center></a></td>
-    <td><a href="modules/quanlyhoadon/xuly.php?id=<?php echo $dong['MaHD']?>" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30"   /></center></a></td>
+    <td><a href="modules/quanlyhoadon/xuly.php?id=<?php echo $dong['MaHD'] ?>&value=1" ><center><img src="imgs/confirm.png" width="30" height="30" /></center></a></td>
+    <td><a href="modules/quanlyhoadon/xuly.php?id=<?php echo $dong['MaHD']?>&value=2" class="delete_link"><center><img src="imgs/delete.png" width="30" height="30"   /></center></a></td>
   </tr>
   <?php
   $i++;
   }
   ?>
   </table>
+  <div class="trang">
+	Trang :
+    <?php
+	$sql_trang=$conn->query("select * from hoadon");
+	$count_trang=$sql_trang->num_rows;
+    
+	$a=ceil($count_trang/5);
+	for($b=1;$b<=$a;$b++){
+		
+		if($trang==$b){
+		
+		echo '<a href="index.php?quanly=hoadon&ac=lietke&trang='.$b.'" style="text-decoration:underline;color:red;">'.$b.' ' .'</a>';
+        
+	}else{
+		echo '<a href="index.php?quanly=hoadon&ac=lietke&trang='.$b.'" style="text-decoration:none;color:#000;">'.$b.' ' .'</a>';
+	}
+	}
+	?>
+</div>
