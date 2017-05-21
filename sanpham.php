@@ -28,20 +28,11 @@
     			}
 				}} else 
                 {
-                     echo"<h2 class='title text-center'>THƯƠNG HIỆU ".$_GET['ten']."</h2>";
-            	if(isset($_GET['trang'])){
-					$trang=$_GET['trang'];
-					}else{
-					$trang='';
-					}
-				if($trang =='' || $trang =='1'){
-					$trang1=0;
-					}else{
-					$trang1=($trang*5)-5;
-					}
-					$id=$_GET['id'];
 					
-				$sql="SELECT * from sanpham where mathuonghieu='".$id."' order by masp desc limit $trang1,6";
+                     echo'<h2 class="title text-center">THƯƠNG HIỆU ';echo ($_GET["ten"]); echo'</h2>';
+            	
+					
+				$sql="SELECT * from sanpham where mathuonghieu='".$_GET['id']."' ";
 				$result=$conn->query($sql);
 				
 				while($row = $result->fetch_array()){        		
@@ -63,26 +54,7 @@
                 
 						
 				}
-					echo'	<div class="trang">
-	Trang :';
-    
-	$sql_trang=$conn->query("SELECT * from sanpham where mathuonghieu='".$id."'");
-	$count_trang=$sql_trang->num_rows;
-    
-	$a=ceil($count_trang/6);
-	for($b=1;$b<=$a;$b++){
-		
-		if($trang==$b){
-		
-		echo '<a href="index.php?xem=sanpham&id='.$_GET['id'].'&ten='.$_GET['ten'].'&trang='.$b.'" style="text-decoration:underline;color:red;">'.$b.' ' .'</a>';
-        
-	}else{
-		echo '<a href="index.php?xem=sanpham&id='.$_GET['id'].'&ten='.$_GET['ten'].'&trang='.$b.'" style="text-decoration:none;color:#000;">'.$b.' ' .'</a>';
-	}
-	}
-echo'
-</div>';
-				}
+			}
 
 				$conn->close();
 
