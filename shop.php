@@ -93,62 +93,30 @@ include('config.php');
 							<h2>Nhãn Hiệu</h2>
 							<div class='brands-name'>
 								<ul class='nav nav-pills nav-stacked'>
-									<li><a href=''> <span class='pull-right'>(50)</span>Maybeline</a></li>
-									<li><a href=''> <span class='pull-right'>(56)</span>Mac</a></li>
-									<li><a href=''> <span class='pull-right'>(27)</span>L'ore'al</a></li>
-									<li><a href=''> <span class='pull-right'>(32)</span>Lancome</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>OLay</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>TheFaceShop</a></li>
-									<li><a href=''> <span class='pull-right'>(5)</span>Biore'</a></li>
-									<li><a href=''> <span class='pull-right'>(3)</span>Shiseido</a></li>
-								
+									<?php
+									$sql="SELECT TenThuongHieu, th.MaThuongHieu,count(sp.MaSP) as SoLuong
+										from thuonghieu th,sanpham sp
+										where th.mathuonghieu=sp.mathuonghieu
+										GROUP by TenThuongHieu";
+									$ketqua=$conn->query($sql);
+									while($dong=$ketqua->fetch_array()){
+										echo"
+									<li><a href='index.php?xem=sanpham&id=".$dong['MaThuongHieu']."&ten=".$dong['TenThuongHieu']."'> <span class='pull-right'>".$dong['SoLuong']."</span>".$dong['TenThuongHieu']."</a></li>";
+									}
+								?>
 								</ul>
 							</div>
 						</div><!--/brands_products-->
 						
-						<div class='price-range'><!--price-range-->
-							<h2>Price Range</h2>
-							<div class='well'>
-								 <input type='text' class='span2' value='' data-slider-min='0' data-slider-max='600' data-slider-step='5' data-slider-value='[250,450]' id='sl2' ><br />
-								 <b>$ 0</b> <b class='pull-right'>$ 600</b>
-							</div>
-						</div><!--/price-range-->
-						
-						<div class='shipping text-center'><!--shipping-->
-							<img src='images/home/shipping.jpg' alt='' />
-						</div><!--/shipping-->
+			
 						
 					</div>
 				</div>
 				<div class='col-sm-9 padding-right'>
 					<div class='features_items'><!--features_items-->
-						<h2 class='title text-center'> Sản Phẩm Bán Chạy Nhất</h2>
-				<?php
-				$sql='SELECT * from sanpham';
-				$result=$conn->query($sql);
-				if ($result->num_rows > 0) {
-				while($row = $result->fetch_assoc()){        		
-					echo"<div class='col-sm-4'>
-							<div class='product-image-wrapper'>
-								<div class='single-products'>
-									<div class='productinfo text-center'>
-										<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
-										<h2>".number_format($row['GiaBan'])."VND"."</h2>
-										<p><strong>".$row['TenSP']."<strong></p>
-										<p>".$row['TenCT']."</p>
-										
-										<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
-										<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
-									</div>
-								</div>
-							</div>
-						</div>";
-    			}
-				} else {
-    					echo '0 results';
-						}
-				$conn->close();
-
+						
+				<?php 
+				include("sanpham.php");
 				?>
 				<!--<ul class='pagination'>
 							<li class='active'><a href=''>1</a></li>

@@ -816,6 +816,16 @@ ul.sub-menu {
 .right {
   right: 0;
 }
+.trang{
+	width:auto;
+	height:30px;
+	
+	font-size:25px;
+	padding-left:10px;
+	color:#000;
+	margin-top:2px;
+	background:#F90;
+}
 
 .category-products {
   border: 1px solid #F7F7F0;

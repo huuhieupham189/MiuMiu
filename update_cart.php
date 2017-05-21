@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(isset($_SESSION['matk'])){
 //tru bot sp
 if(isset($_GET['tru'])){
 		$id=$_GET['tru'];
@@ -87,6 +88,7 @@ if(isset($_GET['tru'])){
 		$_SESSION['giohang'][0]['soluong']=$soluong;
 	}
     header('location:index.php?xem=sanpham');
-}
+}}
+else header('location:index.php?xem=login');
 
 ?>
