@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ew-language date="2017/5/22" version="10.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+  <!-- 
+	*** Important Notes:
+	1. Language ID should follow: https://developers.google.com/recaptcha/docs/language,
+	2. Locale settings are placed in a separate locale files under the "locales" folder,
+	3. Locale files must be named with language ID of language file (and converted to lowercase), e.g. en.json,
+	4. Locale files are ALWAYS used, regardless of whether the project is single language or multiple language.
+-->
+  <global>
+    <phrase id="aggregatecolon" value=": " />
+    <!-- v10 -->
+    <phrase id="aggregateequal" value="=" />
+    <!-- v10 -->
+    <phrase id="allrecords" value="All" />
+    <phrase id="alwaysask" value="Always ask for my user name and password" />
+    <phrase id="autologin" value="Auto login until I logout explicitly" />
+    <phrase id="backtologin" value="Back to Login Page" />
+    <phrase id="booleanno" value="No" />
+    <phrase id="booleanyes" value="Yes" />
+    <phrase id="breadcrumbdivider" value="/" />
+    <phrase id="browsernoflashsupport" value="Your browser does not support Flash player." client="1" />
+    <phrase id="buttonexport" value="Export" class="icon-export ewIcon" />
+    <!-- v8 -->
+    <phrase id="cancel" value="Cancel" client="1" />
+    <!-- v8 -->
+    <phrase id="cancelbtn" value="Cancel" client="1" />
+    <!-- v10 -->
+    <phrase id="chartorder" value="Order by" />
+    <phrase id="chartorderxasc" value="Labels Ascending" />
+    <phrase id="chartorderxdesc" value="Labels Descending" />
+    <phrase id="chartorderyasc" value="Values Ascending" />
+    <phrase id="chartorderydesc" value="Values Descending" />
+    <phrase id="clickrecaptcha" value="Please click reCAPTCHA" client="1" />
+    <!-- v9 -->
+    <phrase id="clicktodrilldown" value="Click to drill down" />
+    <phrase id="closebtn" value="Close" client="1" />
+    <!-- v10 -->
+    <phrase id="copytoclipboard" value="Copy to clipboard" />
+    <!-- v10 -->
+    <phrase id="countselected" value="%s selected" client="1" />
+    <!-- v9 -->
+    <phrase id="ctbsumhead" value="Summary" />
+    <!-- v10 -->
+    <phrase id="currentfilters" value="Current filters:" />
+    <phrase id="deletefilter" value="Delete filter" />
+    <!-- v8 -->
+    <phrase id="deletefilterconfirm" value="Delete filter %s?" client="1" />
+    <!-- v8 -->
+    <phrase id="drilldownallrecords" value="All records" />
+    <phrase id="drilldownfilters" value="Drill down filters:" />
+    <phrase id="enterfiltername" value="Enter filter name" client="1" />
+    <!-- v8 -->
+    <phrase id="entersenderemail" value="Please enter sender email" client="1" />
+    <phrase id="enterpropersenderemail" value="Exceed maximum sender email count or email address incorrect" client="1" />
+    <phrase id="enterrecipientemail" value="Please enter recipient email" client="1" />
+    <phrase id="enterproperrecipientemail" value="Exceed maximum recipient email count or email address incorrect" client="1" />
+    <phrase id="enterproperccemail" value="Exceed maximum cc email count or email address incorrect" client="1" />
+    <phrase id="enterproperbccemail" value="Exceed maximum bcc email count or email address incorrect" client="1" />
+    <phrase id="entersubject" value="Please enter subject" client="1" />
+    <phrase id="emailformsender" value="From" />
+    <phrase id="emailformrecipient" value="To" />
+    <phrase id="emailformcc" value="Cc" />
+    <phrase id="emailformbcc" value="Bcc" />
+    <phrase id="emailformsubject" value="Subject" />
+    <phrase id="emailformmessage" value="Message" />
+    <phrase id="emailformcontenttype" value="Send as" />
+    <phrase id="emailformcontenttypeurl" value="URL" />
+    <phrase id="emailformcontenttypehtml" value="HTML" />
+    <phrase id="emptylabel" value="(Empty)" />
+    <phrase id="enterpassword" value="Please enter password" client="1" />
+    <phrase id="enterpwd" value="Please enter password" client="1" />
+    <phrase id="entersearchcriteria" value="Please enter search criteria" />
+    <phrase id="enteruid" value="Please enter user ID" client="1" />
+    <phrase id="entervalidatecode" value="Please enter the validation code shown" client="1" />
+    <phrase id="exceedmaxemailexport" value="Exceed maximum export email count. Please try again later." />
+    <phrase id="exportchart" value="Exporting chart: " client="1" />
+    <phrase id="exportchartdata" value="Exporting chart data" client="1" />
+    <phrase id="exportcharterror" value="Failed to export chart: " client="1" />
+    <phrase id="exportingchart" value="Exporting chart (%c of %t), please wait..." client="1" />
+    <phrase id="exporttoemail" value="Email" class="icon-email ewIcon" client="1" />
+    <!-- v8 -->
+    <phrase id="exporttoexcel" value="Export to Excel" class="icon-excel ewIcon" />
+    <!-- v8 -->
+    <phrase id="exporttopdf" value="Export to PDF" class="icon-pdf ewIcon" />
+    <!-- v8 -->
+    <phrase id="exporttoword" value="Export to Word" class="icon-word ewIcon" />
+    <!-- v8 -->
+    <phrase id="fieldrequiredindicator" value="&lt;span class=&quot;ewRequired&quot;&gt;&amp;nbsp;*&lt;/span&gt;" />
+    <phrase id="filter" value="Filter" />
+    <!-- v8 -->
+    <phrase id="filtername" value="Filter name" client="1" />
+    <!-- v8 -->
+    <phrase id="filters" value="Filters" class="icon-filter ewIcon" />
+    <!-- v8 -->
+    <phrase id="generate" value="Generate" client="1" />
+    <!-- v10 -->
+    <phrase id="generatereporturl" value="Generate Report URL" client="1" />
+    <!-- v10 -->
+    <phrase id="generatesuccess" value="Success" />
+    <!-- v10 -->
+    <phrase id="homepage" value="Home" class="glyphicon glyphicon-home ewIcon" />
+    <!-- v8 -->
+    <phrase id="incorrectcreditcard" value="Incorrect credit card number" client="1" />
+    <phrase id="incorrectdate" value="Incorrect date (%s)" />
+    <!-- v10 -->
+    <phrase id="incorrectdateymd" value="Incorrect date, format = yyyy%smm%sdd" />
+    <phrase id="incorrectdatemdy" value="Incorrect date, format = mm%sdd%syyyy" />
+    <phrase id="incorrectdatedmy" value="Incorrect date, format = dd%smm%syyyy" />
+    <phrase id="incorrectshortdateymd" value="Incorrect date, format = yy%smm%sdd" />
+    <phrase id="incorrectshortdatemdy" value="Incorrect date, format = mm%sdd%syy" />
+    <phrase id="incorrectshortdatedmy" value="Incorrect date, format = dd%smm%syy" />
+    <phrase id="incorrectemail" value="Incorrect email" client="1" />
+    <phrase id="incorrectfield" value="Incorrect field" client="1" />
+    <phrase id="incorrectfloat" value="Incorrect floating point number" client="1" />
+    <phrase id="incorrectguid" value="Incorrect GUID" client="1" />
+    <phrase id="incorrectinteger" value="Incorrect integer" client="1" />
+    <phrase id="incorrectphone" value="Incorrect phone number" client="1" />
+    <phrase id="incorrectrange" value="Number must be between %1 and %2" client="1" />
+    <phrase id="incorrectregexp" value="Regular expression not matched" client="1" />
+    <phrase id="incorrectssn" value="Incorrect Social Security Number" client="1" />
+    <phrase id="incorrecttime" value="Incorrect time (hh:mm:ss)" client="1" />
+    <phrase id="incorrectzip" value="Incorrect ZIP code" client="1" />
+    <phrase id="invalidpostrequest" value="Invalid post request" />
+    <!-- v8 -->
+    <phrase id="invaliduidpwd" value="Incorrect user ID or password" />
+    <phrase id="language" value="Language" />
+    <phrase id="loading" value="Loading%s..." client="1" />
+    <phrase id="login" value="Login" />
+    <phrase id="loginoptions" value="Options" />
+    <!-- v8 -->
+    <phrase id="loginpage" value="Login Page" />
+    <phrase id="logout" value="Logout" />
+    <phrase id="lookuplink" value="Lookup - %s" class="glyphicon glyphicon-search ewIcon" />
+    <!-- v10 -->
+    <phrase id="messageok" value="OK" client="1" />
+    <!-- v9 -->
+    <phrase id="midnight" value="midnight" />
+    <!-- v10 -->
+    <phrase id="mobilemenu" value="Menu" />
+    <phrase id="monthjan" value="Jan" />
+    <phrase id="monthfeb" value="Feb" />
+    <phrase id="monthmar" value="Mar" />
+    <phrase id="monthapr" value="Apr" />
+    <phrase id="monthmay" value="May" />
+    <phrase id="monthjun" value="Jun" />
+    <phrase id="monthjul" value="Jul" />
+    <phrase id="monthaug" value="Aug" />
+    <phrase id="monthsep" value="Sep" />
+    <phrase id="monthoct" value="Oct" />
+    <phrase id="monthnov" value="Nov" />
+    <phrase id="monthdec" value="Dec" />
+    <phrase id="next" value="Next" />
+    <phrase id="noon" value="noon" />
+    <!-- v10 -->
+    <phrase id="nopermission" value="You do not have permission to access the page." />
+    <phrase id="norecord" value="No records found" client="1" />
+    <!-- v10 -->
+    <phrase id="noreportorcharts" value="No report or charts is selected for generation. Please check your report/charts settings." />
+    <phrase id="nodistinctcolvals" value="No distinct column values for SQL: " />
+    <phrase id="nulllabel" value="(Null)" />
+    <phrase id="of" value="of" client="1" />
+    <!-- v10 -->
+    <phrase id="page" value="Page" client="1" />
+    <!-- v10 -->
+    <phrase id="pagerfirst" value="First" />
+    <phrase id="pagerlast" value="Last" />
+    <phrase id="pagernext" value="Next" />
+    <phrase id="pagerprevious" value="Previous" />
+    <phrase id="password" value="Password" />
+    <phrase id="pleaseselect" value="Please select" client="1" />
+    <!-- v9 -->
+    <phrase id="popupall" value="(All)" client="1" />
+    <phrase id="popupfrom" value="From" client="1" />
+    <phrase id="popupnovalue" value="No value selected!" client="1" />
+    <phrase id="popupselect" value="Please Select" client="1" />
+    <phrase id="popupto" value="To" client="1" />
+    <phrase id="prev" value="Prev" />
+    <phrase id="primarykeyunspecified" value="Primary key unspecified" />
+    <phrase id="printerfriendly" value="Printer Friendly" class="icon-print ewIcon" />
+    <!-- v8 -->
+    <phrase id="group" value="Groups" />
+    <phrase id="groupsperpage" value="Groups per page" />
+    <phrase id="qtr1" value="1st Quarter" />
+    <phrase id="qtr2" value="2nd Quarter" />
+    <phrase id="qtr3" value="3rd Quarter" />
+    <phrase id="qtr4" value="4th Quarter" />
+    <phrase id="record" value="Records" client="1" />
+    <!-- v10 -->
+    <phrase id="recordsperpage" value="Page size" client="1" />
+    <!-- v10 -->
+    <phrase id="report" value="Reports" />
+    <phrase id="reportformtype" value="Report type" />
+    <!-- v10 -->
+    <phrase id="reportformprint" value="Print" />
+    <!-- v10 -->
+    <phrase id="reportformword" value="Word" />
+    <!-- v10 -->
+    <phrase id="reportformexcel" value="Excel" />
+    <!-- v10 -->
+    <phrase id="reportformpdf" value="PDF" />
+    <!-- v10 -->
+    <phrase id="reportformemail" value="Email" />
+    <!-- v10 -->
+    <phrase id="reportformusername" value="User name" />
+    <!-- v10 -->
+    <phrase id="reportformuserdefault" value="Administrator" />
+    <!-- v10 -->
+    <phrase id="reportformfiltername" value="Filter name" />
+    <!-- v10 -->
+    <phrase id="reportformfilternone" value="None" />
+    <!-- v10 -->
+    <phrase id="reportformfiltercurrent" value="Current" />
+    <!-- v10 -->
+    <phrase id="reportformpageoption" value="Pages" />
+    <!-- v10 -->
+    <phrase id="reportformallpages" value="All" />
+    <!-- v10 -->
+    <phrase id="reportformfirstpage" value="First" />
+    <!-- v10 -->
+    <phrase id="reportformsender" value="From" />
+    <!-- v10 -->
+    <phrase id="reportformrecipient" value="To" />
+    <!-- v10 -->
+    <phrase id="reportformcc" value="Cc" />
+    <!-- v10 -->
+    <phrase id="reportformbcc" value="Bcc" />
+    <!-- v10 -->
+    <phrase id="reportformsubject" value="Subject" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetype" value="Response type" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetypejson" value="JSON" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetypefile" value="File" />
+    <!-- v10 -->
+    <phrase id="reportformshowcurrentfilter" value="Show filters" />
+    <!-- v10 -->
+    <phrase id="reportformurl" value="URL" />
+    <!-- v10 -->
+    <phrase id="reportgenerateddate" value="Report generated at " />
+    <!-- v10 -->
+    <phrase id="reset" value="Reset" />
+    <phrase id="resetallfilter" value="Reset all filters" class="icon-reset-search ewIcon" />
+    <!-- v8 -->
+    <phrase id="resetsearch" value="Reset search criteria" />
+    <phrase id="rptavg" value="AVG" />
+    <phrase id="rptcnt" value="COUNT" />
+    <phrase id="rptdtlrec" value=" detail records" />
+    <phrase id="rptgrandsummary" value="Grand Summary" />
+    <phrase id="rptmax" value="MAX" />
+    <phrase id="rptmin" value="MIN" />
+    <phrase id="rptpagesummary" value="Page Summary" />
+    <phrase id="rptsum" value="SUM" />
+    <phrase id="rptsumhead" value="Summary for %c: %v" />
+    <!-- v9 -->
+    <phrase id="savecurrentfilter" value="Save current filter" />
+    <phrase id="saveusername" value="Save my user name" />
+    <phrase id="search" value="Search" client="1" />
+    <!-- v10 -->
+    <phrase id="searchbtn" value="Filter Panel" class="glyphicon glyphicon-search ewIcon" />
+    <phrase id="selectall" value="(All)" />
+    <phrase id="selectbtn" value="Select" client="1" />
+    <!-- v10 -->
+    <phrase id="sendemailbtn" value="Send" client="1" />
+    <phrase id="sendemailsuccess" value="Email sent successfully" client="1" />
+    <phrase id="servercommunicationerror" value="An error occured while communicating to the server." />
+    <!-- v10 -->
+    <phrase id="sessionwillexpire" value="Your session will expire in %s seconds. Click OK to continue your session." client="1" />
+    <!-- v9 -->
+    <phrase id="sessionexpired" value="Your session has expired." client="1" />
+    <!-- v9 -->
+    <phrase id="showall" value="Show all" />
+    <phrase id="summary" value="Summary" />
+    <phrase id="summarycolon" value=": " />
+    <!-- v10 -->
+    <phrase id="tasks" value="Tasks" />
+    <phrase id="to" value="to" />
+    <phrase id="top" value="Top" />
+    <phrase id="total" value="Total" />
+    <phrase id="useradministrator" value="Administrator" client="1" />
+    <!-- v9 -->
+    <phrase id="useranonymous" value="Anonymous" client="1" />
+    <!-- v9 -->
+    <phrase id="userdefault" value="Default" client="1" />
+    <!-- v9 -->
+    <phrase id="username" value="User name" />
+    <phrase id="valuenotexist" value="Value does not exist" client="1" />
+    <!-- v8 -->
+    <phrase id="viewimage" value="Click to view image" />
+    <!-- v8 -->
+    <phrase id="week" value="Week" />
+    <phrase id="year" value="Year" />
+    <!-- Search Operators -->
+    <phrase id="=" value="&amp;nbsp;" />
+    <!-- v9 -->
+    <phrase id="equal" value="=" />
+    <!-- v9 -->
+    <phrase id="&lt;&gt;" value="&amp;lt;&amp;gt;" />
+    <phrase id="&lt;" value="&amp;lt;" />
+    <phrase id="&lt;=" value="&amp;lt;=" />
+    <phrase id="&gt;" value="&amp;gt;" />
+    <phrase id="&gt;=" value="&amp;gt;=" />
+    <phrase id="like" value="contains" />
+    <phrase id="not like" value="not contains" />
+    <phrase id="starts with" value="starts with" />
+    <phrase id="ends with" value="ends with" />
+    <phrase id="is null" value="is null" />
+    <phrase id="is not null" value="is not null" />
+    <phrase id="between" value="between" />
+    <phrase id="and" value="and" />
+    <phrase id="or" value="or" />
+    <phrase id="am" value="AM" />
+    <!-- v10 -->
+    <phrase id="pm" value="PM" />
+    <!-- v10 -->
+    <!-- Menu Prefix/Suffix -->
+    <phrase id="simplereportmenuitemprefix" value="" />
+    <phrase id="simplereportmenuitemsuffix" value="" />
+    <phrase id="detailsummaryreportmenuitemprefix" value="" />
+    <phrase id="detailsummaryreportmenuitemsuffix" value="" />
+    <phrase id="crosstabreportmenuitemprefix" value="" />
+    <phrase id="crosstabreportmenuitemsuffix" value="" />
+    <phrase id="chartreportmenuitemprefix" value="" />
+    <phrase id="chartreportmenuitemsuffix" value="" />
+    <!-- Advanced Filter -->
+    <phrase id="future" value="Future" />
+    <phrase id="past" value="Past" />
+    <phrase id="last14days" value="Last 14 days" />
+    <phrase id="last30days" value="Last 30 days" />
+    <phrase id="last7days" value="Last 7 days" />
+    <phrase id="next14days" value="Next 14 days" />
+    <phrase id="next30days" value="Next 30 days" />
+    <phrase id="next7days" value="Next 7 days" />
+    <phrase id="today" value="Today" />
+    <phrase id="tomorrow" value="Tomorrow" />
+    <phrase id="yesterday" value="Yesterday" />
+    <phrase id="lastmonth" value="Last month" />
+    <phrase id="nextmonth" value="Next month" />
+    <phrase id="thismonth" value="This month" />
+    <phrase id="lasttwoweeks" value="Last two weeks" />
+    <phrase id="lastweek" value="Last week" />
+    <phrase id="nexttwoweeks" value="Next two weeks" />
+    <phrase id="nextweek" value="Next week" />
+    <phrase id="thisweek" value="This week" />
+    <phrase id="lastyear" value="Last year" />
+    <phrase id="nextyear" value="Next year" />
+    <phrase id="thisyear" value="This year" />
+  </global>
+  <project>
+    <phrase id="bodytitle" value="MiuMiuShop" />
+    <phrase id="footertext" value="&amp;copy;2017 e.World Technology Ltd. All rights reserved." />
+    <menu id="1">
+      <phrase id="menutext" value="cthd" />
+    </menu>
+    <menu id="2">
+      <phrase id="menutext" value="hoadon" />
+    </menu>
+    <menu id="3">
+      <phrase id="menutext" value="loaisp" />
+    </menu>
+    <menu id="4">
+      <phrase id="menutext" value="loaitk" />
+    </menu>
+    <menu id="5">
+      <phrase id="menutext" value="sanpham" />
+    </menu>
+    <menu id="6">
+      <phrase id="menutext" value="tai khoan" />
+    </menu>
+    <menu id="7">
+      <phrase id="menutext" value="taikhoan" />
+    </menu>
+    <menu id="8">
+      <phrase id="menutext" value="thanhtoan" />
+    </menu>
+    <menu id="9">
+      <phrase id="menutext" value="thuonghieu" />
+    </menu>
+    <menu id="10">
+      <phrase id="menutext" value="vanchuyen" />
+    </menu>
+    <menu id="11">
+      <phrase id="menutext" value="san pham" />
+    </menu>
+    <menu id="12">
+      <phrase id="menutext" value="Thông Tin Sản Phẩm" />
+    </menu>
+    <menu id="13">
+      <phrase id="menutext" value="Thông Tin Tài Khoản" />
+    </menu>
+    <table id="cthd">
+      <phrase id="tblcaption" value="cthd" />
+      <field id="mahd">
+        <phrase id="fldcaption" value="Ma HD" />
+      </field>
+      <field id="masp">
+        <phrase id="fldcaption" value="Ma SP" />
+      </field>
+      <field id="soluongban">
+        <phrase id="fldcaption" value="So Luong Ban" />
+      </field>
+      <field id="thanhtien">
+        <phrase id="fldcaption" value="Thanh Tien" />
+      </field>
+    </table>
+    <table id="hoadon">
+      <phrase id="tblcaption" value="hoadon" />
+      <field id="mahd">
+        <phrase id="fldcaption" value="Ma HD" />
+      </field>
+      <field id="mavc">
+        <phrase id="fldcaption" value="Ma VC" />
+      </field>
+      <field id="matt">
+        <phrase id="fldcaption" value="Ma TT" />
+      </field>
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="ngaylap">
+        <phrase id="fldcaption" value="Ngay Lap" />
+      </field>
+      <field id="tongtien">
+        <phrase id="fldcaption" value="Tong Tien" />
+      </field>
+      <field id="diachi">
+        <phrase id="fldcaption" value="Dia Chi" />
+      </field>
+      <field id="khoangcach">
+        <phrase id="fldcaption" value="Khoang Cach" />
+      </field>
+      <field id="tinhtrang">
+        <phrase id="fldcaption" value="Tinh Trang" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="loaisp">
+      <phrase id="tblcaption" value="loaisp" />
+      <field id="maloaisp">
+        <phrase id="fldcaption" value="Ma Loai SP" />
+      </field>
+      <field id="tenloaisp">
+        <phrase id="fldcaption" value="Ten Loai SP" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="loaitk">
+      <phrase id="tblcaption" value="loaitk" />
+      <field id="maloaitk">
+        <phrase id="fldcaption" value="Ma Loai TK" />
+      </field>
+      <field id="tenloaitk">
+        <phrase id="fldcaption" value="Ten Loai TK" />
+      </field>
+      <field id="chietkhau">
+        <phrase id="fldcaption" value="Chiet Khau" />
+      </field>
+      <field id="diemchuan">
+        <phrase id="fldcaption" value="Diem Chuan" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="sanpham">
+      <phrase id="tblcaption" value="sanpham" />
+      <field id="masp">
+        <phrase id="fldcaption" value="Ma SP" />
+      </field>
+      <field id="mathuonghieu">
+        <phrase id="fldcaption" value="Ma Thuong Hieu" />
+      </field>
+      <field id="maloaisp">
+        <phrase id="fldcaption" value="Ma Loai SP" />
+      </field>
+      <field id="tensp">
+        <phrase id="fldcaption" value="Ten SP" />
+      </field>
+      <field id="tenct">
+        <phrase id="fldcaption" value="Ten CT" />
+      </field>
+      <field id="noisx">
+        <phrase id="fldcaption" value="Noi SX" />
+      </field>
+      <field id="dungtich">
+        <phrase id="fldcaption" value="Dung Tich" />
+      </field>
+      <field id="gianhap">
+        <phrase id="fldcaption" value="Gia Nhap" />
+      </field>
+      <field id="giaban">
+        <phrase id="fldcaption" value="Gia Ban" />
+      </field>
+      <field id="slton">
+        <phrase id="fldcaption" value="SLTon" />
+      </field>
+      <field id="hinhanh">
+        <phrase id="fldcaption" value="Hinh Anh" />
+      </field>
+      <field id="ttct">
+        <phrase id="fldcaption" value="TTCT" />
+      </field>
+      <field id="uudiem">
+        <phrase id="fldcaption" value="Uu Diem" />
+      </field>
+      <field id="nhuocdiem">
+        <phrase id="fldcaption" value="Nhuoc Diem" />
+      </field>
+      <field id="tenviettat">
+        <phrase id="fldcaption" value="Ten Viet Tat" />
+      </field>
+    </table>
+    <table id="tai_khoan">
+      <phrase id="tblcaption" value="tai khoan" />
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="tendangnhap">
+        <phrase id="fldcaption" value="Ten Dang Nhap" />
+      </field>
+      <field id="matkhau">
+        <phrase id="fldcaption" value="Mat Khau" />
+      </field>
+      <field id="loaitk">
+        <phrase id="fldcaption" value="Loai TK" />
+      </field>
+      <field id="_email">
+        <phrase id="fldcaption" value="Email" />
+      </field>
+      <field id="hoten">
+        <phrase id="fldcaption" value="Ho Ten" />
+      </field>
+      <field id="diachi">
+        <phrase id="fldcaption" value="Dia Chi" />
+      </field>
+      <field id="ngaysinh">
+        <phrase id="fldcaption" value="Ngay Sinh" />
+      </field>
+      <field id="sdt">
+        <phrase id="fldcaption" value="SDT" />
+      </field>
+      <field id="cmnd">
+        <phrase id="fldcaption" value="CMND" />
+      </field>
+      <field id="diemthuong">
+        <phrase id="fldcaption" value="Diem Thuong" />
+      </field>
+      <field id="tenloaitk">
+        <phrase id="fldcaption" value="Ten Loai TK" />
+      </field>
+      <field id="chietkhau">
+        <phrase id="fldcaption" value="Chiet Khau" />
+      </field>
+      <field id="diemchuan">
+        <phrase id="fldcaption" value="Diem Chuan" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="taikhoan">
+      <phrase id="tblcaption" value="taikhoan" />
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="tendangnhap">
+        <phrase id="fldcaption" value="Ten Dang Nhap" />
+      </field>
+      <field id="matkhau">
+        <phrase id="fldcaption" value="Mat Khau" />
+      </field>
+      <field id="loaitk">
+        <phrase id="fldcaption" value="Loai TK" />
+      </field>
+      <field id="_email">
+        <phrase id="fldcaption" value="Email" />
+      </field>
+      <field id="hoten">
+        <phrase id="fldcaption" value="Ho Ten" />
+      </field>
+      <field id="diachi">
+        <phrase id="fldcaption" value="Dia Chi" />
+      </field>
+      <field id="ngaysinh">
+        <phrase id="fldcaption" value="Ngay Sinh" />
+      </field>
+      <field id="sdt">
+        <phrase id="fldcaption" value="SDT" />
+      </field>
+      <field id="cmnd">
+        <phrase id="fldcaption" value="CMND" />
+      </field>
+      <field id="diemthuong">
+        <phrase id="fldcaption" value="Diem Thuong" />
+      </field>
+    </table>
+    <table id="thanhtoan">
+      <phrase id="tblcaption" value="thanhtoan" />
+      <field id="matt">
+        <phrase id="fldcaption" value="Ma TT" />
+      </field>
+      <field id="tentt">
+        <phrase id="fldcaption" value="Ten TT" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="thuonghieu">
+      <phrase id="tblcaption" value="thuonghieu" />
+      <field id="mathuonghieu">
+        <phrase id="fldcaption" value="Ma Thuong Hieu" />
+      </field>
+      <field id="tenthuonghieu">
+        <phrase id="fldcaption" value="Ten Thuong Hieu" />
+      </field>
+      <field id="xuatxu">
+        <phrase id="fldcaption" value="Xuat Xu" />
+      </field>
+      <field id="mtct">
+        <phrase id="fldcaption" value="MTCT" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="vanchuyen">
+      <phrase id="tblcaption" value="vanchuyen" />
+      <field id="mavc">
+        <phrase id="fldcaption" value="Ma VC" />
+      </field>
+      <field id="tenvc">
+        <phrase id="fldcaption" value="Ten VC" />
+      </field>
+      <field id="phivc">
+        <phrase id="fldcaption" value="Phi VC" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="san_pham">
+      <phrase id="tblcaption" value="san pham" />
+      <field id="masp">
+        <phrase id="fldcaption" value="Ma SP" />
+      </field>
+      <field id="tensp">
+        <phrase id="fldcaption" value="Ten SP" />
+      </field>
+      <field id="tenct">
+        <phrase id="fldcaption" value="Ten CT" />
+      </field>
+      <field id="noisx">
+        <phrase id="fldcaption" value="Noi SX" />
+      </field>
+      <field id="dungtich">
+        <phrase id="fldcaption" value="Dung Tich" />
+      </field>
+      <field id="gianhap">
+        <phrase id="fldcaption" value="Gia Nhap" />
+      </field>
+      <field id="giaban">
+        <phrase id="fldcaption" value="Gia Ban" />
+      </field>
+      <field id="slton">
+        <phrase id="fldcaption" value="SLTon" />
+      </field>
+      <field id="ttct">
+        <phrase id="fldcaption" value="TTCT" />
+      </field>
+      <field id="uudiem">
+        <phrase id="fldcaption" value="Uu Diem" />
+      </field>
+      <field id="nhuocdiem">
+        <phrase id="fldcaption" value="Nhuoc Diem" />
+      </field>
+      <field id="tenviettat">
+        <phrase id="fldcaption" value="Ten Viet Tat" />
+      </field>
+      <field id="tenloaisp">
+        <phrase id="fldcaption" value="Ten Loai SP" />
+      </field>
+      <field id="tenthuonghieu">
+        <phrase id="fldcaption" value="Ten Thuong Hieu" />
+      </field>
+      <field id="soluongban">
+        <phrase id="fldcaption" value="So Luong Ban" />
+      </field>
+    </table>
+    <table id="thf4ng_tin_s1ea3n_ph1ea9m">
+      <phrase id="tblcaption" value="Thông Tin Sản Phẩm" />
+      <field id="masp">
+        <phrase id="fldcaption" value="Ma SP" />
+      </field>
+      <field id="tensp">
+        <phrase id="fldcaption" value="Ten SP" />
+      </field>
+      <field id="tenct">
+        <phrase id="fldcaption" value="Ten CT" />
+      </field>
+      <field id="noisx">
+        <phrase id="fldcaption" value="Noi SX" />
+      </field>
+      <field id="dungtich">
+        <phrase id="fldcaption" value="Dung Tich" />
+      </field>
+      <field id="gianhap">
+        <phrase id="fldcaption" value="Gia Nhap" />
+      </field>
+      <field id="giaban">
+        <phrase id="fldcaption" value="Gia Ban" />
+      </field>
+      <field id="slton">
+        <phrase id="fldcaption" value="SLTon" />
+      </field>
+      <field id="ttct">
+        <phrase id="fldcaption" value="TTCT" />
+      </field>
+      <field id="uudiem">
+        <phrase id="fldcaption" value="Uu Diem" />
+      </field>
+      <field id="nhuocdiem">
+        <phrase id="fldcaption" value="Nhuoc Diem" />
+      </field>
+      <field id="tenviettat">
+        <phrase id="fldcaption" value="Ten Viet Tat" />
+      </field>
+      <field id="tenloaisp">
+        <phrase id="fldcaption" value="Ten Loai SP" />
+      </field>
+      <field id="tenthuonghieu">
+        <phrase id="fldcaption" value="Ten Thuong Hieu" />
+      </field>
+      <field id="soluongban">
+        <phrase id="fldcaption" value="So Luong Ban" />
+      </field>
+    </table>
+    <table id="thf4ng_tin_te0i_kho1ea3n">
+      <phrase id="tblcaption" value="Thông Tin Tài Khoản" />
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="tendangnhap">
+        <phrase id="fldcaption" value="Ten Dang Nhap" />
+      </field>
+      <field id="matkhau">
+        <phrase id="fldcaption" value="Mat Khau" />
+      </field>
+      <field id="loaitk">
+        <phrase id="fldcaption" value="Loai TK" />
+      </field>
+      <field id="_email">
+        <phrase id="fldcaption" value="Email" />
+      </field>
+      <field id="hoten">
+        <phrase id="fldcaption" value="Ho Ten" />
+      </field>
+      <field id="diachi">
+        <phrase id="fldcaption" value="Dia Chi" />
+      </field>
+      <field id="ngaysinh">
+        <phrase id="fldcaption" value="Ngay Sinh" />
+      </field>
+      <field id="sdt">
+        <phrase id="fldcaption" value="SDT" />
+      </field>
+      <field id="cmnd">
+        <phrase id="fldcaption" value="CMND" />
+      </field>
+      <field id="diemthuong">
+        <phrase id="fldcaption" value="Diem Thuong" />
+      </field>
+      <field id="tenloaitk">
+        <phrase id="fldcaption" value="Ten Loai TK" />
+      </field>
+      <field id="chietkhau">
+        <phrase id="fldcaption" value="Chiet Khau" />
+      </field>
+      <field id="diemchuan">
+        <phrase id="fldcaption" value="Diem Chuan" />
+      </field>
+      <field id="ghichu">
+        <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+  </project>
+</ew-language>

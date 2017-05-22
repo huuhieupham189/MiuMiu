@@ -45,8 +45,8 @@ include('config.php');
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<?php if(isset($_SESSION['ten'])){ $matk=$_SESSION['matk']; echo "<li><a href='index.php?xem=profile&id=$matk'><i class='fa fa-user'></i> Xin chào ".$_SESSION['ten']."</a></li>
-								<li><a href='index.php?xem=checkout'><i class='fa fa-crosshairs'></i> Checkout</a></li>
-								";if(isset($_SESSION['giohang'])) $count=count($_SESSION['giohang']);else $count=''; echo"<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'> ".$count."</i> Cart</a></li>
+								<!--/ <li><a href='index.php?xem=checkout'><i class='fa fa-crosshairs'></i> Checkout</a></li>-->
+								";if(isset($_SESSION['giohang'])) $count=count($_SESSION['giohang']);else $count=''; echo"<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'> ".$count."</i> Giỏ Hàng</a></li>
 								<li><a href='index.php?xem=logout'><i class='fa fa-sign-out' aria-hidden='true'></i> Đăng xuất</a></li>";}?>
 								<?php if(!isset($_SESSION['ten'])) echo "<li><a href='index.php?xem=login'><i class='fa fa-lock'></i> Đăng Nhập</a></li>";?>
 								
@@ -94,40 +94,35 @@ include('config.php');
 
 			<div class="footer-left">
 
-				<h3>Company<span>logo</span></h3>
+				<h3>MiuMiu<span>Shop</span></h3>
 
 				<p class="footer-links">
-					<a href="#">Home</a>
+					<a href="index.php">Trang Chủ</a>
 					·
-					<a href="#">Blog</a>
+					<a href="index.php?xem=sanpham">Sản Phẩm</a>
 					·
-					<a href="#">Pricing</a>
-					·
-					<a href="#">About</a>
-					·
-					<a href="#">Faq</a>
-					·
-					<a href="#">Contact</a>
+					<a href="#">Tài Khoản</a>
+					
 				</p>
 
-				<p class="footer-company-name">Company Name &copy; 2015</p>
+				<p class="footer-company-name">HTCL-UIT &copy; 2015</p>
 			</div>
 
 			<div class="footer-center">
 
 				<div>
 					<i class="fa fa-map-marker"></i>
-					<p><span>21 Revolution Street</span> Paris, France</p>
+					<p><span>Khu Phố 6, Phường Linh Trung</span> Quận Thủ Đức, TP. Hồ Chí Minh</p>
 				</div>
 
 				<div>
 					<i class="fa fa-phone"></i>
-					<p>+1 555 123456</p>
+					<p> (08) 372 52002</p>
 				</div>
 
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@company.com</a></p>
+					<p><a>MiuMiuShop@gmail.com</a></p>
 				</div>
 
 			</div>
@@ -135,8 +130,8 @@ include('config.php');
 			<div class="footer-right">
 
 				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+					<span>Thông Tin Về MiuMiuShop</span>
+					MiuMiu là một cửa hàng kinh doanh chủ yếu là mặt hàng mĩ phẩm ,cung cấp cho khách hàng những sản phẩm tốt nhất với giá rẻ nhất.
 				</p>
 
 				<div class="footer-icons">
