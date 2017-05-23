@@ -20,7 +20,7 @@ class crrptdefault {
 	var $PageID = 'rptdefault';
 
 	// Project ID
-	var $ProjectID = "{B19463A3-C58E-485F-ADEC-F8029FE765A1}";
+	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
 
 	// Page object name
 	var $PageObjName = 'rptdefault';
@@ -232,6 +232,12 @@ class crrptdefault {
 		if (!$Security->IsLoggedIn()) $Security->AutoLogin();
 		if ($Security->IsLoggedIn())
 			$this->Page_Terminate("ThF4ng_Tin_TE0i_Kho1EA3nsmry.php"); // Exit and go to default page
+		if ($Security->IsLoggedIn())
+			$this->Page_Terminate("ThF4ng_Tin_S1EA3n_Ph1EA9msmry.php");
+		if ($Security->IsLoggedIn())
+			$this->Page_Terminate("hoa_donrpt.php");
+		if ($Security->IsLoggedIn())
+			$this->Page_Terminate("Doanh_Thusmry.php");
 		if ($Security->IsLoggedIn()) {
 			$this->setFailureMessage("<p>" . $ReportLanguage->Phrase("NoPermission") . "</p><p><a href=\"rlogout.php\">" . $ReportLanguage->Phrase("BackToLogin") . "</a></p>");
 		} else {

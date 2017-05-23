@@ -19,10 +19,10 @@
 						while($dong=$ketqua->fetch_array()){
 							if($dong['MaThuongHieu']==1){
 							  echo"<div class='tab-pane fade active in' id='".$dong['MaThuongHieu']."' >";
-								$sqltr="select * from sanpham where mathuonghieu='".$dong['MaThuongHieu']."' limit 4";
+								$sqltr="select * from sanpham where mathuonghieu='".$dong['MaThuongHieu']."' limit 3";
 								$result=$conn->query($sqltr);
 								while ($row=$result->fetch_array()){
-								echo"<div class='col-sm-3'>
+								echo"<div class='col-sm-4'>
 									<div class='product-image-wrapper'>
 										<div class='single-products'>
 											<div class='productinfo text-center'>
@@ -30,8 +30,9 @@
 										<h2>".number_format($row['GiaBan'])."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>
 										<p>".$row['TenCT']."</p>
-												<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
-											</div>
+											<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+											<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
+										</div>
 											
 										</div>
 									</div>
@@ -39,10 +40,10 @@
 								
 							echo"</div>";}
 							else {echo"<div class='tab-pane fade' id='".$dong['MaThuongHieu']."'>";
-								$sqltr="select * from sanpham where mathuonghieu='".$dong['MaThuongHieu']."' limit 4";
+								$sqltr="select * from sanpham where mathuonghieu='".$dong['MaThuongHieu']."' limit 3";
 								$result=$conn->query($sqltr);
 								while ($row=$result->fetch_array()){
-								echo"<div class='col-sm-3'>
+								echo"<div class='col-sm-4'>
 									<div class='product-image-wrapper'>
 										<div class='single-products'>
 											<div class='productinfo text-center'>
@@ -50,8 +51,9 @@
 										<h2>".number_format($row['GiaBan'])."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>
 										<p>".$row['TenCT']."</p>
-												<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>
-											</div>
+												<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+												<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
+										</div>
 											
 										</div>
 									</div>

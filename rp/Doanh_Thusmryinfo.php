@@ -1,44 +1,43 @@
 <?php
 
 // Global variable for table object
-$tai_khoan = NULL;
+$Doanh_Thu = NULL;
 
 //
-// Table class for tai_khoan
+// Table class for Doanh Thu
 //
-class crtai_khoan extends crTableBase {
+class crDoanh_Thu extends crTableBase {
 	var $ShowGroupHeaderAsRow = FALSE;
 	var $ShowCompactSummaryFooter = TRUE;
+	var $MaHD;
 	var $MaTK;
-	var $TenDangNhap;
-	var $MatKhau;
-	var $LoaiTK;
-	var $_Email;
-	var $HoTen;
-	var $DiaChi;
-	var $NgaySinh;
-	var $SDT;
-	var $CMND;
-	var $DiemThuong;
-	var $TenLoaiTK;
-	var $ChietKhau;
-	var $DiemChuan;
-	var $GhiChu;
+	var $NgayLap;
+	var $TongTien;
+	var $TinhTrang;
 
 	//
 	// Table class constructor
 	//
 	function __construct() {
 		global $ReportLanguage, $gsLanguage;
-		$this->TableVar = 'tai_khoan';
-		$this->TableName = 'tai_khoan';
-		$this->TableType = 'VIEW';
+		$this->TableVar = 'Doanh_Thu';
+		$this->TableName = 'Doanh Thu';
+		$this->TableType = 'REPORT';
 		$this->DBID = 'DB';
 		$this->ExportAll = FALSE;
 		$this->ExportPageBreakCount = 0;
 
+		// MaHD
+		$this->MaHD = new crField('Doanh_Thu', 'Doanh Thu', 'x_MaHD', 'MaHD', '`MaHD`', 3, EWR_DATATYPE_NUMBER, -1);
+		$this->MaHD->Sortable = TRUE; // Allow sort
+		$this->MaHD->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
+		$this->fields['MaHD'] = &$this->MaHD;
+		$this->MaHD->DateFilter = "";
+		$this->MaHD->SqlSelect = "";
+		$this->MaHD->SqlOrderBy = "";
+
 		// MaTK
-		$this->MaTK = new crField('tai_khoan', 'tai_khoan', 'x_MaTK', 'MaTK', '`MaTK`', 3, EWR_DATATYPE_NUMBER, -1);
+		$this->MaTK = new crField('Doanh_Thu', 'Doanh Thu', 'x_MaTK', 'MaTK', '`MaTK`', 3, EWR_DATATYPE_NUMBER, -1);
 		$this->MaTK->Sortable = TRUE; // Allow sort
 		$this->MaTK->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
 		$this->fields['MaTK'] = &$this->MaTK;
@@ -46,122 +45,33 @@ class crtai_khoan extends crTableBase {
 		$this->MaTK->SqlSelect = "";
 		$this->MaTK->SqlOrderBy = "";
 
-		// TenDangNhap
-		$this->TenDangNhap = new crField('tai_khoan', 'tai_khoan', 'x_TenDangNhap', 'TenDangNhap', '`TenDangNhap`', 200, EWR_DATATYPE_STRING, -1);
-		$this->TenDangNhap->Sortable = TRUE; // Allow sort
-		$this->fields['TenDangNhap'] = &$this->TenDangNhap;
-		$this->TenDangNhap->DateFilter = "";
-		$this->TenDangNhap->SqlSelect = "";
-		$this->TenDangNhap->SqlOrderBy = "";
+		// NgayLap
+		$this->NgayLap = new crField('Doanh_Thu', 'Doanh Thu', 'x_NgayLap', 'NgayLap', '`NgayLap`', 133, EWR_DATATYPE_DATE, 0);
+		$this->NgayLap->Sortable = TRUE; // Allow sort
+		$this->NgayLap->FldDefaultErrMsg = str_replace("%s", $GLOBALS["EWR_DATE_FORMAT"], $ReportLanguage->Phrase("IncorrectDate"));
+		$this->fields['NgayLap'] = &$this->NgayLap;
+		$this->NgayLap->DateFilter = "";
+		$this->NgayLap->SqlSelect = "SELECT DISTINCT `NgayLap`, `NgayLap` AS `DispFld` FROM " . $this->getSqlFrom();
+		$this->NgayLap->SqlOrderBy = "`NgayLap`";
+		ewr_RegisterFilter($this->NgayLap, "@@Past", $ReportLanguage->Phrase("Past"), "ewr_IsPast");
+		ewr_RegisterFilter($this->NgayLap, "@@Future", $ReportLanguage->Phrase("Future"), "ewr_IsFuture");
 
-		// MatKhau
-		$this->MatKhau = new crField('tai_khoan', 'tai_khoan', 'x_MatKhau', 'MatKhau', '`MatKhau`', 200, EWR_DATATYPE_STRING, -1);
-		$this->MatKhau->Sortable = TRUE; // Allow sort
-		$this->fields['MatKhau'] = &$this->MatKhau;
-		$this->MatKhau->DateFilter = "";
-		$this->MatKhau->SqlSelect = "";
-		$this->MatKhau->SqlOrderBy = "";
+		// TongTien
+		$this->TongTien = new crField('Doanh_Thu', 'Doanh Thu', 'x_TongTien', 'TongTien', '`TongTien`', 3, EWR_DATATYPE_NUMBER, -1);
+		$this->TongTien->Sortable = TRUE; // Allow sort
+		$this->TongTien->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
+		$this->fields['TongTien'] = &$this->TongTien;
+		$this->TongTien->DateFilter = "";
+		$this->TongTien->SqlSelect = "SELECT DISTINCT `TongTien`, `TongTien` AS `DispFld` FROM " . $this->getSqlFrom();
+		$this->TongTien->SqlOrderBy = "`TongTien`";
 
-		// LoaiTK
-		$this->LoaiTK = new crField('tai_khoan', 'tai_khoan', 'x_LoaiTK', 'LoaiTK', '`LoaiTK`', 3, EWR_DATATYPE_NUMBER, -1);
-		$this->LoaiTK->Sortable = TRUE; // Allow sort
-		$this->LoaiTK->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
-		$this->fields['LoaiTK'] = &$this->LoaiTK;
-		$this->LoaiTK->DateFilter = "";
-		$this->LoaiTK->SqlSelect = "";
-		$this->LoaiTK->SqlOrderBy = "";
-
-		// Email
-		$this->_Email = new crField('tai_khoan', 'tai_khoan', 'x__Email', 'Email', '`Email`', 200, EWR_DATATYPE_STRING, -1);
-		$this->_Email->Sortable = TRUE; // Allow sort
-		$this->fields['Email'] = &$this->_Email;
-		$this->_Email->DateFilter = "";
-		$this->_Email->SqlSelect = "";
-		$this->_Email->SqlOrderBy = "";
-
-		// HoTen
-		$this->HoTen = new crField('tai_khoan', 'tai_khoan', 'x_HoTen', 'HoTen', '`HoTen`', 200, EWR_DATATYPE_STRING, -1);
-		$this->HoTen->Sortable = TRUE; // Allow sort
-		$this->fields['HoTen'] = &$this->HoTen;
-		$this->HoTen->DateFilter = "";
-		$this->HoTen->SqlSelect = "";
-		$this->HoTen->SqlOrderBy = "";
-
-		// DiaChi
-		$this->DiaChi = new crField('tai_khoan', 'tai_khoan', 'x_DiaChi', 'DiaChi', '`DiaChi`', 200, EWR_DATATYPE_STRING, -1);
-		$this->DiaChi->Sortable = TRUE; // Allow sort
-		$this->fields['DiaChi'] = &$this->DiaChi;
-		$this->DiaChi->DateFilter = "";
-		$this->DiaChi->SqlSelect = "";
-		$this->DiaChi->SqlOrderBy = "";
-
-		// NgaySinh
-		$this->NgaySinh = new crField('tai_khoan', 'tai_khoan', 'x_NgaySinh', 'NgaySinh', '`NgaySinh`', 133, EWR_DATATYPE_DATE, 0);
-		$this->NgaySinh->Sortable = TRUE; // Allow sort
-		$this->NgaySinh->FldDefaultErrMsg = str_replace("%s", $GLOBALS["EWR_DATE_FORMAT"], $ReportLanguage->Phrase("IncorrectDate"));
-		$this->fields['NgaySinh'] = &$this->NgaySinh;
-		$this->NgaySinh->DateFilter = "";
-		$this->NgaySinh->SqlSelect = "";
-		$this->NgaySinh->SqlOrderBy = "";
-
-		// SDT
-		$this->SDT = new crField('tai_khoan', 'tai_khoan', 'x_SDT', 'SDT', '`SDT`', 200, EWR_DATATYPE_STRING, -1);
-		$this->SDT->Sortable = TRUE; // Allow sort
-		$this->fields['SDT'] = &$this->SDT;
-		$this->SDT->DateFilter = "";
-		$this->SDT->SqlSelect = "";
-		$this->SDT->SqlOrderBy = "";
-
-		// CMND
-		$this->CMND = new crField('tai_khoan', 'tai_khoan', 'x_CMND', 'CMND', '`CMND`', 200, EWR_DATATYPE_STRING, -1);
-		$this->CMND->Sortable = TRUE; // Allow sort
-		$this->fields['CMND'] = &$this->CMND;
-		$this->CMND->DateFilter = "";
-		$this->CMND->SqlSelect = "";
-		$this->CMND->SqlOrderBy = "";
-
-		// DiemThuong
-		$this->DiemThuong = new crField('tai_khoan', 'tai_khoan', 'x_DiemThuong', 'DiemThuong', '`DiemThuong`', 3, EWR_DATATYPE_NUMBER, -1);
-		$this->DiemThuong->Sortable = TRUE; // Allow sort
-		$this->DiemThuong->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
-		$this->fields['DiemThuong'] = &$this->DiemThuong;
-		$this->DiemThuong->DateFilter = "";
-		$this->DiemThuong->SqlSelect = "";
-		$this->DiemThuong->SqlOrderBy = "";
-
-		// TenLoaiTK
-		$this->TenLoaiTK = new crField('tai_khoan', 'tai_khoan', 'x_TenLoaiTK', 'TenLoaiTK', '`TenLoaiTK`', 200, EWR_DATATYPE_STRING, -1);
-		$this->TenLoaiTK->Sortable = TRUE; // Allow sort
-		$this->fields['TenLoaiTK'] = &$this->TenLoaiTK;
-		$this->TenLoaiTK->DateFilter = "";
-		$this->TenLoaiTK->SqlSelect = "";
-		$this->TenLoaiTK->SqlOrderBy = "";
-
-		// ChietKhau
-		$this->ChietKhau = new crField('tai_khoan', 'tai_khoan', 'x_ChietKhau', 'ChietKhau', '`ChietKhau`', 4, EWR_DATATYPE_NUMBER, -1);
-		$this->ChietKhau->Sortable = TRUE; // Allow sort
-		$this->ChietKhau->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectFloat");
-		$this->fields['ChietKhau'] = &$this->ChietKhau;
-		$this->ChietKhau->DateFilter = "";
-		$this->ChietKhau->SqlSelect = "";
-		$this->ChietKhau->SqlOrderBy = "";
-
-		// DiemChuan
-		$this->DiemChuan = new crField('tai_khoan', 'tai_khoan', 'x_DiemChuan', 'DiemChuan', '`DiemChuan`', 3, EWR_DATATYPE_NUMBER, -1);
-		$this->DiemChuan->Sortable = TRUE; // Allow sort
-		$this->DiemChuan->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
-		$this->fields['DiemChuan'] = &$this->DiemChuan;
-		$this->DiemChuan->DateFilter = "";
-		$this->DiemChuan->SqlSelect = "";
-		$this->DiemChuan->SqlOrderBy = "";
-
-		// GhiChu
-		$this->GhiChu = new crField('tai_khoan', 'tai_khoan', 'x_GhiChu', 'GhiChu', '`GhiChu`', 201, EWR_DATATYPE_MEMO, -1);
-		$this->GhiChu->Sortable = TRUE; // Allow sort
-		$this->fields['GhiChu'] = &$this->GhiChu;
-		$this->GhiChu->DateFilter = "";
-		$this->GhiChu->SqlSelect = "";
-		$this->GhiChu->SqlOrderBy = "";
+		// TinhTrang
+		$this->TinhTrang = new crField('Doanh_Thu', 'Doanh Thu', 'x_TinhTrang', 'TinhTrang', '`TinhTrang`', 200, EWR_DATATYPE_STRING, -1);
+		$this->TinhTrang->Sortable = TRUE; // Allow sort
+		$this->fields['TinhTrang'] = &$this->TinhTrang;
+		$this->TinhTrang->DateFilter = "";
+		$this->TinhTrang->SqlSelect = "";
+		$this->TinhTrang->SqlOrderBy = "";
 	}
 
 	// Set Field Visibility
@@ -221,7 +131,7 @@ class crtai_khoan extends crTableBase {
 	var $_SqlFrom = "";
 
 	function getSqlFrom() {
-		return ($this->_SqlFrom <> "") ? $this->_SqlFrom : "`tai_khoan`";
+		return ($this->_SqlFrom <> "") ? $this->_SqlFrom : "`hoa_don`";
 	}
 
 	function SqlFrom() { // For backward compatibility
@@ -308,11 +218,58 @@ class crtai_khoan extends crTableBase {
 		$this->_SqlOrderBy = $v;
 	}
 
+	// Table Level Group SQL
+	// First Group Field
+
+	var $_SqlFirstGroupField = "";
+
+	function getSqlFirstGroupField() {
+		return ($this->_SqlFirstGroupField <> "") ? $this->_SqlFirstGroupField : "";
+	}
+
+	function SqlFirstGroupField() { // For backward compatibility
+		return $this->getSqlFirstGroupField();
+	}
+
+	function setSqlFirstGroupField($v) {
+		$this->_SqlFirstGroupField = $v;
+	}
+
+	// Select Group
+	var $_SqlSelectGroup = "";
+
+	function getSqlSelectGroup() {
+		return ($this->_SqlSelectGroup <> "") ? $this->_SqlSelectGroup : "SELECT DISTINCT " . $this->getSqlFirstGroupField() . " FROM " . $this->getSqlFrom();
+	}
+
+	function SqlSelectGroup() { // For backward compatibility
+		return $this->getSqlSelectGroup();
+	}
+
+	function setSqlSelectGroup($v) {
+		$this->_SqlSelectGroup = $v;
+	}
+
+	// Order By Group
+	var $_SqlOrderByGroup = "";
+
+	function getSqlOrderByGroup() {
+		return ($this->_SqlOrderByGroup <> "") ? $this->_SqlOrderByGroup : "";
+	}
+
+	function SqlOrderByGroup() { // For backward compatibility
+		return $this->getSqlOrderByGroup();
+	}
+
+	function setSqlOrderByGroup($v) {
+		$this->_SqlOrderByGroup = $v;
+	}
+
 	// Select Aggregate
 	var $_SqlSelectAgg = "";
 
 	function getSqlSelectAgg() {
-		return ($this->_SqlSelectAgg <> "") ? $this->_SqlSelectAgg : "SELECT * FROM " . $this->getSqlFrom();
+		return ($this->_SqlSelectAgg <> "") ? $this->_SqlSelectAgg : "SELECT SUM(`TongTien`) AS `sum_tongtien` FROM " . $this->getSqlFrom();
 	}
 
 	function SqlSelectAgg() { // For backward compatibility

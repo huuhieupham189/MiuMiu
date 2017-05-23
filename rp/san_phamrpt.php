@@ -6,16 +6,16 @@ ob_start();
 <?php include_once ((EW_USE_ADODB) ? "adodb5/adodb.inc.php" : "phprptinc/ewmysql.php") ?>
 <?php include_once "phprptinc/ewrfn10.php" ?>
 <?php include_once "phprptinc/ewrusrfn10.php" ?>
-<?php include_once "tai_khoanrptinfo.php" ?>
+<?php include_once "san_phamrptinfo.php" ?>
 <?php
 
 //
 // Page class
 //
 
-$tai_khoan_rpt = NULL; // Initialize page object first
+$san_pham_rpt = NULL; // Initialize page object first
 
-class crtai_khoan_rpt extends crtai_khoan {
+class crsan_pham_rpt extends crsan_pham {
 
 	// Page ID
 	var $PageID = 'rpt';
@@ -24,7 +24,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
 
 	// Page object name
-	var $PageObjName = 'tai_khoan_rpt';
+	var $PageObjName = 'san_pham_rpt';
 
 	// Page name
 	function PageName() {
@@ -202,10 +202,10 @@ class crtai_khoan_rpt extends crtai_khoan {
 		// Parent constuctor
 		parent::__construct();
 
-		// Table object (tai_khoan)
-		if (!isset($GLOBALS["tai_khoan"])) {
-			$GLOBALS["tai_khoan"] = &$this;
-			$GLOBALS["Table"] = &$GLOBALS["tai_khoan"];
+		// Table object (san_pham)
+		if (!isset($GLOBALS["san_pham"])) {
+			$GLOBALS["san_pham"] = &$this;
+			$GLOBALS["Table"] = &$GLOBALS["san_pham"];
 		}
 
 		// Initialize URLs
@@ -220,7 +220,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 
 		// Table name (for backward compatibility)
 		if (!defined("EWR_TABLE_NAME"))
-			define("EWR_TABLE_NAME", 'tai_khoan', TRUE);
+			define("EWR_TABLE_NAME", 'san_pham', TRUE);
 
 		// Start timer
 		$GLOBALS["gsTimer"] = new crTimer();
@@ -241,7 +241,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 		// Filter options
 		$this->FilterOptions = new crListOptions();
 		$this->FilterOptions->Tag = "div";
-		$this->FilterOptions->TagClassName = "ewFilterOption ftai_khoanrpt";
+		$this->FilterOptions->TagClassName = "ewFilterOption fsan_phamrpt";
 
 		// Generate report options
 		$this->GenerateOptions = new crListOptions();
@@ -334,7 +334,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 		// Export to Email
 		$item = &$this->ExportOptions->Add("email");
 		$url = $this->PageUrl() . "export=email";
-		$item->Body = "<a title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_tai_khoan\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_tai_khoan',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
+		$item->Body = "<a title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_san_pham\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_san_pham',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
 		$item->Visible = FALSE;
 		$ReportTypes["email"] = $item->Visible ? $ReportLanguage->Phrase("ReportFormEmail") : "";
 		$ReportOptions["ReportTypes"] = $ReportTypes;
@@ -352,10 +352,10 @@ class crtai_khoan_rpt extends crtai_khoan {
 
 		// Filter button
 		$item = &$this->FilterOptions->Add("savecurrentfilter");
-		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"ftai_khoanrpt\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
+		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"fsan_phamrpt\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
 		$item->Visible = TRUE;
 		$item = &$this->FilterOptions->Add("deletefilter");
-		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"ftai_khoanrpt\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
+		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"fsan_phamrpt\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
 		$item->Visible = TRUE;
 		$this->FilterOptions->UseDropDownButton = TRUE;
 		$this->FilterOptions->UseButtonGroup = !$this->FilterOptions->UseDropDownButton; // v8
@@ -389,7 +389,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 		// Filter panel button
 		$item = &$this->SearchOptions->Add("searchtoggle");
 		$SearchToggleClass = $this->FilterApplied ? " active" : " active";
-		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"ftai_khoanrpt\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
+		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"fsan_phamrpt\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
 		$item->Visible = FALSE;
 
 		// Reset filter
@@ -518,26 +518,24 @@ class crtai_khoan_rpt extends crtai_khoan {
 		global $ReportLanguage;
 
 		// Set field visibility for detail fields
-		$this->MaTK->SetVisibility();
-		$this->TenDangNhap->SetVisibility();
-		$this->MatKhau->SetVisibility();
-		$this->LoaiTK->SetVisibility();
-		$this->_Email->SetVisibility();
-		$this->HoTen->SetVisibility();
-		$this->DiaChi->SetVisibility();
-		$this->NgaySinh->SetVisibility();
-		$this->SDT->SetVisibility();
-		$this->CMND->SetVisibility();
-		$this->DiemThuong->SetVisibility();
-		$this->TenLoaiTK->SetVisibility();
-		$this->ChietKhau->SetVisibility();
-		$this->DiemChuan->SetVisibility();
+		$this->MaSP->SetVisibility();
+		$this->TenSP->SetVisibility();
+		$this->TenCT->SetVisibility();
+		$this->NoiSX->SetVisibility();
+		$this->DungTich->SetVisibility();
+		$this->GiaNhap->SetVisibility();
+		$this->GiaBan->SetVisibility();
+		$this->SLTon->SetVisibility();
+		$this->TenVietTat->SetVisibility();
+		$this->TenLoaiSP->SetVisibility();
+		$this->TenThuongHieu->SetVisibility();
+		$this->SoLuong->SetVisibility();
 
 		// Aggregate variables
 		// 1st dimension = no of groups (level 0 used for grand total)
 		// 2nd dimension = no of fields
 
-		$nDtls = 15;
+		$nDtls = 13;
 		$nGrps = 1;
 		$this->Val = &ewr_InitArray($nDtls, 0);
 		$this->Cnt = &ewr_Init2DArray($nGrps, $nDtls, 0);
@@ -550,7 +548,7 @@ class crtai_khoan_rpt extends crtai_khoan {
 		$this->GrandMx = &ewr_InitArray($nDtls, NULL);
 
 		// Set up array if accumulation required: array(Accum, SkipNullOrZero)
-		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE));
+		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE));
 
 		// Set up groups per page dynamically
 		$this->SetUpDisplayGrps();
@@ -749,69 +747,59 @@ class crtai_khoan_rpt extends crtai_khoan {
 		if ($opt == 1) { // Get first row
 			$rs->MoveFirst(); // Move first
 				$this->FirstRowData = array();
-				$this->FirstRowData['MaTK'] = ewr_Conv($rs->fields('MaTK'), 3);
-				$this->FirstRowData['TenDangNhap'] = ewr_Conv($rs->fields('TenDangNhap'), 200);
-				$this->FirstRowData['MatKhau'] = ewr_Conv($rs->fields('MatKhau'), 200);
-				$this->FirstRowData['LoaiTK'] = ewr_Conv($rs->fields('LoaiTK'), 3);
-				$this->FirstRowData['_Email'] = ewr_Conv($rs->fields('Email'), 200);
-				$this->FirstRowData['HoTen'] = ewr_Conv($rs->fields('HoTen'), 200);
-				$this->FirstRowData['DiaChi'] = ewr_Conv($rs->fields('DiaChi'), 200);
-				$this->FirstRowData['NgaySinh'] = ewr_Conv($rs->fields('NgaySinh'), 133);
-				$this->FirstRowData['SDT'] = ewr_Conv($rs->fields('SDT'), 200);
-				$this->FirstRowData['CMND'] = ewr_Conv($rs->fields('CMND'), 200);
-				$this->FirstRowData['DiemThuong'] = ewr_Conv($rs->fields('DiemThuong'), 3);
-				$this->FirstRowData['TenLoaiTK'] = ewr_Conv($rs->fields('TenLoaiTK'), 200);
-				$this->FirstRowData['ChietKhau'] = ewr_Conv($rs->fields('ChietKhau'), 4);
-				$this->FirstRowData['DiemChuan'] = ewr_Conv($rs->fields('DiemChuan'), 3);
+				$this->FirstRowData['MaSP'] = ewr_Conv($rs->fields('MaSP'), 3);
+				$this->FirstRowData['TenSP'] = ewr_Conv($rs->fields('TenSP'), 200);
+				$this->FirstRowData['TenCT'] = ewr_Conv($rs->fields('TenCT'), 200);
+				$this->FirstRowData['NoiSX'] = ewr_Conv($rs->fields('NoiSX'), 200);
+				$this->FirstRowData['DungTich'] = ewr_Conv($rs->fields('DungTich'), 200);
+				$this->FirstRowData['GiaNhap'] = ewr_Conv($rs->fields('GiaNhap'), 3);
+				$this->FirstRowData['GiaBan'] = ewr_Conv($rs->fields('GiaBan'), 3);
+				$this->FirstRowData['SLTon'] = ewr_Conv($rs->fields('SLTon'), 3);
+				$this->FirstRowData['TenVietTat'] = ewr_Conv($rs->fields('TenVietTat'), 200);
+				$this->FirstRowData['TenLoaiSP'] = ewr_Conv($rs->fields('TenLoaiSP'), 200);
+				$this->FirstRowData['TenThuongHieu'] = ewr_Conv($rs->fields('TenThuongHieu'), 200);
+				$this->FirstRowData['SoLuong'] = ewr_Conv($rs->fields('SoLuong'), 3);
 		} else { // Get next row
 			$rs->MoveNext();
 		}
 		if (!$rs->EOF) {
-			$this->MaTK->setDbValue($rs->fields('MaTK'));
-			$this->TenDangNhap->setDbValue($rs->fields('TenDangNhap'));
-			$this->MatKhau->setDbValue($rs->fields('MatKhau'));
-			$this->LoaiTK->setDbValue($rs->fields('LoaiTK'));
-			$this->_Email->setDbValue($rs->fields('Email'));
-			$this->HoTen->setDbValue($rs->fields('HoTen'));
-			$this->DiaChi->setDbValue($rs->fields('DiaChi'));
-			$this->NgaySinh->setDbValue($rs->fields('NgaySinh'));
-			$this->SDT->setDbValue($rs->fields('SDT'));
-			$this->CMND->setDbValue($rs->fields('CMND'));
-			$this->DiemThuong->setDbValue($rs->fields('DiemThuong'));
-			$this->TenLoaiTK->setDbValue($rs->fields('TenLoaiTK'));
-			$this->ChietKhau->setDbValue($rs->fields('ChietKhau'));
-			$this->DiemChuan->setDbValue($rs->fields('DiemChuan'));
-			$this->GhiChu->setDbValue($rs->fields('GhiChu'));
-			$this->Val[1] = $this->MaTK->CurrentValue;
-			$this->Val[2] = $this->TenDangNhap->CurrentValue;
-			$this->Val[3] = $this->MatKhau->CurrentValue;
-			$this->Val[4] = $this->LoaiTK->CurrentValue;
-			$this->Val[5] = $this->_Email->CurrentValue;
-			$this->Val[6] = $this->HoTen->CurrentValue;
-			$this->Val[7] = $this->DiaChi->CurrentValue;
-			$this->Val[8] = $this->NgaySinh->CurrentValue;
-			$this->Val[9] = $this->SDT->CurrentValue;
-			$this->Val[10] = $this->CMND->CurrentValue;
-			$this->Val[11] = $this->DiemThuong->CurrentValue;
-			$this->Val[12] = $this->TenLoaiTK->CurrentValue;
-			$this->Val[13] = $this->ChietKhau->CurrentValue;
-			$this->Val[14] = $this->DiemChuan->CurrentValue;
+			$this->MaSP->setDbValue($rs->fields('MaSP'));
+			$this->TenSP->setDbValue($rs->fields('TenSP'));
+			$this->TenCT->setDbValue($rs->fields('TenCT'));
+			$this->NoiSX->setDbValue($rs->fields('NoiSX'));
+			$this->DungTich->setDbValue($rs->fields('DungTich'));
+			$this->GiaNhap->setDbValue($rs->fields('GiaNhap'));
+			$this->GiaBan->setDbValue($rs->fields('GiaBan'));
+			$this->SLTon->setDbValue($rs->fields('SLTon'));
+			$this->TenVietTat->setDbValue($rs->fields('TenVietTat'));
+			$this->TenLoaiSP->setDbValue($rs->fields('TenLoaiSP'));
+			$this->TenThuongHieu->setDbValue($rs->fields('TenThuongHieu'));
+			$this->SoLuong->setDbValue($rs->fields('SoLuong'));
+			$this->Val[1] = $this->MaSP->CurrentValue;
+			$this->Val[2] = $this->TenSP->CurrentValue;
+			$this->Val[3] = $this->TenCT->CurrentValue;
+			$this->Val[4] = $this->NoiSX->CurrentValue;
+			$this->Val[5] = $this->DungTich->CurrentValue;
+			$this->Val[6] = $this->GiaNhap->CurrentValue;
+			$this->Val[7] = $this->GiaBan->CurrentValue;
+			$this->Val[8] = $this->SLTon->CurrentValue;
+			$this->Val[9] = $this->TenVietTat->CurrentValue;
+			$this->Val[10] = $this->TenLoaiSP->CurrentValue;
+			$this->Val[11] = $this->TenThuongHieu->CurrentValue;
+			$this->Val[12] = $this->SoLuong->CurrentValue;
 		} else {
-			$this->MaTK->setDbValue("");
-			$this->TenDangNhap->setDbValue("");
-			$this->MatKhau->setDbValue("");
-			$this->LoaiTK->setDbValue("");
-			$this->_Email->setDbValue("");
-			$this->HoTen->setDbValue("");
-			$this->DiaChi->setDbValue("");
-			$this->NgaySinh->setDbValue("");
-			$this->SDT->setDbValue("");
-			$this->CMND->setDbValue("");
-			$this->DiemThuong->setDbValue("");
-			$this->TenLoaiTK->setDbValue("");
-			$this->ChietKhau->setDbValue("");
-			$this->DiemChuan->setDbValue("");
-			$this->GhiChu->setDbValue("");
+			$this->MaSP->setDbValue("");
+			$this->TenSP->setDbValue("");
+			$this->TenCT->setDbValue("");
+			$this->NoiSX->setDbValue("");
+			$this->DungTich->setDbValue("");
+			$this->GiaNhap->setDbValue("");
+			$this->GiaBan->setDbValue("");
+			$this->SLTon->setDbValue("");
+			$this->TenVietTat->setDbValue("");
+			$this->TenLoaiSP->setDbValue("");
+			$this->TenThuongHieu->setDbValue("");
+			$this->SoLuong->setDbValue("");
 		}
 	}
 
@@ -999,282 +987,242 @@ class crtai_khoan_rpt extends crtai_khoan {
 		if ($this->RowType == EWR_ROWTYPE_TOTAL && !($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER)) { // Summary row
 			ewr_PrependClass($this->RowAttrs["class"], ($this->RowTotalType == EWR_ROWTOTAL_PAGE || $this->RowTotalType == EWR_ROWTOTAL_GRAND) ? "ewRptGrpAggregate" : "ewRptGrpSummary" . $this->RowGroupLevel); // Set up row class
 
-			// MaTK
-			$this->MaTK->HrefValue = "";
+			// MaSP
+			$this->MaSP->HrefValue = "";
 
-			// TenDangNhap
-			$this->TenDangNhap->HrefValue = "";
+			// TenSP
+			$this->TenSP->HrefValue = "";
 
-			// MatKhau
-			$this->MatKhau->HrefValue = "";
+			// TenCT
+			$this->TenCT->HrefValue = "";
 
-			// LoaiTK
-			$this->LoaiTK->HrefValue = "";
+			// NoiSX
+			$this->NoiSX->HrefValue = "";
 
-			// Email
-			$this->_Email->HrefValue = "";
+			// DungTich
+			$this->DungTich->HrefValue = "";
 
-			// HoTen
-			$this->HoTen->HrefValue = "";
+			// GiaNhap
+			$this->GiaNhap->HrefValue = "";
 
-			// DiaChi
-			$this->DiaChi->HrefValue = "";
+			// GiaBan
+			$this->GiaBan->HrefValue = "";
 
-			// NgaySinh
-			$this->NgaySinh->HrefValue = "";
+			// SLTon
+			$this->SLTon->HrefValue = "";
 
-			// SDT
-			$this->SDT->HrefValue = "";
+			// TenVietTat
+			$this->TenVietTat->HrefValue = "";
 
-			// CMND
-			$this->CMND->HrefValue = "";
+			// TenLoaiSP
+			$this->TenLoaiSP->HrefValue = "";
 
-			// DiemThuong
-			$this->DiemThuong->HrefValue = "";
+			// TenThuongHieu
+			$this->TenThuongHieu->HrefValue = "";
 
-			// TenLoaiTK
-			$this->TenLoaiTK->HrefValue = "";
-
-			// ChietKhau
-			$this->ChietKhau->HrefValue = "";
-
-			// DiemChuan
-			$this->DiemChuan->HrefValue = "";
+			// SoLuong
+			$this->SoLuong->HrefValue = "";
 		} else {
 			if ($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER) {
 			} else {
 			}
 
-			// MaTK
-			$this->MaTK->ViewValue = $this->MaTK->CurrentValue;
-			$this->MaTK->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// MaSP
+			$this->MaSP->ViewValue = $this->MaSP->CurrentValue;
+			$this->MaSP->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// TenDangNhap
-			$this->TenDangNhap->ViewValue = $this->TenDangNhap->CurrentValue;
-			$this->TenDangNhap->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenSP
+			$this->TenSP->ViewValue = $this->TenSP->CurrentValue;
+			$this->TenSP->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// MatKhau
-			$this->MatKhau->ViewValue = $this->MatKhau->CurrentValue;
-			$this->MatKhau->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenCT
+			$this->TenCT->ViewValue = $this->TenCT->CurrentValue;
+			$this->TenCT->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// LoaiTK
-			$this->LoaiTK->ViewValue = $this->LoaiTK->CurrentValue;
-			$this->LoaiTK->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// NoiSX
+			$this->NoiSX->ViewValue = $this->NoiSX->CurrentValue;
+			$this->NoiSX->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// Email
-			$this->_Email->ViewValue = $this->_Email->CurrentValue;
-			$this->_Email->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// DungTich
+			$this->DungTich->ViewValue = $this->DungTich->CurrentValue;
+			$this->DungTich->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// HoTen
-			$this->HoTen->ViewValue = $this->HoTen->CurrentValue;
-			$this->HoTen->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// GiaNhap
+			$this->GiaNhap->ViewValue = $this->GiaNhap->CurrentValue;
+			$this->GiaNhap->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// DiaChi
-			$this->DiaChi->ViewValue = $this->DiaChi->CurrentValue;
-			$this->DiaChi->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// GiaBan
+			$this->GiaBan->ViewValue = $this->GiaBan->CurrentValue;
+			$this->GiaBan->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// NgaySinh
-			$this->NgaySinh->ViewValue = $this->NgaySinh->CurrentValue;
-			$this->NgaySinh->ViewValue = ewr_FormatDateTime($this->NgaySinh->ViewValue, 0);
-			$this->NgaySinh->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// SLTon
+			$this->SLTon->ViewValue = $this->SLTon->CurrentValue;
+			$this->SLTon->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// SDT
-			$this->SDT->ViewValue = $this->SDT->CurrentValue;
-			$this->SDT->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenVietTat
+			$this->TenVietTat->ViewValue = $this->TenVietTat->CurrentValue;
+			$this->TenVietTat->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// CMND
-			$this->CMND->ViewValue = $this->CMND->CurrentValue;
-			$this->CMND->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenLoaiSP
+			$this->TenLoaiSP->ViewValue = $this->TenLoaiSP->CurrentValue;
+			$this->TenLoaiSP->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// DiemThuong
-			$this->DiemThuong->ViewValue = $this->DiemThuong->CurrentValue;
-			$this->DiemThuong->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenThuongHieu
+			$this->TenThuongHieu->ViewValue = $this->TenThuongHieu->CurrentValue;
+			$this->TenThuongHieu->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// TenLoaiTK
-			$this->TenLoaiTK->ViewValue = $this->TenLoaiTK->CurrentValue;
-			$this->TenLoaiTK->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// SoLuong
+			$this->SoLuong->ViewValue = $this->SoLuong->CurrentValue;
+			$this->SoLuong->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// ChietKhau
-			$this->ChietKhau->ViewValue = $this->ChietKhau->CurrentValue;
-			$this->ChietKhau->ViewValue = ewr_FormatNumber($this->ChietKhau->ViewValue, $this->ChietKhau->DefaultDecimalPrecision, -1, 0, 0);
-			$this->ChietKhau->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// MaSP
+			$this->MaSP->HrefValue = "";
 
-			// DiemChuan
-			$this->DiemChuan->ViewValue = $this->DiemChuan->CurrentValue;
-			$this->DiemChuan->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TenSP
+			$this->TenSP->HrefValue = "";
 
-			// MaTK
-			$this->MaTK->HrefValue = "";
+			// TenCT
+			$this->TenCT->HrefValue = "";
 
-			// TenDangNhap
-			$this->TenDangNhap->HrefValue = "";
+			// NoiSX
+			$this->NoiSX->HrefValue = "";
 
-			// MatKhau
-			$this->MatKhau->HrefValue = "";
+			// DungTich
+			$this->DungTich->HrefValue = "";
 
-			// LoaiTK
-			$this->LoaiTK->HrefValue = "";
+			// GiaNhap
+			$this->GiaNhap->HrefValue = "";
 
-			// Email
-			$this->_Email->HrefValue = "";
+			// GiaBan
+			$this->GiaBan->HrefValue = "";
 
-			// HoTen
-			$this->HoTen->HrefValue = "";
+			// SLTon
+			$this->SLTon->HrefValue = "";
 
-			// DiaChi
-			$this->DiaChi->HrefValue = "";
+			// TenVietTat
+			$this->TenVietTat->HrefValue = "";
 
-			// NgaySinh
-			$this->NgaySinh->HrefValue = "";
+			// TenLoaiSP
+			$this->TenLoaiSP->HrefValue = "";
 
-			// SDT
-			$this->SDT->HrefValue = "";
+			// TenThuongHieu
+			$this->TenThuongHieu->HrefValue = "";
 
-			// CMND
-			$this->CMND->HrefValue = "";
-
-			// DiemThuong
-			$this->DiemThuong->HrefValue = "";
-
-			// TenLoaiTK
-			$this->TenLoaiTK->HrefValue = "";
-
-			// ChietKhau
-			$this->ChietKhau->HrefValue = "";
-
-			// DiemChuan
-			$this->DiemChuan->HrefValue = "";
+			// SoLuong
+			$this->SoLuong->HrefValue = "";
 		}
 
 		// Call Cell_Rendered event
 		if ($this->RowType == EWR_ROWTYPE_TOTAL) { // Summary row
 		} else {
 
-			// MaTK
-			$CurrentValue = $this->MaTK->CurrentValue;
-			$ViewValue = &$this->MaTK->ViewValue;
-			$ViewAttrs = &$this->MaTK->ViewAttrs;
-			$CellAttrs = &$this->MaTK->CellAttrs;
-			$HrefValue = &$this->MaTK->HrefValue;
-			$LinkAttrs = &$this->MaTK->LinkAttrs;
-			$this->Cell_Rendered($this->MaTK, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// MaSP
+			$CurrentValue = $this->MaSP->CurrentValue;
+			$ViewValue = &$this->MaSP->ViewValue;
+			$ViewAttrs = &$this->MaSP->ViewAttrs;
+			$CellAttrs = &$this->MaSP->CellAttrs;
+			$HrefValue = &$this->MaSP->HrefValue;
+			$LinkAttrs = &$this->MaSP->LinkAttrs;
+			$this->Cell_Rendered($this->MaSP, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// TenDangNhap
-			$CurrentValue = $this->TenDangNhap->CurrentValue;
-			$ViewValue = &$this->TenDangNhap->ViewValue;
-			$ViewAttrs = &$this->TenDangNhap->ViewAttrs;
-			$CellAttrs = &$this->TenDangNhap->CellAttrs;
-			$HrefValue = &$this->TenDangNhap->HrefValue;
-			$LinkAttrs = &$this->TenDangNhap->LinkAttrs;
-			$this->Cell_Rendered($this->TenDangNhap, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TenSP
+			$CurrentValue = $this->TenSP->CurrentValue;
+			$ViewValue = &$this->TenSP->ViewValue;
+			$ViewAttrs = &$this->TenSP->ViewAttrs;
+			$CellAttrs = &$this->TenSP->CellAttrs;
+			$HrefValue = &$this->TenSP->HrefValue;
+			$LinkAttrs = &$this->TenSP->LinkAttrs;
+			$this->Cell_Rendered($this->TenSP, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// MatKhau
-			$CurrentValue = $this->MatKhau->CurrentValue;
-			$ViewValue = &$this->MatKhau->ViewValue;
-			$ViewAttrs = &$this->MatKhau->ViewAttrs;
-			$CellAttrs = &$this->MatKhau->CellAttrs;
-			$HrefValue = &$this->MatKhau->HrefValue;
-			$LinkAttrs = &$this->MatKhau->LinkAttrs;
-			$this->Cell_Rendered($this->MatKhau, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TenCT
+			$CurrentValue = $this->TenCT->CurrentValue;
+			$ViewValue = &$this->TenCT->ViewValue;
+			$ViewAttrs = &$this->TenCT->ViewAttrs;
+			$CellAttrs = &$this->TenCT->CellAttrs;
+			$HrefValue = &$this->TenCT->HrefValue;
+			$LinkAttrs = &$this->TenCT->LinkAttrs;
+			$this->Cell_Rendered($this->TenCT, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// LoaiTK
-			$CurrentValue = $this->LoaiTK->CurrentValue;
-			$ViewValue = &$this->LoaiTK->ViewValue;
-			$ViewAttrs = &$this->LoaiTK->ViewAttrs;
-			$CellAttrs = &$this->LoaiTK->CellAttrs;
-			$HrefValue = &$this->LoaiTK->HrefValue;
-			$LinkAttrs = &$this->LoaiTK->LinkAttrs;
-			$this->Cell_Rendered($this->LoaiTK, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// NoiSX
+			$CurrentValue = $this->NoiSX->CurrentValue;
+			$ViewValue = &$this->NoiSX->ViewValue;
+			$ViewAttrs = &$this->NoiSX->ViewAttrs;
+			$CellAttrs = &$this->NoiSX->CellAttrs;
+			$HrefValue = &$this->NoiSX->HrefValue;
+			$LinkAttrs = &$this->NoiSX->LinkAttrs;
+			$this->Cell_Rendered($this->NoiSX, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// Email
-			$CurrentValue = $this->_Email->CurrentValue;
-			$ViewValue = &$this->_Email->ViewValue;
-			$ViewAttrs = &$this->_Email->ViewAttrs;
-			$CellAttrs = &$this->_Email->CellAttrs;
-			$HrefValue = &$this->_Email->HrefValue;
-			$LinkAttrs = &$this->_Email->LinkAttrs;
-			$this->Cell_Rendered($this->_Email, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// DungTich
+			$CurrentValue = $this->DungTich->CurrentValue;
+			$ViewValue = &$this->DungTich->ViewValue;
+			$ViewAttrs = &$this->DungTich->ViewAttrs;
+			$CellAttrs = &$this->DungTich->CellAttrs;
+			$HrefValue = &$this->DungTich->HrefValue;
+			$LinkAttrs = &$this->DungTich->LinkAttrs;
+			$this->Cell_Rendered($this->DungTich, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// HoTen
-			$CurrentValue = $this->HoTen->CurrentValue;
-			$ViewValue = &$this->HoTen->ViewValue;
-			$ViewAttrs = &$this->HoTen->ViewAttrs;
-			$CellAttrs = &$this->HoTen->CellAttrs;
-			$HrefValue = &$this->HoTen->HrefValue;
-			$LinkAttrs = &$this->HoTen->LinkAttrs;
-			$this->Cell_Rendered($this->HoTen, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// GiaNhap
+			$CurrentValue = $this->GiaNhap->CurrentValue;
+			$ViewValue = &$this->GiaNhap->ViewValue;
+			$ViewAttrs = &$this->GiaNhap->ViewAttrs;
+			$CellAttrs = &$this->GiaNhap->CellAttrs;
+			$HrefValue = &$this->GiaNhap->HrefValue;
+			$LinkAttrs = &$this->GiaNhap->LinkAttrs;
+			$this->Cell_Rendered($this->GiaNhap, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// DiaChi
-			$CurrentValue = $this->DiaChi->CurrentValue;
-			$ViewValue = &$this->DiaChi->ViewValue;
-			$ViewAttrs = &$this->DiaChi->ViewAttrs;
-			$CellAttrs = &$this->DiaChi->CellAttrs;
-			$HrefValue = &$this->DiaChi->HrefValue;
-			$LinkAttrs = &$this->DiaChi->LinkAttrs;
-			$this->Cell_Rendered($this->DiaChi, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// GiaBan
+			$CurrentValue = $this->GiaBan->CurrentValue;
+			$ViewValue = &$this->GiaBan->ViewValue;
+			$ViewAttrs = &$this->GiaBan->ViewAttrs;
+			$CellAttrs = &$this->GiaBan->CellAttrs;
+			$HrefValue = &$this->GiaBan->HrefValue;
+			$LinkAttrs = &$this->GiaBan->LinkAttrs;
+			$this->Cell_Rendered($this->GiaBan, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// NgaySinh
-			$CurrentValue = $this->NgaySinh->CurrentValue;
-			$ViewValue = &$this->NgaySinh->ViewValue;
-			$ViewAttrs = &$this->NgaySinh->ViewAttrs;
-			$CellAttrs = &$this->NgaySinh->CellAttrs;
-			$HrefValue = &$this->NgaySinh->HrefValue;
-			$LinkAttrs = &$this->NgaySinh->LinkAttrs;
-			$this->Cell_Rendered($this->NgaySinh, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// SLTon
+			$CurrentValue = $this->SLTon->CurrentValue;
+			$ViewValue = &$this->SLTon->ViewValue;
+			$ViewAttrs = &$this->SLTon->ViewAttrs;
+			$CellAttrs = &$this->SLTon->CellAttrs;
+			$HrefValue = &$this->SLTon->HrefValue;
+			$LinkAttrs = &$this->SLTon->LinkAttrs;
+			$this->Cell_Rendered($this->SLTon, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// SDT
-			$CurrentValue = $this->SDT->CurrentValue;
-			$ViewValue = &$this->SDT->ViewValue;
-			$ViewAttrs = &$this->SDT->ViewAttrs;
-			$CellAttrs = &$this->SDT->CellAttrs;
-			$HrefValue = &$this->SDT->HrefValue;
-			$LinkAttrs = &$this->SDT->LinkAttrs;
-			$this->Cell_Rendered($this->SDT, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TenVietTat
+			$CurrentValue = $this->TenVietTat->CurrentValue;
+			$ViewValue = &$this->TenVietTat->ViewValue;
+			$ViewAttrs = &$this->TenVietTat->ViewAttrs;
+			$CellAttrs = &$this->TenVietTat->CellAttrs;
+			$HrefValue = &$this->TenVietTat->HrefValue;
+			$LinkAttrs = &$this->TenVietTat->LinkAttrs;
+			$this->Cell_Rendered($this->TenVietTat, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// CMND
-			$CurrentValue = $this->CMND->CurrentValue;
-			$ViewValue = &$this->CMND->ViewValue;
-			$ViewAttrs = &$this->CMND->ViewAttrs;
-			$CellAttrs = &$this->CMND->CellAttrs;
-			$HrefValue = &$this->CMND->HrefValue;
-			$LinkAttrs = &$this->CMND->LinkAttrs;
-			$this->Cell_Rendered($this->CMND, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TenLoaiSP
+			$CurrentValue = $this->TenLoaiSP->CurrentValue;
+			$ViewValue = &$this->TenLoaiSP->ViewValue;
+			$ViewAttrs = &$this->TenLoaiSP->ViewAttrs;
+			$CellAttrs = &$this->TenLoaiSP->CellAttrs;
+			$HrefValue = &$this->TenLoaiSP->HrefValue;
+			$LinkAttrs = &$this->TenLoaiSP->LinkAttrs;
+			$this->Cell_Rendered($this->TenLoaiSP, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// DiemThuong
-			$CurrentValue = $this->DiemThuong->CurrentValue;
-			$ViewValue = &$this->DiemThuong->ViewValue;
-			$ViewAttrs = &$this->DiemThuong->ViewAttrs;
-			$CellAttrs = &$this->DiemThuong->CellAttrs;
-			$HrefValue = &$this->DiemThuong->HrefValue;
-			$LinkAttrs = &$this->DiemThuong->LinkAttrs;
-			$this->Cell_Rendered($this->DiemThuong, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TenThuongHieu
+			$CurrentValue = $this->TenThuongHieu->CurrentValue;
+			$ViewValue = &$this->TenThuongHieu->ViewValue;
+			$ViewAttrs = &$this->TenThuongHieu->ViewAttrs;
+			$CellAttrs = &$this->TenThuongHieu->CellAttrs;
+			$HrefValue = &$this->TenThuongHieu->HrefValue;
+			$LinkAttrs = &$this->TenThuongHieu->LinkAttrs;
+			$this->Cell_Rendered($this->TenThuongHieu, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// TenLoaiTK
-			$CurrentValue = $this->TenLoaiTK->CurrentValue;
-			$ViewValue = &$this->TenLoaiTK->ViewValue;
-			$ViewAttrs = &$this->TenLoaiTK->ViewAttrs;
-			$CellAttrs = &$this->TenLoaiTK->CellAttrs;
-			$HrefValue = &$this->TenLoaiTK->HrefValue;
-			$LinkAttrs = &$this->TenLoaiTK->LinkAttrs;
-			$this->Cell_Rendered($this->TenLoaiTK, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// ChietKhau
-			$CurrentValue = $this->ChietKhau->CurrentValue;
-			$ViewValue = &$this->ChietKhau->ViewValue;
-			$ViewAttrs = &$this->ChietKhau->ViewAttrs;
-			$CellAttrs = &$this->ChietKhau->CellAttrs;
-			$HrefValue = &$this->ChietKhau->HrefValue;
-			$LinkAttrs = &$this->ChietKhau->LinkAttrs;
-			$this->Cell_Rendered($this->ChietKhau, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// DiemChuan
-			$CurrentValue = $this->DiemChuan->CurrentValue;
-			$ViewValue = &$this->DiemChuan->ViewValue;
-			$ViewAttrs = &$this->DiemChuan->ViewAttrs;
-			$CellAttrs = &$this->DiemChuan->CellAttrs;
-			$HrefValue = &$this->DiemChuan->HrefValue;
-			$LinkAttrs = &$this->DiemChuan->LinkAttrs;
-			$this->Cell_Rendered($this->DiemChuan, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// SoLuong
+			$CurrentValue = $this->SoLuong->CurrentValue;
+			$ViewValue = &$this->SoLuong->ViewValue;
+			$ViewAttrs = &$this->SoLuong->ViewAttrs;
+			$CellAttrs = &$this->SoLuong->CellAttrs;
+			$HrefValue = &$this->SoLuong->HrefValue;
+			$LinkAttrs = &$this->SoLuong->LinkAttrs;
+			$this->Cell_Rendered($this->SoLuong, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 		}
 
 		// Call Row_Rendered event
@@ -1287,20 +1235,18 @@ class crtai_khoan_rpt extends crtai_khoan {
 		$this->GrpColumnCount = 0;
 		$this->SubGrpColumnCount = 0;
 		$this->DtlColumnCount = 0;
-		if ($this->MaTK->Visible) $this->DtlColumnCount += 1;
-		if ($this->TenDangNhap->Visible) $this->DtlColumnCount += 1;
-		if ($this->MatKhau->Visible) $this->DtlColumnCount += 1;
-		if ($this->LoaiTK->Visible) $this->DtlColumnCount += 1;
-		if ($this->_Email->Visible) $this->DtlColumnCount += 1;
-		if ($this->HoTen->Visible) $this->DtlColumnCount += 1;
-		if ($this->DiaChi->Visible) $this->DtlColumnCount += 1;
-		if ($this->NgaySinh->Visible) $this->DtlColumnCount += 1;
-		if ($this->SDT->Visible) $this->DtlColumnCount += 1;
-		if ($this->CMND->Visible) $this->DtlColumnCount += 1;
-		if ($this->DiemThuong->Visible) $this->DtlColumnCount += 1;
-		if ($this->TenLoaiTK->Visible) $this->DtlColumnCount += 1;
-		if ($this->ChietKhau->Visible) $this->DtlColumnCount += 1;
-		if ($this->DiemChuan->Visible) $this->DtlColumnCount += 1;
+		if ($this->MaSP->Visible) $this->DtlColumnCount += 1;
+		if ($this->TenSP->Visible) $this->DtlColumnCount += 1;
+		if ($this->TenCT->Visible) $this->DtlColumnCount += 1;
+		if ($this->NoiSX->Visible) $this->DtlColumnCount += 1;
+		if ($this->DungTich->Visible) $this->DtlColumnCount += 1;
+		if ($this->GiaNhap->Visible) $this->DtlColumnCount += 1;
+		if ($this->GiaBan->Visible) $this->DtlColumnCount += 1;
+		if ($this->SLTon->Visible) $this->DtlColumnCount += 1;
+		if ($this->TenVietTat->Visible) $this->DtlColumnCount += 1;
+		if ($this->TenLoaiSP->Visible) $this->DtlColumnCount += 1;
+		if ($this->TenThuongHieu->Visible) $this->DtlColumnCount += 1;
+		if ($this->SoLuong->Visible) $this->DtlColumnCount += 1;
 	}
 
 	// Set up Breadcrumb
@@ -1341,20 +1287,18 @@ class crtai_khoan_rpt extends crtai_khoan {
 		if ($bResetSort) {
 			$this->setOrderBy("");
 			$this->setStartGroup(1);
-			$this->MaTK->setSort("");
-			$this->TenDangNhap->setSort("");
-			$this->MatKhau->setSort("");
-			$this->LoaiTK->setSort("");
-			$this->_Email->setSort("");
-			$this->HoTen->setSort("");
-			$this->DiaChi->setSort("");
-			$this->NgaySinh->setSort("");
-			$this->SDT->setSort("");
-			$this->CMND->setSort("");
-			$this->DiemThuong->setSort("");
-			$this->TenLoaiTK->setSort("");
-			$this->ChietKhau->setSort("");
-			$this->DiemChuan->setSort("");
+			$this->MaSP->setSort("");
+			$this->TenSP->setSort("");
+			$this->TenCT->setSort("");
+			$this->NoiSX->setSort("");
+			$this->DungTich->setSort("");
+			$this->GiaNhap->setSort("");
+			$this->GiaBan->setSort("");
+			$this->SLTon->setSort("");
+			$this->TenVietTat->setSort("");
+			$this->TenLoaiSP->setSort("");
+			$this->TenThuongHieu->setSort("");
+			$this->SoLuong->setSort("");
 
 		// Check for an Order parameter
 		} elseif ($orderBy <> "") {
@@ -1486,9 +1430,9 @@ class crtai_khoan_rpt extends crtai_khoan {
 <?php
 
 // Create page object
-if (!isset($tai_khoan_rpt)) $tai_khoan_rpt = new crtai_khoan_rpt();
+if (!isset($san_pham_rpt)) $san_pham_rpt = new crsan_pham_rpt();
 if (isset($Page)) $OldPage = $Page;
-$Page = &$tai_khoan_rpt;
+$Page = &$san_pham_rpt;
 
 // Page init
 $Page->Page_Init();
@@ -1507,21 +1451,21 @@ $Page->Page_Render();
 <script type="text/javascript">
 
 // Create page object
-var tai_khoan_rpt = new ewr_Page("tai_khoan_rpt");
+var san_pham_rpt = new ewr_Page("san_pham_rpt");
 
 // Page properties
-tai_khoan_rpt.PageID = "rpt"; // Page ID
-var EWR_PAGE_ID = tai_khoan_rpt.PageID;
+san_pham_rpt.PageID = "rpt"; // Page ID
+var EWR_PAGE_ID = san_pham_rpt.PageID;
 
 // Extend page with Chart_Rendering function
-tai_khoan_rpt.Chart_Rendering = 
+san_pham_rpt.Chart_Rendering = 
  function(chart, chartid) { // DO NOT CHANGE THIS LINE!
 
  	//alert(chartid);
  }
 
 // Extend page with Chart_Rendered function
-tai_khoan_rpt.Chart_Rendered = 
+san_pham_rpt.Chart_Rendered = 
  function(chart, chartid) { // DO NOT CHANGE THIS LINE!
 
  	//alert(chartid);
@@ -1629,253 +1573,217 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <thead>
 	<!-- Table header -->
 	<tr class="ewTableHeader">
-<?php if ($Page->MaTK->Visible) { ?>
+<?php if ($Page->MaSP->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="MaTK"><div class="tai_khoan_MaTK"><span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span></div></td>
+	<td data-field="MaSP"><div class="san_pham_MaSP"><span class="ewTableHeaderCaption"><?php echo $Page->MaSP->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="MaTK">
-<?php if ($Page->SortUrl($Page->MaTK) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_MaTK">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span>
+	<td data-field="MaSP">
+<?php if ($Page->SortUrl($Page->MaSP) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_MaSP">
+			<span class="ewTableHeaderCaption"><?php echo $Page->MaSP->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_MaTK" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->MaTK) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->MaTK->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->MaTK->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_MaSP" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->MaSP) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->MaSP->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->MaSP->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->MaSP->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->TenDangNhap->Visible) { ?>
+<?php if ($Page->TenSP->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="TenDangNhap"><div class="tai_khoan_TenDangNhap"><span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span></div></td>
+	<td data-field="TenSP"><div class="san_pham_TenSP"><span class="ewTableHeaderCaption"><?php echo $Page->TenSP->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="TenDangNhap">
-<?php if ($Page->SortUrl($Page->TenDangNhap) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_TenDangNhap">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span>
+	<td data-field="TenSP">
+<?php if ($Page->SortUrl($Page->TenSP) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_TenSP">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenSP->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_TenDangNhap" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenDangNhap) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->TenDangNhap->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenDangNhap->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_TenSP" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenSP) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenSP->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TenSP->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenSP->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->MatKhau->Visible) { ?>
+<?php if ($Page->TenCT->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="MatKhau"><div class="tai_khoan_MatKhau"><span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span></div></td>
+	<td data-field="TenCT"><div class="san_pham_TenCT"><span class="ewTableHeaderCaption"><?php echo $Page->TenCT->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="MatKhau">
-<?php if ($Page->SortUrl($Page->MatKhau) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_MatKhau">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span>
+	<td data-field="TenCT">
+<?php if ($Page->SortUrl($Page->TenCT) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_TenCT">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenCT->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_MatKhau" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->MatKhau) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->MatKhau->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->MatKhau->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_TenCT" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenCT) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenCT->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TenCT->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenCT->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->LoaiTK->Visible) { ?>
+<?php if ($Page->NoiSX->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="LoaiTK"><div class="tai_khoan_LoaiTK"><span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span></div></td>
+	<td data-field="NoiSX"><div class="san_pham_NoiSX"><span class="ewTableHeaderCaption"><?php echo $Page->NoiSX->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="LoaiTK">
-<?php if ($Page->SortUrl($Page->LoaiTK) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_LoaiTK">
-			<span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span>
+	<td data-field="NoiSX">
+<?php if ($Page->SortUrl($Page->NoiSX) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_NoiSX">
+			<span class="ewTableHeaderCaption"><?php echo $Page->NoiSX->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_LoaiTK" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->LoaiTK) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->LoaiTK->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->LoaiTK->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_NoiSX" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->NoiSX) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->NoiSX->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->NoiSX->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->NoiSX->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->_Email->Visible) { ?>
+<?php if ($Page->DungTich->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="_Email"><div class="tai_khoan__Email"><span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span></div></td>
+	<td data-field="DungTich"><div class="san_pham_DungTich"><span class="ewTableHeaderCaption"><?php echo $Page->DungTich->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="_Email">
-<?php if ($Page->SortUrl($Page->_Email) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan__Email">
-			<span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span>
+	<td data-field="DungTich">
+<?php if ($Page->SortUrl($Page->DungTich) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_DungTich">
+			<span class="ewTableHeaderCaption"><?php echo $Page->DungTich->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan__Email" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->_Email) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->_Email->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->_Email->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_DungTich" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DungTich) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->DungTich->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->DungTich->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DungTich->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->HoTen->Visible) { ?>
+<?php if ($Page->GiaNhap->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="HoTen"><div class="tai_khoan_HoTen"><span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span></div></td>
+	<td data-field="GiaNhap"><div class="san_pham_GiaNhap"><span class="ewTableHeaderCaption"><?php echo $Page->GiaNhap->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="HoTen">
-<?php if ($Page->SortUrl($Page->HoTen) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_HoTen">
-			<span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span>
+	<td data-field="GiaNhap">
+<?php if ($Page->SortUrl($Page->GiaNhap) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_GiaNhap">
+			<span class="ewTableHeaderCaption"><?php echo $Page->GiaNhap->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_HoTen" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->HoTen) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->HoTen->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->HoTen->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_GiaNhap" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->GiaNhap) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->GiaNhap->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->GiaNhap->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->GiaNhap->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->DiaChi->Visible) { ?>
+<?php if ($Page->GiaBan->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="DiaChi"><div class="tai_khoan_DiaChi"><span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span></div></td>
+	<td data-field="GiaBan"><div class="san_pham_GiaBan"><span class="ewTableHeaderCaption"><?php echo $Page->GiaBan->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="DiaChi">
-<?php if ($Page->SortUrl($Page->DiaChi) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_DiaChi">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span>
+	<td data-field="GiaBan">
+<?php if ($Page->SortUrl($Page->GiaBan) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_GiaBan">
+			<span class="ewTableHeaderCaption"><?php echo $Page->GiaBan->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_DiaChi" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DiaChi) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->DiaChi->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DiaChi->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_GiaBan" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->GiaBan) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->GiaBan->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->GiaBan->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->GiaBan->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->NgaySinh->Visible) { ?>
+<?php if ($Page->SLTon->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="NgaySinh"><div class="tai_khoan_NgaySinh"><span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span></div></td>
+	<td data-field="SLTon"><div class="san_pham_SLTon"><span class="ewTableHeaderCaption"><?php echo $Page->SLTon->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="NgaySinh">
-<?php if ($Page->SortUrl($Page->NgaySinh) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_NgaySinh">
-			<span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span>
+	<td data-field="SLTon">
+<?php if ($Page->SortUrl($Page->SLTon) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_SLTon">
+			<span class="ewTableHeaderCaption"><?php echo $Page->SLTon->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_NgaySinh" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->NgaySinh) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->NgaySinh->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->NgaySinh->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_SLTon" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->SLTon) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->SLTon->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->SLTon->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->SLTon->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->SDT->Visible) { ?>
+<?php if ($Page->TenVietTat->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="SDT"><div class="tai_khoan_SDT"><span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span></div></td>
+	<td data-field="TenVietTat"><div class="san_pham_TenVietTat"><span class="ewTableHeaderCaption"><?php echo $Page->TenVietTat->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="SDT">
-<?php if ($Page->SortUrl($Page->SDT) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_SDT">
-			<span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span>
+	<td data-field="TenVietTat">
+<?php if ($Page->SortUrl($Page->TenVietTat) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_TenVietTat">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenVietTat->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_SDT" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->SDT) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->SDT->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->SDT->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_TenVietTat" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenVietTat) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenVietTat->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TenVietTat->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenVietTat->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->CMND->Visible) { ?>
+<?php if ($Page->TenLoaiSP->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="CMND"><div class="tai_khoan_CMND"><span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span></div></td>
+	<td data-field="TenLoaiSP"><div class="san_pham_TenLoaiSP"><span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiSP->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="CMND">
-<?php if ($Page->SortUrl($Page->CMND) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_CMND">
-			<span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span>
+	<td data-field="TenLoaiSP">
+<?php if ($Page->SortUrl($Page->TenLoaiSP) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_TenLoaiSP">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiSP->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_CMND" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->CMND) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->CMND->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->CMND->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_TenLoaiSP" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenLoaiSP) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiSP->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TenLoaiSP->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenLoaiSP->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->DiemThuong->Visible) { ?>
+<?php if ($Page->TenThuongHieu->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="DiemThuong"><div class="tai_khoan_DiemThuong"><span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span></div></td>
+	<td data-field="TenThuongHieu"><div class="san_pham_TenThuongHieu"><span class="ewTableHeaderCaption"><?php echo $Page->TenThuongHieu->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="DiemThuong">
-<?php if ($Page->SortUrl($Page->DiemThuong) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_DiemThuong">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span>
+	<td data-field="TenThuongHieu">
+<?php if ($Page->SortUrl($Page->TenThuongHieu) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_TenThuongHieu">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenThuongHieu->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_DiemThuong" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DiemThuong) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->DiemThuong->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DiemThuong->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_TenThuongHieu" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenThuongHieu) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TenThuongHieu->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TenThuongHieu->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenThuongHieu->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->TenLoaiTK->Visible) { ?>
+<?php if ($Page->SoLuong->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="TenLoaiTK"><div class="tai_khoan_TenLoaiTK"><span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiTK->FldCaption() ?></span></div></td>
+	<td data-field="SoLuong"><div class="san_pham_SoLuong"><span class="ewTableHeaderCaption"><?php echo $Page->SoLuong->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="TenLoaiTK">
-<?php if ($Page->SortUrl($Page->TenLoaiTK) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_TenLoaiTK">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiTK->FldCaption() ?></span>
+	<td data-field="SoLuong">
+<?php if ($Page->SortUrl($Page->SoLuong) == "") { ?>
+		<div class="ewTableHeaderBtn san_pham_SoLuong">
+			<span class="ewTableHeaderCaption"><?php echo $Page->SoLuong->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_TenLoaiTK" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenLoaiTK) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenLoaiTK->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->TenLoaiTK->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenLoaiTK->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->ChietKhau->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="ChietKhau"><div class="tai_khoan_ChietKhau"><span class="ewTableHeaderCaption"><?php echo $Page->ChietKhau->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="ChietKhau">
-<?php if ($Page->SortUrl($Page->ChietKhau) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_ChietKhau">
-			<span class="ewTableHeaderCaption"><?php echo $Page->ChietKhau->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_ChietKhau" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->ChietKhau) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->ChietKhau->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->ChietKhau->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->ChietKhau->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->DiemChuan->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="DiemChuan"><div class="tai_khoan_DiemChuan"><span class="ewTableHeaderCaption"><?php echo $Page->DiemChuan->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="DiemChuan">
-<?php if ($Page->SortUrl($Page->DiemChuan) == "") { ?>
-		<div class="ewTableHeaderBtn tai_khoan_DiemChuan">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemChuan->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer tai_khoan_DiemChuan" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DiemChuan) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemChuan->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->DiemChuan->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DiemChuan->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer san_pham_SoLuong" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->SoLuong) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->SoLuong->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->SoLuong->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->SoLuong->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
@@ -1899,61 +1807,53 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 		$Page->RenderRow();
 ?>
 	<tr<?php echo $Page->RowAttributes(); ?>>
-<?php if ($Page->MaTK->Visible) { ?>
-		<td data-field="MaTK"<?php echo $Page->MaTK->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_MaTK"<?php echo $Page->MaTK->ViewAttributes() ?>><?php echo $Page->MaTK->ListViewValue() ?></span></td>
+<?php if ($Page->MaSP->Visible) { ?>
+		<td data-field="MaSP"<?php echo $Page->MaSP->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_MaSP"<?php echo $Page->MaSP->ViewAttributes() ?>><?php echo $Page->MaSP->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->TenDangNhap->Visible) { ?>
-		<td data-field="TenDangNhap"<?php echo $Page->TenDangNhap->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_TenDangNhap"<?php echo $Page->TenDangNhap->ViewAttributes() ?>><?php echo $Page->TenDangNhap->ListViewValue() ?></span></td>
+<?php if ($Page->TenSP->Visible) { ?>
+		<td data-field="TenSP"<?php echo $Page->TenSP->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_TenSP"<?php echo $Page->TenSP->ViewAttributes() ?>><?php echo $Page->TenSP->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->MatKhau->Visible) { ?>
-		<td data-field="MatKhau"<?php echo $Page->MatKhau->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_MatKhau"<?php echo $Page->MatKhau->ViewAttributes() ?>><?php echo $Page->MatKhau->ListViewValue() ?></span></td>
+<?php if ($Page->TenCT->Visible) { ?>
+		<td data-field="TenCT"<?php echo $Page->TenCT->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_TenCT"<?php echo $Page->TenCT->ViewAttributes() ?>><?php echo $Page->TenCT->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->LoaiTK->Visible) { ?>
-		<td data-field="LoaiTK"<?php echo $Page->LoaiTK->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_LoaiTK"<?php echo $Page->LoaiTK->ViewAttributes() ?>><?php echo $Page->LoaiTK->ListViewValue() ?></span></td>
+<?php if ($Page->NoiSX->Visible) { ?>
+		<td data-field="NoiSX"<?php echo $Page->NoiSX->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_NoiSX"<?php echo $Page->NoiSX->ViewAttributes() ?>><?php echo $Page->NoiSX->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->_Email->Visible) { ?>
-		<td data-field="_Email"<?php echo $Page->_Email->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan__Email"<?php echo $Page->_Email->ViewAttributes() ?>><?php echo $Page->_Email->ListViewValue() ?></span></td>
+<?php if ($Page->DungTich->Visible) { ?>
+		<td data-field="DungTich"<?php echo $Page->DungTich->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_DungTich"<?php echo $Page->DungTich->ViewAttributes() ?>><?php echo $Page->DungTich->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->HoTen->Visible) { ?>
-		<td data-field="HoTen"<?php echo $Page->HoTen->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_HoTen"<?php echo $Page->HoTen->ViewAttributes() ?>><?php echo $Page->HoTen->ListViewValue() ?></span></td>
+<?php if ($Page->GiaNhap->Visible) { ?>
+		<td data-field="GiaNhap"<?php echo $Page->GiaNhap->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_GiaNhap"<?php echo $Page->GiaNhap->ViewAttributes() ?>><?php echo $Page->GiaNhap->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->DiaChi->Visible) { ?>
-		<td data-field="DiaChi"<?php echo $Page->DiaChi->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_DiaChi"<?php echo $Page->DiaChi->ViewAttributes() ?>><?php echo $Page->DiaChi->ListViewValue() ?></span></td>
+<?php if ($Page->GiaBan->Visible) { ?>
+		<td data-field="GiaBan"<?php echo $Page->GiaBan->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_GiaBan"<?php echo $Page->GiaBan->ViewAttributes() ?>><?php echo $Page->GiaBan->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->NgaySinh->Visible) { ?>
-		<td data-field="NgaySinh"<?php echo $Page->NgaySinh->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_NgaySinh"<?php echo $Page->NgaySinh->ViewAttributes() ?>><?php echo $Page->NgaySinh->ListViewValue() ?></span></td>
+<?php if ($Page->SLTon->Visible) { ?>
+		<td data-field="SLTon"<?php echo $Page->SLTon->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_SLTon"<?php echo $Page->SLTon->ViewAttributes() ?>><?php echo $Page->SLTon->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->SDT->Visible) { ?>
-		<td data-field="SDT"<?php echo $Page->SDT->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_SDT"<?php echo $Page->SDT->ViewAttributes() ?>><?php echo $Page->SDT->ListViewValue() ?></span></td>
+<?php if ($Page->TenVietTat->Visible) { ?>
+		<td data-field="TenVietTat"<?php echo $Page->TenVietTat->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_TenVietTat"<?php echo $Page->TenVietTat->ViewAttributes() ?>><?php echo $Page->TenVietTat->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->CMND->Visible) { ?>
-		<td data-field="CMND"<?php echo $Page->CMND->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_CMND"<?php echo $Page->CMND->ViewAttributes() ?>><?php echo $Page->CMND->ListViewValue() ?></span></td>
+<?php if ($Page->TenLoaiSP->Visible) { ?>
+		<td data-field="TenLoaiSP"<?php echo $Page->TenLoaiSP->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_TenLoaiSP"<?php echo $Page->TenLoaiSP->ViewAttributes() ?>><?php echo $Page->TenLoaiSP->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->DiemThuong->Visible) { ?>
-		<td data-field="DiemThuong"<?php echo $Page->DiemThuong->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_DiemThuong"<?php echo $Page->DiemThuong->ViewAttributes() ?>><?php echo $Page->DiemThuong->ListViewValue() ?></span></td>
+<?php if ($Page->TenThuongHieu->Visible) { ?>
+		<td data-field="TenThuongHieu"<?php echo $Page->TenThuongHieu->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_TenThuongHieu"<?php echo $Page->TenThuongHieu->ViewAttributes() ?>><?php echo $Page->TenThuongHieu->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->TenLoaiTK->Visible) { ?>
-		<td data-field="TenLoaiTK"<?php echo $Page->TenLoaiTK->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_TenLoaiTK"<?php echo $Page->TenLoaiTK->ViewAttributes() ?>><?php echo $Page->TenLoaiTK->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->ChietKhau->Visible) { ?>
-		<td data-field="ChietKhau"<?php echo $Page->ChietKhau->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_ChietKhau"<?php echo $Page->ChietKhau->ViewAttributes() ?>><?php echo $Page->ChietKhau->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->DiemChuan->Visible) { ?>
-		<td data-field="DiemChuan"<?php echo $Page->DiemChuan->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_tai_khoan_DiemChuan"<?php echo $Page->DiemChuan->ViewAttributes() ?>><?php echo $Page->DiemChuan->ListViewValue() ?></span></td>
+<?php if ($Page->SoLuong->Visible) { ?>
+		<td data-field="SoLuong"<?php echo $Page->SoLuong->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->RecCount ?>_<?php echo $Page->RecCount ?>_san_pham_SoLuong"<?php echo $Page->SoLuong->ViewAttributes() ?>><?php echo $Page->SoLuong->ListViewValue() ?></span></td>
 <?php } ?>
 	</tr>
 <?php
@@ -1991,7 +1891,7 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <?php } ?>
 <?php if ($Page->Export == "" && !($Page->DrillDown && $Page->TotalGrps > 0)) { ?>
 <div class="panel-footer ewGridLowerPanel">
-<?php include "tai_khoanrptpager.php" ?>
+<?php include "san_phamrptpager.php" ?>
 <div class="clearfix"></div>
 </div>
 <?php } ?>

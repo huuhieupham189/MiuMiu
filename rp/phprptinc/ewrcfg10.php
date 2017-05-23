@@ -11,8 +11,8 @@ if (EWR_DEBUG_ENABLED) {
 	@ini_set("display_errors", "1"); // Display errors
 	error_reporting(E_ALL ^ E_NOTICE); // Report all errors except E_NOTICE
 }
-define("EWR_PROJECT_ID", "{B19463A3-C58E-485F-ADEC-F8029FE765A1}", TRUE); // Project ID
-define("EWR_PROJECT_NAME", "PHPRP", TRUE); // Project Name
+define("EWR_PROJECT_ID", "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}", TRUE); // Project ID
+define("EWR_PROJECT_NAME", "project1", TRUE); // Project Name
 define("EWR_CONFIG_FILE_FOLDER", EWR_PROJECT_NAME . "", TRUE); // Config file folder
 define("EWR_IS_WINDOWS", (strtolower(substr(PHP_OS, 0, 3)) === 'win'), TRUE); // Is Windows OS
 define("EWR_IS_PHP5", (phpversion() >= "5.3.0"), TRUE); // Is PHP 5 or later
@@ -79,8 +79,8 @@ define("EWR_SESSION_TIMEOUT_COUNTDOWN", 60, TRUE); // Session timeout count down
 // General
 $EWR_ROOT_RELATIVE_PATH = "."; // Relative path of app root
 define("EWR_UNFORMAT_YEAR", 50, TRUE); // Unformat year
-define("EWR_RANDOM_KEY", '0TZ9xYh0v0VeHSw7', TRUE); // Random key for encryption
-define("EWR_PROJECT_STYLESHEET_FILENAME", "phprptcss/PHPRP.css", TRUE); // Project stylesheet file name
+define("EWR_RANDOM_KEY", 'tVa80aAQPkjtk9v5', TRUE); // Random key for encryption
+define("EWR_PROJECT_STYLESHEET_FILENAME", "phprptcss/project1.css", TRUE); // Project stylesheet file name
 define("EWR_CHART_WIDTH", 550, TRUE);
 define("EWR_CHART_HEIGHT", 440, TRUE);
 define("EWR_CHART_SHOW_BLANK_SERIES", FALSE, TRUE); // Show blank series

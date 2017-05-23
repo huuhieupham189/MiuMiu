@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration date="2017/05/22" author="e.World Technology Ltd.">
-  <project id="{B19463A3-C58E-485F-ADEC-F8029FE765A1}" file="C:\Users\Windows 10\Desktop\IS\PHPRP.prp" name="PHPRP" product="PHPReportMaker" version="10.0" datetime="2017/05/22 09:47:38" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+  <project id="{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}" file="C:\Users\Windows 10\Desktop\IS\project1.prp" name="project1" product="PHPReportMaker" version="10.0" datetime="2017/05/22 11:25:27" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
     <table id="cthd" name="cthd" caption="cthd" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="hoadon" name="hoadon" caption="hoadon" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="loaisp" name="loaisp" caption="loaisp" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="loaitk" name="loaitk" caption="loaitk" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="san_pham" name="san_pham" caption="san pham" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="sanpham" name="sanpham" caption="sanpham" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="tai_khoan" name="tai_khoan" caption="tai khoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="taikhoan" name="taikhoan" caption="taikhoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="thanhtoan" name="thanhtoan" caption="thanhtoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="thuonghieu" name="thuonghieu" caption="thuonghieu" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="vanchuyen" name="vanchuyen" caption="vanchuyen" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
-    <table id="san_pham" name="san_pham" caption="san pham" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
-    <table id="ThF4ng_Tin_S1EA3n_Ph1EA9m" name="Thông Tin Sản Phẩm" caption="Thông Tin Sản Phẩm" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
     <table id="ThF4ng_Tin_TE0i_Kho1EA3n" name="Thông Tin Tài Khoản" caption="Thông Tin Tài Khoản" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ThF4ng_Tin_S1EA3n_Ph1EA9m" name="Thông Tin Sản Phẩm" caption="Thông Tin Sản Phẩm" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="hoa_don" name="hoa_don" caption="hoa don" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="Doanh_Thu" name="Doanh Thu" caption="Doanh Thu" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
   </project>
 </configuration>

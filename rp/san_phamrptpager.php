@@ -44,7 +44,7 @@
 <?php } ?>
 <?php if ($Page->TotalGrps > 0) { ?>
 <div class="ewPager">
-<input type="hidden" name="t" value="tai_khoan">
+<input type="hidden" name="t" value="san_pham">
 <select name="<?php echo EWR_TABLE_GROUP_PER_PAGE; ?>" class="form-control input-sm" onchange="this.form.submit();">
 <option value="10"<?php if ($Page->DisplayGrps == 10) echo " selected" ?>>10</option>
 <option value="20"<?php if ($Page->DisplayGrps == 20) echo " selected" ?>>20</option>

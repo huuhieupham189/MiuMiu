@@ -70,7 +70,7 @@ function CurrentLanguageID() {
 function CurrentProjectID() {
 	if (isset($GLOBALS["Page"]))
 		return $GLOBALS["Page"]->ProjectID;
-	return "{B19463A3-C58E-485F-ADEC-F8029FE765A1}";
+	return "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
 }
 
 // Get current page object

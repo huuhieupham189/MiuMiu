@@ -20,7 +20,7 @@ class crrptlogin {
 	var $PageID = 'rptlogin';
 
 	// Project ID
-	var $ProjectID = "{B19463A3-C58E-485F-ADEC-F8029FE765A1}";
+	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
 
 	// Page object name
 	var $PageObjName = 'rptlogin';

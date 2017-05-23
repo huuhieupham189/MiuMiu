@@ -34,7 +34,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n extends crTableBase {
 		$this->TableName = 'Thông Tin Tài Khoản';
 		$this->TableType = 'REPORT';
 		$this->DBID = 'DB';
-		$this->ExportAll = TRUE;
+		$this->ExportAll = FALSE;
 		$this->ExportPageBreakCount = 0;
 
 		// MaTK
@@ -68,8 +68,8 @@ class crThF4ng_Tin_TE0i_Kho1EA3n extends crTableBase {
 		$this->LoaiTK->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
 		$this->fields['LoaiTK'] = &$this->LoaiTK;
 		$this->LoaiTK->DateFilter = "";
-		$this->LoaiTK->SqlSelect = "";
-		$this->LoaiTK->SqlOrderBy = "";
+		$this->LoaiTK->SqlSelect = "SELECT DISTINCT `LoaiTK`, `LoaiTK` AS `DispFld` FROM " . $this->getSqlFrom();
+		$this->LoaiTK->SqlOrderBy = "`LoaiTK`";
 
 		// Email
 		$this->_Email = new crField('ThF4ng_Tin_TE0i_Kho1EA3n', 'Thông Tin Tài Khoản', 'x__Email', 'Email', '`Email`', 200, EWR_DATATYPE_STRING, -1);
@@ -126,8 +126,8 @@ class crThF4ng_Tin_TE0i_Kho1EA3n extends crTableBase {
 		$this->DiemThuong->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
 		$this->fields['DiemThuong'] = &$this->DiemThuong;
 		$this->DiemThuong->DateFilter = "";
-		$this->DiemThuong->SqlSelect = "";
-		$this->DiemThuong->SqlOrderBy = "";
+		$this->DiemThuong->SqlSelect = "SELECT DISTINCT `DiemThuong`, `DiemThuong` AS `DispFld` FROM " . $this->getSqlFrom();
+		$this->DiemThuong->SqlOrderBy = "`DiemThuong`";
 
 		// TenLoaiTK
 		$this->TenLoaiTK = new crField('ThF4ng_Tin_TE0i_Kho1EA3n', 'Thông Tin Tài Khoản', 'x_TenLoaiTK', 'TenLoaiTK', '`TenLoaiTK`', 200, EWR_DATATYPE_STRING, -1);

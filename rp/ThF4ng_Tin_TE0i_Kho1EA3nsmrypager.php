@@ -46,11 +46,6 @@
 <div class="ewPager">
 <input type="hidden" name="t" value="ThF4ng_Tin_TE0i_Kho1EA3n">
 <select name="<?php echo EWR_TABLE_GROUP_PER_PAGE; ?>" class="form-control input-sm" onchange="this.form.submit();">
-<option value="1"<?php if ($Page->DisplayGrps == 1) echo " selected" ?>>1</option>
-<option value="2"<?php if ($Page->DisplayGrps == 2) echo " selected" ?>>2</option>
-<option value="3"<?php if ($Page->DisplayGrps == 3) echo " selected" ?>>3</option>
-<option value="4"<?php if ($Page->DisplayGrps == 4) echo " selected" ?>>4</option>
-<option value="5"<?php if ($Page->DisplayGrps == 5) echo " selected" ?>>5</option>
 <option value="10"<?php if ($Page->DisplayGrps == 10) echo " selected" ?>>10</option>
 <option value="20"<?php if ($Page->DisplayGrps == 20) echo " selected" ?>>20</option>
 <option value="50"<?php if ($Page->DisplayGrps == 50) echo " selected" ?>>50</option>

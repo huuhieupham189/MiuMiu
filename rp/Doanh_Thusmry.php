@@ -6,16 +6,16 @@ ob_start();
 <?php include_once ((EW_USE_ADODB) ? "adodb5/adodb.inc.php" : "phprptinc/ewmysql.php") ?>
 <?php include_once "phprptinc/ewrfn10.php" ?>
 <?php include_once "phprptinc/ewrusrfn10.php" ?>
-<?php include_once "ThF4ng_Tin_TE0i_Kho1EA3nsmryinfo.php" ?>
+<?php include_once "Doanh_Thusmryinfo.php" ?>
 <?php
 
 //
 // Page class
 //
 
-$ThF4ng_Tin_TE0i_Kho1EA3n_summary = NULL; // Initialize page object first
+$Doanh_Thu_summary = NULL; // Initialize page object first
 
-class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
+class crDoanh_Thu_summary extends crDoanh_Thu {
 
 	// Page ID
 	var $PageID = 'summary';
@@ -24,7 +24,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
 
 	// Page object name
-	var $PageObjName = 'ThF4ng_Tin_TE0i_Kho1EA3n_summary';
+	var $PageObjName = 'Doanh_Thu_summary';
 
 	// Page name
 	function PageName() {
@@ -202,10 +202,10 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Parent constuctor
 		parent::__construct();
 
-		// Table object (ThF4ng_Tin_TE0i_Kho1EA3n)
-		if (!isset($GLOBALS["ThF4ng_Tin_TE0i_Kho1EA3n"])) {
-			$GLOBALS["ThF4ng_Tin_TE0i_Kho1EA3n"] = &$this;
-			$GLOBALS["Table"] = &$GLOBALS["ThF4ng_Tin_TE0i_Kho1EA3n"];
+		// Table object (Doanh_Thu)
+		if (!isset($GLOBALS["Doanh_Thu"])) {
+			$GLOBALS["Doanh_Thu"] = &$this;
+			$GLOBALS["Table"] = &$GLOBALS["Doanh_Thu"];
 		}
 
 		// Initialize URLs
@@ -220,7 +220,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 
 		// Table name (for backward compatibility)
 		if (!defined("EWR_TABLE_NAME"))
-			define("EWR_TABLE_NAME", 'Thông Tin Tài Khoản', TRUE);
+			define("EWR_TABLE_NAME", 'Doanh Thu', TRUE);
 
 		// Start timer
 		$GLOBALS["gsTimer"] = new crTimer();
@@ -241,7 +241,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Filter options
 		$this->FilterOptions = new crListOptions();
 		$this->FilterOptions->Tag = "div";
-		$this->FilterOptions->TagClassName = "ewFilterOption fThF4ng_Tin_TE0i_Kho1EA3nsummary";
+		$this->FilterOptions->TagClassName = "ewFilterOption fDoanh_Thusummary";
 
 		// Generate report options
 		$this->GenerateOptions = new crListOptions();
@@ -274,8 +274,8 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		$gsEmailContentType = @$_POST["contenttype"]; // Get email content type
 
 		// Setup placeholder
-		$this->LoaiTK->PlaceHolder = $this->LoaiTK->FldCaption();
-		$this->DiemThuong->PlaceHolder = $this->DiemThuong->FldCaption();
+		$this->NgayLap->PlaceHolder = $this->NgayLap->FldCaption();
+		$this->TongTien->PlaceHolder = $this->TongTien->FldCaption();
 
 		// Setup export options
 		$this->SetupExportOptions();
@@ -336,7 +336,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Export to Email
 		$item = &$this->ExportOptions->Add("email");
 		$url = $this->PageUrl() . "export=email";
-		$item->Body = "<a title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_ThF4ng_Tin_TE0i_Kho1EA3n\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_ThF4ng_Tin_TE0i_Kho1EA3n',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
+		$item->Body = "<a title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_Doanh_Thu\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_Doanh_Thu',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
 		$item->Visible = FALSE;
 		$ReportTypes["email"] = $item->Visible ? $ReportLanguage->Phrase("ReportFormEmail") : "";
 		$ReportOptions["ReportTypes"] = $ReportTypes;
@@ -354,10 +354,10 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 
 		// Filter button
 		$item = &$this->FilterOptions->Add("savecurrentfilter");
-		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"fThF4ng_Tin_TE0i_Kho1EA3nsummary\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
+		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"fDoanh_Thusummary\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
 		$item->Visible = TRUE;
 		$item = &$this->FilterOptions->Add("deletefilter");
-		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"fThF4ng_Tin_TE0i_Kho1EA3nsummary\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
+		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"fDoanh_Thusummary\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
 		$item->Visible = TRUE;
 		$this->FilterOptions->UseDropDownButton = TRUE;
 		$this->FilterOptions->UseButtonGroup = !$this->FilterOptions->UseDropDownButton; // v8
@@ -391,7 +391,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Filter panel button
 		$item = &$this->SearchOptions->Add("searchtoggle");
 		$SearchToggleClass = $this->FilterApplied ? " active" : " active";
-		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"fThF4ng_Tin_TE0i_Kho1EA3nsummary\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
+		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"fDoanh_Thusummary\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
 		$item->Visible = TRUE;
 
 		// Reset filter
@@ -520,23 +520,14 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		global $ReportLanguage;
 
 		// Set field visibility for detail fields
-		$this->MaTK->SetVisibility();
-		$this->TenDangNhap->SetVisibility();
-		$this->MatKhau->SetVisibility();
-		$this->LoaiTK->SetVisibility();
-		$this->_Email->SetVisibility();
-		$this->HoTen->SetVisibility();
-		$this->DiaChi->SetVisibility();
-		$this->NgaySinh->SetVisibility();
-		$this->SDT->SetVisibility();
-		$this->CMND->SetVisibility();
-		$this->DiemThuong->SetVisibility();
+		$this->NgayLap->SetVisibility();
+		$this->TongTien->SetVisibility();
 
 		// Aggregate variables
 		// 1st dimension = no of groups (level 0 used for grand total)
 		// 2nd dimension = no of fields
 
-		$nDtls = 12;
+		$nDtls = 3;
 		$nGrps = 1;
 		$this->Val = &ewr_InitArray($nDtls, 0);
 		$this->Cnt = &ewr_Init2DArray($nGrps, $nDtls, 0);
@@ -549,7 +540,7 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		$this->GrandMx = &ewr_InitArray($nDtls, NULL);
 
 		// Set up array if accumulation required: array(Accum, SkipNullOrZero)
-		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE));
+		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(TRUE,FALSE));
 
 		// Set up groups per page dynamically
 		$this->SetUpDisplayGrps();
@@ -557,12 +548,12 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Set up Breadcrumb
 		if ($this->Export == "")
 			$this->SetupBreadcrumb();
-		$this->LoaiTK->SelectionList = "";
-		$this->LoaiTK->DefaultSelectionList = "";
-		$this->LoaiTK->ValueList = "";
-		$this->DiemThuong->SelectionList = "";
-		$this->DiemThuong->DefaultSelectionList = "";
-		$this->DiemThuong->ValueList = "";
+		$this->NgayLap->SelectionList = "";
+		$this->NgayLap->DefaultSelectionList = "";
+		$this->NgayLap->ValueList = "";
+		$this->TongTien->SelectionList = "";
+		$this->TongTien->DefaultSelectionList = "";
+		$this->TongTien->ValueList = "";
 
 		// Check if search command
 		$this->SearchCommand = (@$_GET["cmd"] == "search");
@@ -765,66 +756,28 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		if ($opt == 1) { // Get first row
 			$rs->MoveFirst(); // Move first
 				$this->FirstRowData = array();
+				$this->FirstRowData['MaHD'] = ewr_Conv($rs->fields('MaHD'), 3);
 				$this->FirstRowData['MaTK'] = ewr_Conv($rs->fields('MaTK'), 3);
-				$this->FirstRowData['TenDangNhap'] = ewr_Conv($rs->fields('TenDangNhap'), 200);
-				$this->FirstRowData['MatKhau'] = ewr_Conv($rs->fields('MatKhau'), 200);
-				$this->FirstRowData['LoaiTK'] = ewr_Conv($rs->fields('LoaiTK'), 3);
-				$this->FirstRowData['_Email'] = ewr_Conv($rs->fields('Email'), 200);
-				$this->FirstRowData['HoTen'] = ewr_Conv($rs->fields('HoTen'), 200);
-				$this->FirstRowData['DiaChi'] = ewr_Conv($rs->fields('DiaChi'), 200);
-				$this->FirstRowData['NgaySinh'] = ewr_Conv($rs->fields('NgaySinh'), 133);
-				$this->FirstRowData['SDT'] = ewr_Conv($rs->fields('SDT'), 200);
-				$this->FirstRowData['CMND'] = ewr_Conv($rs->fields('CMND'), 200);
-				$this->FirstRowData['DiemThuong'] = ewr_Conv($rs->fields('DiemThuong'), 3);
-				$this->FirstRowData['TenLoaiTK'] = ewr_Conv($rs->fields('TenLoaiTK'), 200);
-				$this->FirstRowData['ChietKhau'] = ewr_Conv($rs->fields('ChietKhau'), 4);
-				$this->FirstRowData['DiemChuan'] = ewr_Conv($rs->fields('DiemChuan'), 3);
+				$this->FirstRowData['NgayLap'] = ewr_Conv($rs->fields('NgayLap'), 133);
+				$this->FirstRowData['TongTien'] = ewr_Conv($rs->fields('TongTien'), 3);
+				$this->FirstRowData['TinhTrang'] = ewr_Conv($rs->fields('TinhTrang'), 200);
 		} else { // Get next row
 			$rs->MoveNext();
 		}
 		if (!$rs->EOF) {
+			$this->MaHD->setDbValue($rs->fields('MaHD'));
 			$this->MaTK->setDbValue($rs->fields('MaTK'));
-			$this->TenDangNhap->setDbValue($rs->fields('TenDangNhap'));
-			$this->MatKhau->setDbValue($rs->fields('MatKhau'));
-			$this->LoaiTK->setDbValue($rs->fields('LoaiTK'));
-			$this->_Email->setDbValue($rs->fields('Email'));
-			$this->HoTen->setDbValue($rs->fields('HoTen'));
-			$this->DiaChi->setDbValue($rs->fields('DiaChi'));
-			$this->NgaySinh->setDbValue($rs->fields('NgaySinh'));
-			$this->SDT->setDbValue($rs->fields('SDT'));
-			$this->CMND->setDbValue($rs->fields('CMND'));
-			$this->DiemThuong->setDbValue($rs->fields('DiemThuong'));
-			$this->TenLoaiTK->setDbValue($rs->fields('TenLoaiTK'));
-			$this->ChietKhau->setDbValue($rs->fields('ChietKhau'));
-			$this->DiemChuan->setDbValue($rs->fields('DiemChuan'));
-			$this->GhiChu->setDbValue($rs->fields('GhiChu'));
-			$this->Val[1] = $this->MaTK->CurrentValue;
-			$this->Val[2] = $this->TenDangNhap->CurrentValue;
-			$this->Val[3] = $this->MatKhau->CurrentValue;
-			$this->Val[4] = $this->LoaiTK->CurrentValue;
-			$this->Val[5] = $this->_Email->CurrentValue;
-			$this->Val[6] = $this->HoTen->CurrentValue;
-			$this->Val[7] = $this->DiaChi->CurrentValue;
-			$this->Val[8] = $this->NgaySinh->CurrentValue;
-			$this->Val[9] = $this->SDT->CurrentValue;
-			$this->Val[10] = $this->CMND->CurrentValue;
-			$this->Val[11] = $this->DiemThuong->CurrentValue;
+			$this->NgayLap->setDbValue($rs->fields('NgayLap'));
+			$this->TongTien->setDbValue($rs->fields('TongTien'));
+			$this->TinhTrang->setDbValue($rs->fields('TinhTrang'));
+			$this->Val[1] = $this->NgayLap->CurrentValue;
+			$this->Val[2] = $this->TongTien->CurrentValue;
 		} else {
+			$this->MaHD->setDbValue("");
 			$this->MaTK->setDbValue("");
-			$this->TenDangNhap->setDbValue("");
-			$this->MatKhau->setDbValue("");
-			$this->LoaiTK->setDbValue("");
-			$this->_Email->setDbValue("");
-			$this->HoTen->setDbValue("");
-			$this->DiaChi->setDbValue("");
-			$this->NgaySinh->setDbValue("");
-			$this->SDT->setDbValue("");
-			$this->CMND->setDbValue("");
-			$this->DiemThuong->setDbValue("");
-			$this->TenLoaiTK->setDbValue("");
-			$this->ChietKhau->setDbValue("");
-			$this->DiemChuan->setDbValue("");
-			$this->GhiChu->setDbValue("");
+			$this->NgayLap->setDbValue("");
+			$this->TongTien->setDbValue("");
+			$this->TinhTrang->setDbValue("");
 		}
 	}
 
@@ -885,67 +838,68 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 			$popupname = $_GET["popup"];
 
 			// Check popup name
-			// Build distinct values for LoaiTK
+			// Build distinct values for NgayLap
 
-			if ($popupname == 'ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK') {
+			if ($popupname == 'Doanh_Thu_NgayLap') {
+				ewr_SetupDistinctValuesFromFilter($this->NgayLap->ValueList, $this->NgayLap->AdvancedFilters); // Set up popup filter
 				$bNullValue = FALSE;
 				$bEmptyValue = FALSE;
 				$sFilter = $this->Filter;
 
 				// Call Page Filtering event
-				$this->Page_Filtering($this->LoaiTK, $sFilter, "popup");
-				$sSql = ewr_BuildReportSql($this->LoaiTK->SqlSelect, $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), $this->LoaiTK->SqlOrderBy, $sFilter, "");
+				$this->Page_Filtering($this->NgayLap, $sFilter, "popup");
+				$sSql = ewr_BuildReportSql($this->NgayLap->SqlSelect, $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), $this->NgayLap->SqlOrderBy, $sFilter, "");
 				$rswrk = $conn->Execute($sSql);
 				while ($rswrk && !$rswrk->EOF) {
-					$this->LoaiTK->setDbValue($rswrk->fields[0]);
-					$this->LoaiTK->ViewValue = @$rswrk->fields[1];
-					if (is_null($this->LoaiTK->CurrentValue)) {
+					$this->NgayLap->setDbValue($rswrk->fields[0]);
+					$this->NgayLap->ViewValue = @$rswrk->fields[1];
+					if (is_null($this->NgayLap->CurrentValue)) {
 						$bNullValue = TRUE;
-					} elseif ($this->LoaiTK->CurrentValue == "") {
+					} elseif ($this->NgayLap->CurrentValue == "") {
 						$bEmptyValue = TRUE;
 					} else {
-						ewr_SetupDistinctValues($this->LoaiTK->ValueList, $this->LoaiTK->CurrentValue, $this->LoaiTK->ViewValue, FALSE, $this->LoaiTK->FldDelimiter);
+						ewr_SetupDistinctValues($this->NgayLap->ValueList, $this->NgayLap->CurrentValue, $this->NgayLap->ViewValue, FALSE, $this->NgayLap->FldDelimiter);
 					}
 					$rswrk->MoveNext();
 				}
 				if ($rswrk)
 					$rswrk->Close();
 				if ($bEmptyValue)
-					ewr_SetupDistinctValues($this->LoaiTK->ValueList, EWR_EMPTY_VALUE, $ReportLanguage->Phrase("EmptyLabel"), FALSE);
+					ewr_SetupDistinctValues($this->NgayLap->ValueList, EWR_EMPTY_VALUE, $ReportLanguage->Phrase("EmptyLabel"), FALSE);
 				if ($bNullValue)
-					ewr_SetupDistinctValues($this->LoaiTK->ValueList, EWR_NULL_VALUE, $ReportLanguage->Phrase("NullLabel"), FALSE);
-				$fld = &$this->LoaiTK;
+					ewr_SetupDistinctValues($this->NgayLap->ValueList, EWR_NULL_VALUE, $ReportLanguage->Phrase("NullLabel"), FALSE);
+				$fld = &$this->NgayLap;
 			}
 
-			// Build distinct values for DiemThuong
-			if ($popupname == 'ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong') {
+			// Build distinct values for TongTien
+			if ($popupname == 'Doanh_Thu_TongTien') {
 				$bNullValue = FALSE;
 				$bEmptyValue = FALSE;
 				$sFilter = $this->Filter;
 
 				// Call Page Filtering event
-				$this->Page_Filtering($this->DiemThuong, $sFilter, "popup");
-				$sSql = ewr_BuildReportSql($this->DiemThuong->SqlSelect, $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), $this->DiemThuong->SqlOrderBy, $sFilter, "");
+				$this->Page_Filtering($this->TongTien, $sFilter, "popup");
+				$sSql = ewr_BuildReportSql($this->TongTien->SqlSelect, $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), $this->TongTien->SqlOrderBy, $sFilter, "");
 				$rswrk = $conn->Execute($sSql);
 				while ($rswrk && !$rswrk->EOF) {
-					$this->DiemThuong->setDbValue($rswrk->fields[0]);
-					$this->DiemThuong->ViewValue = @$rswrk->fields[1];
-					if (is_null($this->DiemThuong->CurrentValue)) {
+					$this->TongTien->setDbValue($rswrk->fields[0]);
+					$this->TongTien->ViewValue = @$rswrk->fields[1];
+					if (is_null($this->TongTien->CurrentValue)) {
 						$bNullValue = TRUE;
-					} elseif ($this->DiemThuong->CurrentValue == "") {
+					} elseif ($this->TongTien->CurrentValue == "") {
 						$bEmptyValue = TRUE;
 					} else {
-						ewr_SetupDistinctValues($this->DiemThuong->ValueList, $this->DiemThuong->CurrentValue, $this->DiemThuong->ViewValue, FALSE, $this->DiemThuong->FldDelimiter);
+						ewr_SetupDistinctValues($this->TongTien->ValueList, $this->TongTien->CurrentValue, $this->TongTien->ViewValue, FALSE, $this->TongTien->FldDelimiter);
 					}
 					$rswrk->MoveNext();
 				}
 				if ($rswrk)
 					$rswrk->Close();
 				if ($bEmptyValue)
-					ewr_SetupDistinctValues($this->DiemThuong->ValueList, EWR_EMPTY_VALUE, $ReportLanguage->Phrase("EmptyLabel"), FALSE);
+					ewr_SetupDistinctValues($this->TongTien->ValueList, EWR_EMPTY_VALUE, $ReportLanguage->Phrase("EmptyLabel"), FALSE);
 				if ($bNullValue)
-					ewr_SetupDistinctValues($this->DiemThuong->ValueList, EWR_NULL_VALUE, $ReportLanguage->Phrase("NullLabel"), FALSE);
-				$fld = &$this->DiemThuong;
+					ewr_SetupDistinctValues($this->TongTien->ValueList, EWR_NULL_VALUE, $ReportLanguage->Phrase("NullLabel"), FALSE);
+				$fld = &$this->TongTien;
 			}
 
 			// Output data as Json
@@ -993,26 +947,26 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		} elseif (@$_GET["cmd"] <> "") {
 			$sCmd = $_GET["cmd"];
 			if (strtolower($sCmd) == "reset") {
-				$this->ClearSessionSelection('LoaiTK');
-				$this->ClearSessionSelection('DiemThuong');
+				$this->ClearSessionSelection('NgayLap');
+				$this->ClearSessionSelection('TongTien');
 				$this->ResetPager();
 			}
 		}
 
 		// Load selection criteria to array
-		// Get LoaiTK selected values
+		// Get NgayLap selected values
 
-		if (is_array(@$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"])) {
-			$this->LoadSelectionFromSession('LoaiTK');
-		} elseif (@$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"] == EWR_INIT_VALUE) { // Select all
-			$this->LoaiTK->SelectionList = "";
+		if (is_array(@$_SESSION["sel_Doanh_Thu_NgayLap"])) {
+			$this->LoadSelectionFromSession('NgayLap');
+		} elseif (@$_SESSION["sel_Doanh_Thu_NgayLap"] == EWR_INIT_VALUE) { // Select all
+			$this->NgayLap->SelectionList = "";
 		}
 
-		// Get DiemThuong selected values
-		if (is_array(@$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"])) {
-			$this->LoadSelectionFromSession('DiemThuong');
-		} elseif (@$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"] == EWR_INIT_VALUE) { // Select all
-			$this->DiemThuong->SelectionList = "";
+		// Get TongTien selected values
+		if (is_array(@$_SESSION["sel_Doanh_Thu_TongTien"])) {
+			$this->LoadSelectionFromSession('TongTien');
+		} elseif (@$_SESSION["sel_Doanh_Thu_TongTien"] == EWR_INIT_VALUE) { // Select all
+			$this->TongTien->SelectionList = "";
 		}
 	}
 
@@ -1069,7 +1023,18 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 			} else {
 				$this->TotCount = 0;
 			}
-		$bGotSummary = TRUE;
+
+			// Get total from sql directly
+			$sSql = ewr_BuildReportSql($this->getSqlSelectAgg(), $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), "", $this->Filter, "");
+			$sSql = $this->getSqlAggPfx() . $sSql . $this->getSqlAggSfx();
+			$rsagg = $conn->Execute($sSql);
+			if ($rsagg) {
+				$this->GrandCnt[1] = $this->TotCount;
+				$this->GrandCnt[2] = $this->TotCount;
+				$this->GrandSmry[2] = $rsagg->fields("sum_tongtien");
+				$rsagg->Close();
+				$bGotSummary = TRUE;
+			}
 
 			// Accumulate grand summary from detail records
 			if (!$bGotCount || !$bGotSummary) {
@@ -1097,224 +1062,66 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		if ($this->RowType == EWR_ROWTYPE_TOTAL && !($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER)) { // Summary row
 			ewr_PrependClass($this->RowAttrs["class"], ($this->RowTotalType == EWR_ROWTOTAL_PAGE || $this->RowTotalType == EWR_ROWTOTAL_GRAND) ? "ewRptGrpAggregate" : "ewRptGrpSummary" . $this->RowGroupLevel); // Set up row class
 
-			// MaTK
-			$this->MaTK->HrefValue = "";
+			// TongTien
+			$this->TongTien->SumViewValue = $this->TongTien->SumValue;
+			$this->TongTien->CellAttrs["class"] = ($this->RowTotalType == EWR_ROWTOTAL_PAGE || $this->RowTotalType == EWR_ROWTOTAL_GRAND) ? "ewRptGrpAggregate" : "ewRptGrpSummary" . $this->RowGroupLevel;
 
-			// TenDangNhap
-			$this->TenDangNhap->HrefValue = "";
+			// NgayLap
+			$this->NgayLap->HrefValue = "";
 
-			// MatKhau
-			$this->MatKhau->HrefValue = "";
-
-			// LoaiTK
-			$this->LoaiTK->HrefValue = "";
-
-			// Email
-			$this->_Email->HrefValue = "";
-
-			// HoTen
-			$this->HoTen->HrefValue = "";
-
-			// DiaChi
-			$this->DiaChi->HrefValue = "";
-
-			// NgaySinh
-			$this->NgaySinh->HrefValue = "";
-
-			// SDT
-			$this->SDT->HrefValue = "";
-
-			// CMND
-			$this->CMND->HrefValue = "";
-
-			// DiemThuong
-			$this->DiemThuong->HrefValue = "";
+			// TongTien
+			$this->TongTien->HrefValue = "";
 		} else {
 			if ($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER) {
 			} else {
 			}
 
-			// MaTK
-			$this->MaTK->ViewValue = $this->MaTK->CurrentValue;
-			$this->MaTK->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// NgayLap
+			$this->NgayLap->ViewValue = $this->NgayLap->CurrentValue;
+			$this->NgayLap->ViewValue = ewr_FormatDateTime($this->NgayLap->ViewValue, 0);
+			$this->NgayLap->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// TenDangNhap
-			$this->TenDangNhap->ViewValue = $this->TenDangNhap->CurrentValue;
-			$this->TenDangNhap->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// TongTien
+			$this->TongTien->ViewValue = $this->TongTien->CurrentValue;
+			$this->TongTien->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// MatKhau
-			$this->MatKhau->ViewValue = $this->MatKhau->CurrentValue;
-			$this->MatKhau->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// NgayLap
+			$this->NgayLap->HrefValue = "";
 
-			// LoaiTK
-			$this->LoaiTK->ViewValue = $this->LoaiTK->CurrentValue;
-			$this->LoaiTK->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// Email
-			$this->_Email->ViewValue = $this->_Email->CurrentValue;
-			$this->_Email->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// HoTen
-			$this->HoTen->ViewValue = $this->HoTen->CurrentValue;
-			$this->HoTen->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// DiaChi
-			$this->DiaChi->ViewValue = $this->DiaChi->CurrentValue;
-			$this->DiaChi->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// NgaySinh
-			$this->NgaySinh->ViewValue = $this->NgaySinh->CurrentValue;
-			$this->NgaySinh->ViewValue = ewr_FormatDateTime($this->NgaySinh->ViewValue, 0);
-			$this->NgaySinh->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// SDT
-			$this->SDT->ViewValue = $this->SDT->CurrentValue;
-			$this->SDT->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// CMND
-			$this->CMND->ViewValue = $this->CMND->CurrentValue;
-			$this->CMND->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// DiemThuong
-			$this->DiemThuong->ViewValue = $this->DiemThuong->CurrentValue;
-			$this->DiemThuong->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
-
-			// MaTK
-			$this->MaTK->HrefValue = "";
-
-			// TenDangNhap
-			$this->TenDangNhap->HrefValue = "";
-
-			// MatKhau
-			$this->MatKhau->HrefValue = "";
-
-			// LoaiTK
-			$this->LoaiTK->HrefValue = "";
-
-			// Email
-			$this->_Email->HrefValue = "";
-
-			// HoTen
-			$this->HoTen->HrefValue = "";
-
-			// DiaChi
-			$this->DiaChi->HrefValue = "";
-
-			// NgaySinh
-			$this->NgaySinh->HrefValue = "";
-
-			// SDT
-			$this->SDT->HrefValue = "";
-
-			// CMND
-			$this->CMND->HrefValue = "";
-
-			// DiemThuong
-			$this->DiemThuong->HrefValue = "";
+			// TongTien
+			$this->TongTien->HrefValue = "";
 		}
 
 		// Call Cell_Rendered event
 		if ($this->RowType == EWR_ROWTYPE_TOTAL) { // Summary row
+
+			// TongTien
+			$CurrentValue = $this->TongTien->SumValue;
+			$ViewValue = &$this->TongTien->SumViewValue;
+			$ViewAttrs = &$this->TongTien->ViewAttrs;
+			$CellAttrs = &$this->TongTien->CellAttrs;
+			$HrefValue = &$this->TongTien->HrefValue;
+			$LinkAttrs = &$this->TongTien->LinkAttrs;
+			$this->Cell_Rendered($this->TongTien, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 		} else {
 
-			// MaTK
-			$CurrentValue = $this->MaTK->CurrentValue;
-			$ViewValue = &$this->MaTK->ViewValue;
-			$ViewAttrs = &$this->MaTK->ViewAttrs;
-			$CellAttrs = &$this->MaTK->CellAttrs;
-			$HrefValue = &$this->MaTK->HrefValue;
-			$LinkAttrs = &$this->MaTK->LinkAttrs;
-			$this->Cell_Rendered($this->MaTK, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// NgayLap
+			$CurrentValue = $this->NgayLap->CurrentValue;
+			$ViewValue = &$this->NgayLap->ViewValue;
+			$ViewAttrs = &$this->NgayLap->ViewAttrs;
+			$CellAttrs = &$this->NgayLap->CellAttrs;
+			$HrefValue = &$this->NgayLap->HrefValue;
+			$LinkAttrs = &$this->NgayLap->LinkAttrs;
+			$this->Cell_Rendered($this->NgayLap, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// TenDangNhap
-			$CurrentValue = $this->TenDangNhap->CurrentValue;
-			$ViewValue = &$this->TenDangNhap->ViewValue;
-			$ViewAttrs = &$this->TenDangNhap->ViewAttrs;
-			$CellAttrs = &$this->TenDangNhap->CellAttrs;
-			$HrefValue = &$this->TenDangNhap->HrefValue;
-			$LinkAttrs = &$this->TenDangNhap->LinkAttrs;
-			$this->Cell_Rendered($this->TenDangNhap, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// MatKhau
-			$CurrentValue = $this->MatKhau->CurrentValue;
-			$ViewValue = &$this->MatKhau->ViewValue;
-			$ViewAttrs = &$this->MatKhau->ViewAttrs;
-			$CellAttrs = &$this->MatKhau->CellAttrs;
-			$HrefValue = &$this->MatKhau->HrefValue;
-			$LinkAttrs = &$this->MatKhau->LinkAttrs;
-			$this->Cell_Rendered($this->MatKhau, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// LoaiTK
-			$CurrentValue = $this->LoaiTK->CurrentValue;
-			$ViewValue = &$this->LoaiTK->ViewValue;
-			$ViewAttrs = &$this->LoaiTK->ViewAttrs;
-			$CellAttrs = &$this->LoaiTK->CellAttrs;
-			$HrefValue = &$this->LoaiTK->HrefValue;
-			$LinkAttrs = &$this->LoaiTK->LinkAttrs;
-			$this->Cell_Rendered($this->LoaiTK, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// Email
-			$CurrentValue = $this->_Email->CurrentValue;
-			$ViewValue = &$this->_Email->ViewValue;
-			$ViewAttrs = &$this->_Email->ViewAttrs;
-			$CellAttrs = &$this->_Email->CellAttrs;
-			$HrefValue = &$this->_Email->HrefValue;
-			$LinkAttrs = &$this->_Email->LinkAttrs;
-			$this->Cell_Rendered($this->_Email, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// HoTen
-			$CurrentValue = $this->HoTen->CurrentValue;
-			$ViewValue = &$this->HoTen->ViewValue;
-			$ViewAttrs = &$this->HoTen->ViewAttrs;
-			$CellAttrs = &$this->HoTen->CellAttrs;
-			$HrefValue = &$this->HoTen->HrefValue;
-			$LinkAttrs = &$this->HoTen->LinkAttrs;
-			$this->Cell_Rendered($this->HoTen, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// DiaChi
-			$CurrentValue = $this->DiaChi->CurrentValue;
-			$ViewValue = &$this->DiaChi->ViewValue;
-			$ViewAttrs = &$this->DiaChi->ViewAttrs;
-			$CellAttrs = &$this->DiaChi->CellAttrs;
-			$HrefValue = &$this->DiaChi->HrefValue;
-			$LinkAttrs = &$this->DiaChi->LinkAttrs;
-			$this->Cell_Rendered($this->DiaChi, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// NgaySinh
-			$CurrentValue = $this->NgaySinh->CurrentValue;
-			$ViewValue = &$this->NgaySinh->ViewValue;
-			$ViewAttrs = &$this->NgaySinh->ViewAttrs;
-			$CellAttrs = &$this->NgaySinh->CellAttrs;
-			$HrefValue = &$this->NgaySinh->HrefValue;
-			$LinkAttrs = &$this->NgaySinh->LinkAttrs;
-			$this->Cell_Rendered($this->NgaySinh, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// SDT
-			$CurrentValue = $this->SDT->CurrentValue;
-			$ViewValue = &$this->SDT->ViewValue;
-			$ViewAttrs = &$this->SDT->ViewAttrs;
-			$CellAttrs = &$this->SDT->CellAttrs;
-			$HrefValue = &$this->SDT->HrefValue;
-			$LinkAttrs = &$this->SDT->LinkAttrs;
-			$this->Cell_Rendered($this->SDT, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// CMND
-			$CurrentValue = $this->CMND->CurrentValue;
-			$ViewValue = &$this->CMND->ViewValue;
-			$ViewAttrs = &$this->CMND->ViewAttrs;
-			$CellAttrs = &$this->CMND->CellAttrs;
-			$HrefValue = &$this->CMND->HrefValue;
-			$LinkAttrs = &$this->CMND->LinkAttrs;
-			$this->Cell_Rendered($this->CMND, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// DiemThuong
-			$CurrentValue = $this->DiemThuong->CurrentValue;
-			$ViewValue = &$this->DiemThuong->ViewValue;
-			$ViewAttrs = &$this->DiemThuong->ViewAttrs;
-			$CellAttrs = &$this->DiemThuong->CellAttrs;
-			$HrefValue = &$this->DiemThuong->HrefValue;
-			$LinkAttrs = &$this->DiemThuong->LinkAttrs;
-			$this->Cell_Rendered($this->DiemThuong, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// TongTien
+			$CurrentValue = $this->TongTien->CurrentValue;
+			$ViewValue = &$this->TongTien->ViewValue;
+			$ViewAttrs = &$this->TongTien->ViewAttrs;
+			$CellAttrs = &$this->TongTien->CellAttrs;
+			$HrefValue = &$this->TongTien->HrefValue;
+			$LinkAttrs = &$this->TongTien->LinkAttrs;
+			$this->Cell_Rendered($this->TongTien, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 		}
 
 		// Call Row_Rendered event
@@ -1327,17 +1134,8 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		$this->GrpColumnCount = 0;
 		$this->SubGrpColumnCount = 0;
 		$this->DtlColumnCount = 0;
-		if ($this->MaTK->Visible) $this->DtlColumnCount += 1;
-		if ($this->TenDangNhap->Visible) $this->DtlColumnCount += 1;
-		if ($this->MatKhau->Visible) $this->DtlColumnCount += 1;
-		if ($this->LoaiTK->Visible) $this->DtlColumnCount += 1;
-		if ($this->_Email->Visible) $this->DtlColumnCount += 1;
-		if ($this->HoTen->Visible) $this->DtlColumnCount += 1;
-		if ($this->DiaChi->Visible) $this->DtlColumnCount += 1;
-		if ($this->NgaySinh->Visible) $this->DtlColumnCount += 1;
-		if ($this->SDT->Visible) $this->DtlColumnCount += 1;
-		if ($this->CMND->Visible) $this->DtlColumnCount += 1;
-		if ($this->DiemThuong->Visible) $this->DtlColumnCount += 1;
+		if ($this->NgayLap->Visible) $this->DtlColumnCount += 1;
+		if ($this->TongTien->Visible) $this->DtlColumnCount += 1;
 	}
 
 	// Set up Breadcrumb
@@ -1368,32 +1166,32 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Reset extended filter if filter changed
 		if ($bPostBack) {
 
-			// Clear extended filter for field LoaiTK
-			if ($this->ClearExtFilter == 'ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK')
-				$this->SetSessionFilterValues('', '=', 'AND', '', '=', 'LoaiTK');
+			// Clear extended filter for field NgayLap
+			if ($this->ClearExtFilter == 'Doanh_Thu_NgayLap')
+				$this->SetSessionFilterValues('', '=', 'AND', '', '=', 'NgayLap');
 
-			// Clear extended filter for field DiemThuong
-			if ($this->ClearExtFilter == 'ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong')
-				$this->SetSessionFilterValues('', '=', 'AND', '', '=', 'DiemThuong');
+			// Clear extended filter for field TongTien
+			if ($this->ClearExtFilter == 'Doanh_Thu_TongTien')
+				$this->SetSessionFilterValues('', '=', 'AND', '', '=', 'TongTien');
 
 		// Reset search command
 		} elseif (@$_GET["cmd"] == "reset") {
 
 			// Load default values
-			$this->SetSessionFilterValues($this->LoaiTK->SearchValue, $this->LoaiTK->SearchOperator, $this->LoaiTK->SearchCondition, $this->LoaiTK->SearchValue2, $this->LoaiTK->SearchOperator2, 'LoaiTK'); // Field LoaiTK
-			$this->SetSessionFilterValues($this->DiemThuong->SearchValue, $this->DiemThuong->SearchOperator, $this->DiemThuong->SearchCondition, $this->DiemThuong->SearchValue2, $this->DiemThuong->SearchOperator2, 'DiemThuong'); // Field DiemThuong
+			$this->SetSessionFilterValues($this->NgayLap->SearchValue, $this->NgayLap->SearchOperator, $this->NgayLap->SearchCondition, $this->NgayLap->SearchValue2, $this->NgayLap->SearchOperator2, 'NgayLap'); // Field NgayLap
+			$this->SetSessionFilterValues($this->TongTien->SearchValue, $this->TongTien->SearchOperator, $this->TongTien->SearchCondition, $this->TongTien->SearchValue2, $this->TongTien->SearchOperator2, 'TongTien'); // Field TongTien
 
 			//$bSetupFilter = TRUE; // No need to set up, just use default
 		} else {
 			$bRestoreSession = !$this->SearchCommand;
 
-			// Field LoaiTK
-			if ($this->GetFilterValues($this->LoaiTK)) {
+			// Field NgayLap
+			if ($this->GetFilterValues($this->NgayLap)) {
 				$bSetupFilter = TRUE;
 			}
 
-			// Field DiemThuong
-			if ($this->GetFilterValues($this->DiemThuong)) {
+			// Field TongTien
+			if ($this->GetFilterValues($this->TongTien)) {
 				$bSetupFilter = TRUE;
 			}
 			if (!$this->ValidateForm()) {
@@ -1404,35 +1202,35 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 
 		// Restore session
 		if ($bRestoreSession) {
-			$this->GetSessionFilterValues($this->LoaiTK); // Field LoaiTK
-			$this->GetSessionFilterValues($this->DiemThuong); // Field DiemThuong
+			$this->GetSessionFilterValues($this->NgayLap); // Field NgayLap
+			$this->GetSessionFilterValues($this->TongTien); // Field TongTien
 		}
 
 		// Call page filter validated event
 		$this->Page_FilterValidated();
 
 		// Build SQL
-		$this->BuildExtendedFilter($this->LoaiTK, $sFilter, FALSE, TRUE); // Field LoaiTK
-		$this->BuildExtendedFilter($this->DiemThuong, $sFilter, FALSE, TRUE); // Field DiemThuong
+		$this->BuildExtendedFilter($this->NgayLap, $sFilter, FALSE, TRUE); // Field NgayLap
+		$this->BuildExtendedFilter($this->TongTien, $sFilter, FALSE, TRUE); // Field TongTien
 
 		// Save parms to session
-		$this->SetSessionFilterValues($this->LoaiTK->SearchValue, $this->LoaiTK->SearchOperator, $this->LoaiTK->SearchCondition, $this->LoaiTK->SearchValue2, $this->LoaiTK->SearchOperator2, 'LoaiTK'); // Field LoaiTK
-		$this->SetSessionFilterValues($this->DiemThuong->SearchValue, $this->DiemThuong->SearchOperator, $this->DiemThuong->SearchCondition, $this->DiemThuong->SearchValue2, $this->DiemThuong->SearchOperator2, 'DiemThuong'); // Field DiemThuong
+		$this->SetSessionFilterValues($this->NgayLap->SearchValue, $this->NgayLap->SearchOperator, $this->NgayLap->SearchCondition, $this->NgayLap->SearchValue2, $this->NgayLap->SearchOperator2, 'NgayLap'); // Field NgayLap
+		$this->SetSessionFilterValues($this->TongTien->SearchValue, $this->TongTien->SearchOperator, $this->TongTien->SearchCondition, $this->TongTien->SearchValue2, $this->TongTien->SearchOperator2, 'TongTien'); // Field TongTien
 
 		// Setup filter
 		if ($bSetupFilter) {
 
-			// Field LoaiTK
+			// Field NgayLap
 			$sWrk = "";
-			$this->BuildExtendedFilter($this->LoaiTK, $sWrk);
-			ewr_LoadSelectionFromFilter($this->LoaiTK, $sWrk, $this->LoaiTK->SelectionList);
-			$_SESSION['sel_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK'] = ($this->LoaiTK->SelectionList == "") ? EWR_INIT_VALUE : $this->LoaiTK->SelectionList;
+			$this->BuildExtendedFilter($this->NgayLap, $sWrk);
+			ewr_LoadSelectionFromFilter($this->NgayLap, $sWrk, $this->NgayLap->SelectionList);
+			$_SESSION['sel_Doanh_Thu_NgayLap'] = ($this->NgayLap->SelectionList == "") ? EWR_INIT_VALUE : $this->NgayLap->SelectionList;
 
-			// Field DiemThuong
+			// Field TongTien
 			$sWrk = "";
-			$this->BuildExtendedFilter($this->DiemThuong, $sWrk);
-			ewr_LoadSelectionFromFilter($this->DiemThuong, $sWrk, $this->DiemThuong->SelectionList);
-			$_SESSION['sel_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong'] = ($this->DiemThuong->SelectionList == "") ? EWR_INIT_VALUE : $this->DiemThuong->SelectionList;
+			$this->BuildExtendedFilter($this->TongTien, $sWrk);
+			ewr_LoadSelectionFromFilter($this->TongTien, $sWrk, $this->TongTien->SelectionList);
+			$_SESSION['sel_Doanh_Thu_TongTien'] = ($this->TongTien->SelectionList == "") ? EWR_INIT_VALUE : $this->TongTien->SelectionList;
 		}
 		return $sFilter;
 	}
@@ -1633,18 +1431,18 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 	// Get dropdown value from session
 	function GetSessionDropDownValue(&$fld) {
 		$parm = substr($fld->FldVar, 2);
-		$this->GetSessionValue($fld->DropDownValue, 'sv_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator, 'so_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
+		$this->GetSessionValue($fld->DropDownValue, 'sv_Doanh_Thu_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator, 'so_Doanh_Thu_' . $parm);
 	}
 
 	// Get filter values from session
 	function GetSessionFilterValues(&$fld) {
 		$parm = substr($fld->FldVar, 2);
-		$this->GetSessionValue($fld->SearchValue, 'sv_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator, 'so_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
-		$this->GetSessionValue($fld->SearchCondition, 'sc_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
-		$this->GetSessionValue($fld->SearchValue2, 'sv2_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator2, 'so2_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm);
+		$this->GetSessionValue($fld->SearchValue, 'sv_Doanh_Thu_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator, 'so_Doanh_Thu_' . $parm);
+		$this->GetSessionValue($fld->SearchCondition, 'sc_Doanh_Thu_' . $parm);
+		$this->GetSessionValue($fld->SearchValue2, 'sv2_Doanh_Thu_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator2, 'so2_Doanh_Thu_' . $parm);
 	}
 
 	// Get value from session
@@ -1655,17 +1453,17 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 
 	// Set dropdown value to session
 	function SetSessionDropDownValue($sv, $so, $parm) {
-		$_SESSION['sv_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $sv;
-		$_SESSION['so_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $so;
+		$_SESSION['sv_Doanh_Thu_' . $parm] = $sv;
+		$_SESSION['so_Doanh_Thu_' . $parm] = $so;
 	}
 
 	// Set filter values to session
 	function SetSessionFilterValues($sv1, $so1, $sc, $sv2, $so2, $parm) {
-		$_SESSION['sv_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $sv1;
-		$_SESSION['so_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $so1;
-		$_SESSION['sc_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $sc;
-		$_SESSION['sv2_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $sv2;
-		$_SESSION['so2_ThF4ng_Tin_TE0i_Kho1EA3n_' . $parm] = $so2;
+		$_SESSION['sv_Doanh_Thu_' . $parm] = $sv1;
+		$_SESSION['so_Doanh_Thu_' . $parm] = $so1;
+		$_SESSION['sc_Doanh_Thu_' . $parm] = $sc;
+		$_SESSION['sv2_Doanh_Thu_' . $parm] = $sv2;
+		$_SESSION['so2_Doanh_Thu_' . $parm] = $so2;
 	}
 
 	// Check if has Session filter values
@@ -1699,13 +1497,13 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Check if validation required
 		if (!EWR_SERVER_VALIDATE)
 			return ($gsFormError == "");
-		if (!ewr_CheckInteger($this->LoaiTK->SearchValue)) {
+		if (!ewr_CheckDateDef($this->NgayLap->SearchValue)) {
 			if ($gsFormError <> "") $gsFormError .= "<br>";
-			$gsFormError .= $this->LoaiTK->FldErrMsg();
+			$gsFormError .= $this->NgayLap->FldErrMsg();
 		}
-		if (!ewr_CheckInteger($this->DiemThuong->SearchValue)) {
+		if (!ewr_CheckInteger($this->TongTien->SearchValue)) {
 			if ($gsFormError <> "") $gsFormError .= "<br>";
-			$gsFormError .= $this->DiemThuong->FldErrMsg();
+			$gsFormError .= $this->TongTien->FldErrMsg();
 		}
 
 		// Return validate result
@@ -1723,17 +1521,17 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 
 	// Clear selection stored in session
 	function ClearSessionSelection($parm) {
-		$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"] = "";
-		$_SESSION["rf_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"] = "";
-		$_SESSION["rt_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"] = "";
+		$_SESSION["sel_Doanh_Thu_$parm"] = "";
+		$_SESSION["rf_Doanh_Thu_$parm"] = "";
+		$_SESSION["rt_Doanh_Thu_$parm"] = "";
 	}
 
 	// Load selection from session
 	function LoadSelectionFromSession($parm) {
 		$fld = &$this->FieldByParm($parm);
-		$fld->SelectionList = @$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"];
-		$fld->RangeFrom = @$_SESSION["rf_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"];
-		$fld->RangeTo = @$_SESSION["rt_ThF4ng_Tin_TE0i_Kho1EA3n_$parm"];
+		$fld->SelectionList = @$_SESSION["sel_Doanh_Thu_$parm"];
+		$fld->RangeFrom = @$_SESSION["rf_Doanh_Thu_$parm"];
+		$fld->RangeTo = @$_SESSION["rt_Doanh_Thu_$parm"];
 	}
 
 	// Load default value for filters
@@ -1753,49 +1551,49 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		* $sv2 - Default ext filter value 2 (if operator 2 is enabled)
 		*/
 
-		// Field LoaiTK
-		$this->SetDefaultExtFilter($this->LoaiTK, "USER SELECT", NULL, 'AND', "=", NULL);
-		if (!$this->SearchCommand) $this->ApplyDefaultExtFilter($this->LoaiTK);
+		// Field NgayLap
+		$this->SetDefaultExtFilter($this->NgayLap, "USER SELECT", NULL, 'AND', "=", NULL);
+		if (!$this->SearchCommand) $this->ApplyDefaultExtFilter($this->NgayLap);
 		$sWrk = "";
-		$this->BuildExtendedFilter($this->LoaiTK, $sWrk, TRUE);
-		ewr_LoadSelectionFromFilter($this->LoaiTK, $sWrk, $this->LoaiTK->DefaultSelectionList);
-		if (!$this->SearchCommand) $this->LoaiTK->SelectionList = $this->LoaiTK->DefaultSelectionList;
+		$this->BuildExtendedFilter($this->NgayLap, $sWrk, TRUE);
+		ewr_LoadSelectionFromFilter($this->NgayLap, $sWrk, $this->NgayLap->DefaultSelectionList);
+		if (!$this->SearchCommand) $this->NgayLap->SelectionList = $this->NgayLap->DefaultSelectionList;
 
-		// Field DiemThuong
-		$this->SetDefaultExtFilter($this->DiemThuong, "USER SELECT", NULL, 'AND', "=", NULL);
-		if (!$this->SearchCommand) $this->ApplyDefaultExtFilter($this->DiemThuong);
+		// Field TongTien
+		$this->SetDefaultExtFilter($this->TongTien, "USER SELECT", NULL, 'AND', "=", NULL);
+		if (!$this->SearchCommand) $this->ApplyDefaultExtFilter($this->TongTien);
 		$sWrk = "";
-		$this->BuildExtendedFilter($this->DiemThuong, $sWrk, TRUE);
-		ewr_LoadSelectionFromFilter($this->DiemThuong, $sWrk, $this->DiemThuong->DefaultSelectionList);
-		if (!$this->SearchCommand) $this->DiemThuong->SelectionList = $this->DiemThuong->DefaultSelectionList;
+		$this->BuildExtendedFilter($this->TongTien, $sWrk, TRUE);
+		ewr_LoadSelectionFromFilter($this->TongTien, $sWrk, $this->TongTien->DefaultSelectionList);
+		if (!$this->SearchCommand) $this->TongTien->SelectionList = $this->TongTien->DefaultSelectionList;
 		/**
 		* Set up default values for popup filters
 		*/
 
-		// Field LoaiTK
-		// $this->LoaiTK->DefaultSelectionList = array("val1", "val2");
-		// Field DiemThuong
-		// $this->DiemThuong->DefaultSelectionList = array("val1", "val2");
+		// Field NgayLap
+		// $this->NgayLap->DefaultSelectionList = array("val1", "val2");
+		// Field TongTien
+		// $this->TongTien->DefaultSelectionList = array("val1", "val2");
 
 	}
 
 	// Check if filter applied
 	function CheckFilter() {
 
-		// Check LoaiTK text filter
-		if ($this->TextFilterApplied($this->LoaiTK))
+		// Check NgayLap text filter
+		if ($this->TextFilterApplied($this->NgayLap))
 			return TRUE;
 
-		// Check LoaiTK popup filter
-		if (!ewr_MatchedArray($this->LoaiTK->DefaultSelectionList, $this->LoaiTK->SelectionList))
+		// Check NgayLap popup filter
+		if (!ewr_MatchedArray($this->NgayLap->DefaultSelectionList, $this->NgayLap->SelectionList))
 			return TRUE;
 
-		// Check DiemThuong text filter
-		if ($this->TextFilterApplied($this->DiemThuong))
+		// Check TongTien text filter
+		if ($this->TextFilterApplied($this->TongTien))
 			return TRUE;
 
-		// Check DiemThuong popup filter
-		if (!ewr_MatchedArray($this->DiemThuong->DefaultSelectionList, $this->DiemThuong->SelectionList))
+		// Check TongTien popup filter
+		if (!ewr_MatchedArray($this->TongTien->DefaultSelectionList, $this->TongTien->SelectionList))
 			return TRUE;
 		return FALSE;
 	}
@@ -1807,33 +1605,33 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Initialize
 		$sFilterList = "";
 
-		// Field LoaiTK
+		// Field NgayLap
 		$sExtWrk = "";
 		$sWrk = "";
-		$this->BuildExtendedFilter($this->LoaiTK, $sExtWrk);
-		if (is_array($this->LoaiTK->SelectionList))
-			$sWrk = ewr_JoinArray($this->LoaiTK->SelectionList, ", ", EWR_DATATYPE_NUMBER, 0, $this->DBID);
+		$this->BuildExtendedFilter($this->NgayLap, $sExtWrk);
+		if (is_array($this->NgayLap->SelectionList))
+			$sWrk = ewr_JoinArray($this->NgayLap->SelectionList, ", ", EWR_DATATYPE_DATE, 0, $this->DBID);
 		$sFilter = "";
 		if ($sExtWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sExtWrk</span>";
 		elseif ($sWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sWrk</span>";
 		if ($sFilter <> "")
-			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->LoaiTK->FldCaption() . "</span>" . $sFilter . "</div>";
+			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->NgayLap->FldCaption() . "</span>" . $sFilter . "</div>";
 
-		// Field DiemThuong
+		// Field TongTien
 		$sExtWrk = "";
 		$sWrk = "";
-		$this->BuildExtendedFilter($this->DiemThuong, $sExtWrk);
-		if (is_array($this->DiemThuong->SelectionList))
-			$sWrk = ewr_JoinArray($this->DiemThuong->SelectionList, ", ", EWR_DATATYPE_NUMBER, 0, $this->DBID);
+		$this->BuildExtendedFilter($this->TongTien, $sExtWrk);
+		if (is_array($this->TongTien->SelectionList))
+			$sWrk = ewr_JoinArray($this->TongTien->SelectionList, ", ", EWR_DATATYPE_NUMBER, 0, $this->DBID);
 		$sFilter = "";
 		if ($sExtWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sExtWrk</span>";
 		elseif ($sWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sWrk</span>";
 		if ($sFilter <> "")
-			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->DiemThuong->FldCaption() . "</span>" . $sFilter . "</div>";
+			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->TongTien->FldCaption() . "</span>" . $sFilter . "</div>";
 		$divstyle = "";
 		$divdataclass = "";
 
@@ -1856,42 +1654,42 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		// Initialize
 		$sFilterList = "";
 
-		// Field LoaiTK
+		// Field NgayLap
 		$sWrk = "";
-		if ($this->LoaiTK->SearchValue <> "" || $this->LoaiTK->SearchValue2 <> "") {
-			$sWrk = "\"sv_LoaiTK\":\"" . ewr_JsEncode2($this->LoaiTK->SearchValue) . "\"," .
-				"\"so_LoaiTK\":\"" . ewr_JsEncode2($this->LoaiTK->SearchOperator) . "\"," .
-				"\"sc_LoaiTK\":\"" . ewr_JsEncode2($this->LoaiTK->SearchCondition) . "\"," .
-				"\"sv2_LoaiTK\":\"" . ewr_JsEncode2($this->LoaiTK->SearchValue2) . "\"," .
-				"\"so2_LoaiTK\":\"" . ewr_JsEncode2($this->LoaiTK->SearchOperator2) . "\"";
+		if ($this->NgayLap->SearchValue <> "" || $this->NgayLap->SearchValue2 <> "") {
+			$sWrk = "\"sv_NgayLap\":\"" . ewr_JsEncode2($this->NgayLap->SearchValue) . "\"," .
+				"\"so_NgayLap\":\"" . ewr_JsEncode2($this->NgayLap->SearchOperator) . "\"," .
+				"\"sc_NgayLap\":\"" . ewr_JsEncode2($this->NgayLap->SearchCondition) . "\"," .
+				"\"sv2_NgayLap\":\"" . ewr_JsEncode2($this->NgayLap->SearchValue2) . "\"," .
+				"\"so2_NgayLap\":\"" . ewr_JsEncode2($this->NgayLap->SearchOperator2) . "\"";
 		}
 		if ($sWrk == "") {
-			$sWrk = ($this->LoaiTK->SelectionList <> EWR_INIT_VALUE) ? $this->LoaiTK->SelectionList : "";
+			$sWrk = ($this->NgayLap->SelectionList <> EWR_INIT_VALUE) ? $this->NgayLap->SelectionList : "";
 			if (is_array($sWrk))
 				$sWrk = implode("||", $sWrk);
 			if ($sWrk <> "")
-				$sWrk = "\"sel_LoaiTK\":\"" . ewr_JsEncode2($sWrk) . "\"";
+				$sWrk = "\"sel_NgayLap\":\"" . ewr_JsEncode2($sWrk) . "\"";
 		}
 		if ($sWrk <> "") {
 			if ($sFilterList <> "") $sFilterList .= ",";
 			$sFilterList .= $sWrk;
 		}
 
-		// Field DiemThuong
+		// Field TongTien
 		$sWrk = "";
-		if ($this->DiemThuong->SearchValue <> "" || $this->DiemThuong->SearchValue2 <> "") {
-			$sWrk = "\"sv_DiemThuong\":\"" . ewr_JsEncode2($this->DiemThuong->SearchValue) . "\"," .
-				"\"so_DiemThuong\":\"" . ewr_JsEncode2($this->DiemThuong->SearchOperator) . "\"," .
-				"\"sc_DiemThuong\":\"" . ewr_JsEncode2($this->DiemThuong->SearchCondition) . "\"," .
-				"\"sv2_DiemThuong\":\"" . ewr_JsEncode2($this->DiemThuong->SearchValue2) . "\"," .
-				"\"so2_DiemThuong\":\"" . ewr_JsEncode2($this->DiemThuong->SearchOperator2) . "\"";
+		if ($this->TongTien->SearchValue <> "" || $this->TongTien->SearchValue2 <> "") {
+			$sWrk = "\"sv_TongTien\":\"" . ewr_JsEncode2($this->TongTien->SearchValue) . "\"," .
+				"\"so_TongTien\":\"" . ewr_JsEncode2($this->TongTien->SearchOperator) . "\"," .
+				"\"sc_TongTien\":\"" . ewr_JsEncode2($this->TongTien->SearchCondition) . "\"," .
+				"\"sv2_TongTien\":\"" . ewr_JsEncode2($this->TongTien->SearchValue2) . "\"," .
+				"\"so2_TongTien\":\"" . ewr_JsEncode2($this->TongTien->SearchOperator2) . "\"";
 		}
 		if ($sWrk == "") {
-			$sWrk = ($this->DiemThuong->SelectionList <> EWR_INIT_VALUE) ? $this->DiemThuong->SelectionList : "";
+			$sWrk = ($this->TongTien->SelectionList <> EWR_INIT_VALUE) ? $this->TongTien->SelectionList : "";
 			if (is_array($sWrk))
 				$sWrk = implode("||", $sWrk);
 			if ($sWrk <> "")
-				$sWrk = "\"sel_DiemThuong\":\"" . ewr_JsEncode2($sWrk) . "\"";
+				$sWrk = "\"sel_TongTien\":\"" . ewr_JsEncode2($sWrk) . "\"";
 		}
 		if ($sWrk <> "") {
 			if ($sFilterList <> "") $sFilterList .= ",";
@@ -1920,48 +1718,48 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		if (!is_array($filter))
 			return FALSE;
 
-		// Field LoaiTK
+		// Field NgayLap
 		$bRestoreFilter = FALSE;
-		if (array_key_exists("sv_LoaiTK", $filter) || array_key_exists("so_LoaiTK", $filter) ||
-			array_key_exists("sc_LoaiTK", $filter) ||
-			array_key_exists("sv2_LoaiTK", $filter) || array_key_exists("so2_LoaiTK", $filter)) {
-			$this->SetSessionFilterValues(@$filter["sv_LoaiTK"], @$filter["so_LoaiTK"], @$filter["sc_LoaiTK"], @$filter["sv2_LoaiTK"], @$filter["so2_LoaiTK"], "LoaiTK");
+		if (array_key_exists("sv_NgayLap", $filter) || array_key_exists("so_NgayLap", $filter) ||
+			array_key_exists("sc_NgayLap", $filter) ||
+			array_key_exists("sv2_NgayLap", $filter) || array_key_exists("so2_NgayLap", $filter)) {
+			$this->SetSessionFilterValues(@$filter["sv_NgayLap"], @$filter["so_NgayLap"], @$filter["sc_NgayLap"], @$filter["sv2_NgayLap"], @$filter["so2_NgayLap"], "NgayLap");
 			$bRestoreFilter = TRUE;
 		}
-		if (array_key_exists("sel_LoaiTK", $filter)) {
-			$sWrk = $filter["sel_LoaiTK"];
+		if (array_key_exists("sel_NgayLap", $filter)) {
+			$sWrk = $filter["sel_NgayLap"];
 			$sWrk = explode("||", $sWrk);
-			$this->LoaiTK->SelectionList = $sWrk;
-			$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"] = $sWrk;
-			$this->SetSessionFilterValues("", "=", "AND", "", "=", "LoaiTK"); // Clear extended filter
+			$this->NgayLap->SelectionList = $sWrk;
+			$_SESSION["sel_Doanh_Thu_NgayLap"] = $sWrk;
+			$this->SetSessionFilterValues("", "=", "AND", "", "=", "NgayLap"); // Clear extended filter
 			$bRestoreFilter = TRUE;
 		}
 		if (!$bRestoreFilter) { // Clear filter
-			$this->SetSessionFilterValues("", "=", "AND", "", "=", "LoaiTK");
-			$this->LoaiTK->SelectionList = "";
-			$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"] = "";
+			$this->SetSessionFilterValues("", "=", "AND", "", "=", "NgayLap");
+			$this->NgayLap->SelectionList = "";
+			$_SESSION["sel_Doanh_Thu_NgayLap"] = "";
 		}
 
-		// Field DiemThuong
+		// Field TongTien
 		$bRestoreFilter = FALSE;
-		if (array_key_exists("sv_DiemThuong", $filter) || array_key_exists("so_DiemThuong", $filter) ||
-			array_key_exists("sc_DiemThuong", $filter) ||
-			array_key_exists("sv2_DiemThuong", $filter) || array_key_exists("so2_DiemThuong", $filter)) {
-			$this->SetSessionFilterValues(@$filter["sv_DiemThuong"], @$filter["so_DiemThuong"], @$filter["sc_DiemThuong"], @$filter["sv2_DiemThuong"], @$filter["so2_DiemThuong"], "DiemThuong");
+		if (array_key_exists("sv_TongTien", $filter) || array_key_exists("so_TongTien", $filter) ||
+			array_key_exists("sc_TongTien", $filter) ||
+			array_key_exists("sv2_TongTien", $filter) || array_key_exists("so2_TongTien", $filter)) {
+			$this->SetSessionFilterValues(@$filter["sv_TongTien"], @$filter["so_TongTien"], @$filter["sc_TongTien"], @$filter["sv2_TongTien"], @$filter["so2_TongTien"], "TongTien");
 			$bRestoreFilter = TRUE;
 		}
-		if (array_key_exists("sel_DiemThuong", $filter)) {
-			$sWrk = $filter["sel_DiemThuong"];
+		if (array_key_exists("sel_TongTien", $filter)) {
+			$sWrk = $filter["sel_TongTien"];
 			$sWrk = explode("||", $sWrk);
-			$this->DiemThuong->SelectionList = $sWrk;
-			$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"] = $sWrk;
-			$this->SetSessionFilterValues("", "=", "AND", "", "=", "DiemThuong"); // Clear extended filter
+			$this->TongTien->SelectionList = $sWrk;
+			$_SESSION["sel_Doanh_Thu_TongTien"] = $sWrk;
+			$this->SetSessionFilterValues("", "=", "AND", "", "=", "TongTien"); // Clear extended filter
 			$bRestoreFilter = TRUE;
 		}
 		if (!$bRestoreFilter) { // Clear filter
-			$this->SetSessionFilterValues("", "=", "AND", "", "=", "DiemThuong");
-			$this->DiemThuong->SelectionList = "";
-			$_SESSION["sel_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"] = "";
+			$this->SetSessionFilterValues("", "=", "AND", "", "=", "TongTien");
+			$this->TongTien->SelectionList = "";
+			$_SESSION["sel_Doanh_Thu_TongTien"] = "";
 		}
 		return TRUE;
 	}
@@ -1971,23 +1769,23 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		$sWrk = "";
 		if ($this->DrillDown)
 			return "";
-		if (!$this->ExtendedFilterExist($this->LoaiTK)) {
-			if (is_array($this->LoaiTK->SelectionList)) {
-				$sFilter = ewr_FilterSQL($this->LoaiTK, "`LoaiTK`", EWR_DATATYPE_NUMBER, $this->DBID);
+		if (!$this->ExtendedFilterExist($this->NgayLap)) {
+			if (is_array($this->NgayLap->SelectionList)) {
+				$sFilter = ewr_FilterSQL($this->NgayLap, "`NgayLap`", EWR_DATATYPE_DATE, $this->DBID);
 
 				// Call Page Filtering event
-				$this->Page_Filtering($this->LoaiTK, $sFilter, "popup");
-				$this->LoaiTK->CurrentFilter = $sFilter;
+				$this->Page_Filtering($this->NgayLap, $sFilter, "popup");
+				$this->NgayLap->CurrentFilter = $sFilter;
 				ewr_AddFilter($sWrk, $sFilter);
 			}
 		}
-		if (!$this->ExtendedFilterExist($this->DiemThuong)) {
-			if (is_array($this->DiemThuong->SelectionList)) {
-				$sFilter = ewr_FilterSQL($this->DiemThuong, "`DiemThuong`", EWR_DATATYPE_NUMBER, $this->DBID);
+		if (!$this->ExtendedFilterExist($this->TongTien)) {
+			if (is_array($this->TongTien->SelectionList)) {
+				$sFilter = ewr_FilterSQL($this->TongTien, "`TongTien`", EWR_DATATYPE_NUMBER, $this->DBID);
 
 				// Call Page Filtering event
-				$this->Page_Filtering($this->DiemThuong, $sFilter, "popup");
-				$this->DiemThuong->CurrentFilter = $sFilter;
+				$this->Page_Filtering($this->TongTien, $sFilter, "popup");
+				$this->TongTien->CurrentFilter = $sFilter;
 				ewr_AddFilter($sWrk, $sFilter);
 			}
 		}
@@ -2009,17 +1807,8 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 		if ($bResetSort) {
 			$this->setOrderBy("");
 			$this->setStartGroup(1);
-			$this->MaTK->setSort("");
-			$this->TenDangNhap->setSort("");
-			$this->MatKhau->setSort("");
-			$this->LoaiTK->setSort("");
-			$this->_Email->setSort("");
-			$this->HoTen->setSort("");
-			$this->DiaChi->setSort("");
-			$this->NgaySinh->setSort("");
-			$this->SDT->setSort("");
-			$this->CMND->setSort("");
-			$this->DiemThuong->setSort("");
+			$this->NgayLap->setSort("");
+			$this->TongTien->setSort("");
 
 		// Check for an Order parameter
 		} elseif ($orderBy <> "") {
@@ -2151,9 +1940,9 @@ class crThF4ng_Tin_TE0i_Kho1EA3n_summary extends crThF4ng_Tin_TE0i_Kho1EA3n {
 <?php
 
 // Create page object
-if (!isset($ThF4ng_Tin_TE0i_Kho1EA3n_summary)) $ThF4ng_Tin_TE0i_Kho1EA3n_summary = new crThF4ng_Tin_TE0i_Kho1EA3n_summary();
+if (!isset($Doanh_Thu_summary)) $Doanh_Thu_summary = new crDoanh_Thu_summary();
 if (isset($Page)) $OldPage = $Page;
-$Page = &$ThF4ng_Tin_TE0i_Kho1EA3n_summary;
+$Page = &$Doanh_Thu_summary;
 
 // Page init
 $Page->Page_Init();
@@ -2172,21 +1961,21 @@ $Page->Page_Render();
 <script type="text/javascript">
 
 // Create page object
-var ThF4ng_Tin_TE0i_Kho1EA3n_summary = new ewr_Page("ThF4ng_Tin_TE0i_Kho1EA3n_summary");
+var Doanh_Thu_summary = new ewr_Page("Doanh_Thu_summary");
 
 // Page properties
-ThF4ng_Tin_TE0i_Kho1EA3n_summary.PageID = "summary"; // Page ID
-var EWR_PAGE_ID = ThF4ng_Tin_TE0i_Kho1EA3n_summary.PageID;
+Doanh_Thu_summary.PageID = "summary"; // Page ID
+var EWR_PAGE_ID = Doanh_Thu_summary.PageID;
 
 // Extend page with Chart_Rendering function
-ThF4ng_Tin_TE0i_Kho1EA3n_summary.Chart_Rendering = 
+Doanh_Thu_summary.Chart_Rendering = 
  function(chart, chartid) { // DO NOT CHANGE THIS LINE!
 
  	//alert(chartid);
  }
 
 // Extend page with Chart_Rendered function
-ThF4ng_Tin_TE0i_Kho1EA3n_summary.Chart_Rendered = 
+Doanh_Thu_summary.Chart_Rendered = 
  function(chart, chartid) { // DO NOT CHANGE THIS LINE!
 
  	//alert(chartid);
@@ -2197,21 +1986,21 @@ ThF4ng_Tin_TE0i_Kho1EA3n_summary.Chart_Rendered =
 <script type="text/javascript">
 
 // Form object
-var CurrentForm = fThF4ng_Tin_TE0i_Kho1EA3nsummary = new ewr_Form("fThF4ng_Tin_TE0i_Kho1EA3nsummary");
+var CurrentForm = fDoanh_Thusummary = new ewr_Form("fDoanh_Thusummary");
 
 // Validate method
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.Validate = function() {
+fDoanh_Thusummary.Validate = function() {
 	if (!this.ValidateRequired)
 		return true; // Ignore validation
 	var $ = jQuery, fobj = this.GetForm(), $fobj = $(fobj);
-	var elm = fobj.sv_LoaiTK;
-	if (elm && !ewr_CheckInteger(elm.value)) {
-		if (!this.OnError(elm, "<?php echo ewr_JsEncode2($Page->LoaiTK->FldErrMsg()) ?>"))
+	var elm = fobj.sv_NgayLap;
+	if (elm && !ewr_CheckDateDef(elm.value)) {
+		if (!this.OnError(elm, "<?php echo ewr_JsEncode2($Page->NgayLap->FldErrMsg()) ?>"))
 			return false;
 	}
-	var elm = fobj.sv_DiemThuong;
+	var elm = fobj.sv_TongTien;
 	if (elm && !ewr_CheckInteger(elm.value)) {
-		if (!this.OnError(elm, "<?php echo ewr_JsEncode2($Page->DiemThuong->FldErrMsg()) ?>"))
+		if (!this.OnError(elm, "<?php echo ewr_JsEncode2($Page->TongTien->FldErrMsg()) ?>"))
 			return false;
 	}
 
@@ -2222,16 +2011,16 @@ fThF4ng_Tin_TE0i_Kho1EA3nsummary.Validate = function() {
 }
 
 // Form_CustomValidate method
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.Form_CustomValidate = 
+fDoanh_Thusummary.Form_CustomValidate = 
  function(fobj) { // DO NOT CHANGE THIS LINE!
 
  	// Your custom validation code here, return false if invalid.
  	return true;
  }
 <?php if (EWR_CLIENT_VALIDATE) { ?>
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.ValidateRequired = true; // Uses JavaScript validation
+fDoanh_Thusummary.ValidateRequired = true; // Uses JavaScript validation
 <?php } else { ?>
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.ValidateRequired = false; // No JavaScript validation
+fDoanh_Thusummary.ValidateRequired = false; // No JavaScript validation
 <?php } ?>
 
 // Use Ajax
@@ -2293,37 +2082,37 @@ if (!$Page->DrillDownInPanel) {
 <?php } ?>
 <?php if ($Page->Export == "" && !$Page->DrillDown) { ?>
 <!-- Search form (begin) -->
-<form name="fThF4ng_Tin_TE0i_Kho1EA3nsummary" id="fThF4ng_Tin_TE0i_Kho1EA3nsummary" class="form-inline ewForm ewExtFilterForm" action="<?php echo ewr_CurrentPage() ?>">
+<form name="fDoanh_Thusummary" id="fDoanh_Thusummary" class="form-inline ewForm ewExtFilterForm" action="<?php echo ewr_CurrentPage() ?>">
 <?php $SearchPanelClass = ($Page->Filter <> "") ? " in" : " in"; ?>
-<div id="fThF4ng_Tin_TE0i_Kho1EA3nsummary_SearchPanel" class="ewSearchPanel collapse<?php echo $SearchPanelClass ?>">
+<div id="fDoanh_Thusummary_SearchPanel" class="ewSearchPanel collapse<?php echo $SearchPanelClass ?>">
 <input type="hidden" name="cmd" value="search">
 <div id="r_1" class="ewRow">
-<div id="c_LoaiTK" class="ewCell form-group">
-	<label for="sv_LoaiTK" class="ewSearchCaption ewLabel"><?php echo $Page->LoaiTK->FldCaption() ?></label>
-	<span class="ewSearchOperator"><select name="so_LoaiTK" id="so_LoaiTK" class="form-control" onchange="ewrForms(this).SrchOprChanged(this);"><option value="="<?php if ($Page->LoaiTK->SearchOperator == "=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("EQUAL"); ?></option><option value="<>"<?php if ($Page->LoaiTK->SearchOperator == "<>") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<>"); ?></option><option value="<"<?php if ($Page->LoaiTK->SearchOperator == "<") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<"); ?></option><option value="<="<?php if ($Page->LoaiTK->SearchOperator == "<=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<="); ?></option><option value=">"<?php if ($Page->LoaiTK->SearchOperator == ">") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">"); ?></option><option value=">="<?php if ($Page->LoaiTK->SearchOperator == ">=") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">="); ?></option><option value="BETWEEN"<?php if ($Page->LoaiTK->SearchOperator == "BETWEEN") echo " selected" ?>><?php echo $ReportLanguage->Phrase("BETWEEN"); ?></option></select></span>
+<div id="c_NgayLap" class="ewCell form-group">
+	<label for="sv_NgayLap" class="ewSearchCaption ewLabel"><?php echo $Page->NgayLap->FldCaption() ?></label>
+	<span class="ewSearchOperator"><select name="so_NgayLap" id="so_NgayLap" class="form-control" onchange="ewrForms(this).SrchOprChanged(this);"><option value="="<?php if ($Page->NgayLap->SearchOperator == "=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("EQUAL"); ?></option><option value="<>"<?php if ($Page->NgayLap->SearchOperator == "<>") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<>"); ?></option><option value="<"<?php if ($Page->NgayLap->SearchOperator == "<") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<"); ?></option><option value="<="<?php if ($Page->NgayLap->SearchOperator == "<=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<="); ?></option><option value=">"<?php if ($Page->NgayLap->SearchOperator == ">") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">"); ?></option><option value=">="<?php if ($Page->NgayLap->SearchOperator == ">=") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">="); ?></option><option value="BETWEEN"<?php if ($Page->NgayLap->SearchOperator == "BETWEEN") echo " selected" ?>><?php echo $ReportLanguage->Phrase("BETWEEN"); ?></option></select></span>
 	<span class="control-group ewSearchField">
-<?php ewr_PrependClass($Page->LoaiTK->EditAttrs["class"], "form-control"); // PR8 ?>
-<input type="text" data-table="ThF4ng_Tin_TE0i_Kho1EA3n" data-field="x_LoaiTK" id="sv_LoaiTK" name="sv_LoaiTK" size="30" placeholder="<?php echo $Page->LoaiTK->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->LoaiTK->SearchValue) ?>"<?php echo $Page->LoaiTK->EditAttributes() ?>>
+<?php ewr_PrependClass($Page->NgayLap->EditAttrs["class"], "form-control"); // PR8 ?>
+<input type="text" data-table="Doanh_Thu" data-field="x_NgayLap" id="sv_NgayLap" name="sv_NgayLap" placeholder="<?php echo $Page->NgayLap->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->NgayLap->SearchValue) ?>"<?php echo $Page->NgayLap->EditAttributes() ?>>
 </span>
-	<span class="ewSearchCond btw1_LoaiTK" style="display: none"><?php echo $ReportLanguage->Phrase("AND") ?></span>
-	<span class="ewSearchField btw1_LoaiTK" style="display: none">
-<?php ewr_PrependClass($Page->LoaiTK->EditAttrs["class"], "form-control"); // PR8 ?>
-<input type="text" data-table="ThF4ng_Tin_TE0i_Kho1EA3n" data-field="x_LoaiTK" id="sv2_LoaiTK" name="sv2_LoaiTK" size="30" placeholder="<?php echo $Page->LoaiTK->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->LoaiTK->SearchValue2) ?>"<?php echo $Page->LoaiTK->EditAttributes() ?>>
+	<span class="ewSearchCond btw1_NgayLap" style="display: none"><?php echo $ReportLanguage->Phrase("AND") ?></span>
+	<span class="ewSearchField btw1_NgayLap" style="display: none">
+<?php ewr_PrependClass($Page->NgayLap->EditAttrs["class"], "form-control"); // PR8 ?>
+<input type="text" data-table="Doanh_Thu" data-field="x_NgayLap" id="sv2_NgayLap" name="sv2_NgayLap" placeholder="<?php echo $Page->NgayLap->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->NgayLap->SearchValue2) ?>"<?php echo $Page->NgayLap->EditAttributes() ?>>
 </span>
 </div>
 </div>
 <div id="r_2" class="ewRow">
-<div id="c_DiemThuong" class="ewCell form-group">
-	<label for="sv_DiemThuong" class="ewSearchCaption ewLabel"><?php echo $Page->DiemThuong->FldCaption() ?></label>
-	<span class="ewSearchOperator"><select name="so_DiemThuong" id="so_DiemThuong" class="form-control" onchange="ewrForms(this).SrchOprChanged(this);"><option value="="<?php if ($Page->DiemThuong->SearchOperator == "=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("EQUAL"); ?></option><option value="<>"<?php if ($Page->DiemThuong->SearchOperator == "<>") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<>"); ?></option><option value="<"<?php if ($Page->DiemThuong->SearchOperator == "<") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<"); ?></option><option value="<="<?php if ($Page->DiemThuong->SearchOperator == "<=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<="); ?></option><option value=">"<?php if ($Page->DiemThuong->SearchOperator == ">") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">"); ?></option><option value=">="<?php if ($Page->DiemThuong->SearchOperator == ">=") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">="); ?></option><option value="BETWEEN"<?php if ($Page->DiemThuong->SearchOperator == "BETWEEN") echo " selected" ?>><?php echo $ReportLanguage->Phrase("BETWEEN"); ?></option></select></span>
+<div id="c_TongTien" class="ewCell form-group">
+	<label for="sv_TongTien" class="ewSearchCaption ewLabel"><?php echo $Page->TongTien->FldCaption() ?></label>
+	<span class="ewSearchOperator"><select name="so_TongTien" id="so_TongTien" class="form-control" onchange="ewrForms(this).SrchOprChanged(this);"><option value="="<?php if ($Page->TongTien->SearchOperator == "=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("EQUAL"); ?></option><option value="<>"<?php if ($Page->TongTien->SearchOperator == "<>") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<>"); ?></option><option value="<"<?php if ($Page->TongTien->SearchOperator == "<") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<"); ?></option><option value="<="<?php if ($Page->TongTien->SearchOperator == "<=") echo " selected" ?>><?php echo $ReportLanguage->Phrase("<="); ?></option><option value=">"<?php if ($Page->TongTien->SearchOperator == ">") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">"); ?></option><option value=">="<?php if ($Page->TongTien->SearchOperator == ">=") echo " selected" ?>><?php echo $ReportLanguage->Phrase(">="); ?></option><option value="BETWEEN"<?php if ($Page->TongTien->SearchOperator == "BETWEEN") echo " selected" ?>><?php echo $ReportLanguage->Phrase("BETWEEN"); ?></option></select></span>
 	<span class="control-group ewSearchField">
-<?php ewr_PrependClass($Page->DiemThuong->EditAttrs["class"], "form-control"); // PR8 ?>
-<input type="text" data-table="ThF4ng_Tin_TE0i_Kho1EA3n" data-field="x_DiemThuong" id="sv_DiemThuong" name="sv_DiemThuong" size="30" placeholder="<?php echo $Page->DiemThuong->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->DiemThuong->SearchValue) ?>"<?php echo $Page->DiemThuong->EditAttributes() ?>>
+<?php ewr_PrependClass($Page->TongTien->EditAttrs["class"], "form-control"); // PR8 ?>
+<input type="text" data-table="Doanh_Thu" data-field="x_TongTien" id="sv_TongTien" name="sv_TongTien" size="30" placeholder="<?php echo $Page->TongTien->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->TongTien->SearchValue) ?>"<?php echo $Page->TongTien->EditAttributes() ?>>
 </span>
-	<span class="ewSearchCond btw1_DiemThuong" style="display: none"><?php echo $ReportLanguage->Phrase("AND") ?></span>
-	<span class="ewSearchField btw1_DiemThuong" style="display: none">
-<?php ewr_PrependClass($Page->DiemThuong->EditAttrs["class"], "form-control"); // PR8 ?>
-<input type="text" data-table="ThF4ng_Tin_TE0i_Kho1EA3n" data-field="x_DiemThuong" id="sv2_DiemThuong" name="sv2_DiemThuong" size="30" placeholder="<?php echo $Page->DiemThuong->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->DiemThuong->SearchValue2) ?>"<?php echo $Page->DiemThuong->EditAttributes() ?>>
+	<span class="ewSearchCond btw1_TongTien" style="display: none"><?php echo $ReportLanguage->Phrase("AND") ?></span>
+	<span class="ewSearchField btw1_TongTien" style="display: none">
+<?php ewr_PrependClass($Page->TongTien->EditAttrs["class"], "form-control"); // PR8 ?>
+<input type="text" data-table="Doanh_Thu" data-field="x_TongTien" id="sv2_TongTien" name="sv2_TongTien" size="30" placeholder="<?php echo $Page->TongTien->PlaceHolder ?>" value="<?php echo ewr_HtmlEncode($Page->TongTien->SearchValue2) ?>"<?php echo $Page->TongTien->EditAttributes() ?>>
 </span>
 </div>
 </div>
@@ -2332,8 +2121,8 @@ if (!$Page->DrillDownInPanel) {
 </div>
 </form>
 <script type="text/javascript">
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.Init();
-fThF4ng_Tin_TE0i_Kho1EA3nsummary.FilterList = <?php echo $Page->GetFilterList() ?>;
+fDoanh_Thusummary.Init();
+fDoanh_Thusummary.FilterList = <?php echo $Page->GetFilterList() ?>;
 </script>
 <!-- Search form (end) -->
 <?php } ?>
@@ -2385,203 +2174,41 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <thead>
 	<!-- Table header -->
 	<tr class="ewTableHeader">
-<?php if ($Page->MaTK->Visible) { ?>
+<?php if ($Page->NgayLap->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="MaTK"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_MaTK"><span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span></div></td>
+	<td data-field="NgayLap"><div class="Doanh_Thu_NgayLap"><span class="ewTableHeaderCaption"><?php echo $Page->NgayLap->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="MaTK">
-<?php if ($Page->SortUrl($Page->MaTK) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_MaTK">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span>
+	<td data-field="NgayLap">
+<?php if ($Page->SortUrl($Page->NgayLap) == "") { ?>
+		<div class="ewTableHeaderBtn Doanh_Thu_NgayLap">
+			<span class="ewTableHeaderCaption"><?php echo $Page->NgayLap->FldCaption() ?></span>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'Doanh_Thu_NgayLap', true, '<?php echo $Page->NgayLap->RangeFrom; ?>', '<?php echo $Page->NgayLap->RangeTo; ?>');" id="x_NgayLap<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_MaTK" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->MaTK) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MaTK->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->MaTK->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->MaTK->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Doanh_Thu_NgayLap" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->NgayLap) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->NgayLap->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->NgayLap->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->NgayLap->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'Doanh_Thu_NgayLap', true, '<?php echo $Page->NgayLap->RangeFrom; ?>', '<?php echo $Page->NgayLap->RangeTo; ?>');" id="x_NgayLap<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->TenDangNhap->Visible) { ?>
+<?php if ($Page->TongTien->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="TenDangNhap"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_TenDangNhap"><span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span></div></td>
+	<td data-field="TongTien"><div class="Doanh_Thu_TongTien"><span class="ewTableHeaderCaption"><?php echo $Page->TongTien->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="TenDangNhap">
-<?php if ($Page->SortUrl($Page->TenDangNhap) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_TenDangNhap">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span>
+	<td data-field="TongTien">
+<?php if ($Page->SortUrl($Page->TongTien) == "") { ?>
+		<div class="ewTableHeaderBtn Doanh_Thu_TongTien">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TongTien->FldCaption() ?></span>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'Doanh_Thu_TongTien', true, '<?php echo $Page->TongTien->RangeFrom; ?>', '<?php echo $Page->TongTien->RangeTo; ?>');" id="x_TongTien<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_TenDangNhap" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TenDangNhap) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->TenDangNhap->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->TenDangNhap->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TenDangNhap->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->MatKhau->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="MatKhau"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_MatKhau"><span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="MatKhau">
-<?php if ($Page->SortUrl($Page->MatKhau) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_MatKhau">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_MatKhau" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->MatKhau) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->MatKhau->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->MatKhau->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->MatKhau->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->LoaiTK->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="LoaiTK"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"><span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="LoaiTK">
-<?php if ($Page->SortUrl($Page->LoaiTK) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK">
-			<span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span>
-			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK', true, '<?php echo $Page->LoaiTK->RangeFrom; ?>', '<?php echo $Page->LoaiTK->RangeTo; ?>');" id="x_LoaiTK<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->LoaiTK) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->LoaiTK->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->LoaiTK->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->LoaiTK->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK', true, '<?php echo $Page->LoaiTK->RangeFrom; ?>', '<?php echo $Page->LoaiTK->RangeTo; ?>');" id="x_LoaiTK<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->_Email->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="_Email"><div class="ThF4ng_Tin_TE0i_Kho1EA3n__Email"><span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="_Email">
-<?php if ($Page->SortUrl($Page->_Email) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n__Email">
-			<span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n__Email" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->_Email) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->_Email->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->_Email->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->_Email->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->HoTen->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="HoTen"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_HoTen"><span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="HoTen">
-<?php if ($Page->SortUrl($Page->HoTen) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_HoTen">
-			<span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_HoTen" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->HoTen) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->HoTen->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->HoTen->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->HoTen->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->DiaChi->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="DiaChi"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_DiaChi"><span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="DiaChi">
-<?php if ($Page->SortUrl($Page->DiaChi) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_DiaChi">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_DiaChi" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DiaChi) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiaChi->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->DiaChi->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DiaChi->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->NgaySinh->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="NgaySinh"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_NgaySinh"><span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="NgaySinh">
-<?php if ($Page->SortUrl($Page->NgaySinh) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_NgaySinh">
-			<span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_NgaySinh" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->NgaySinh) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->NgaySinh->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->NgaySinh->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->NgaySinh->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->SDT->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="SDT"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_SDT"><span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="SDT">
-<?php if ($Page->SortUrl($Page->SDT) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_SDT">
-			<span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_SDT" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->SDT) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->SDT->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->SDT->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->SDT->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->CMND->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="CMND"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_CMND"><span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="CMND">
-<?php if ($Page->SortUrl($Page->CMND) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_CMND">
-			<span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_CMND" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->CMND) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->CMND->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->CMND->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->CMND->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->DiemThuong->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="DiemThuong"><div class="ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"><span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="DiemThuong">
-<?php if ($Page->SortUrl($Page->DiemThuong) == "") { ?>
-		<div class="ewTableHeaderBtn ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span>
-			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong', true, '<?php echo $Page->DiemThuong->RangeFrom; ?>', '<?php echo $Page->DiemThuong->RangeTo; ?>');" id="x_DiemThuong<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->DiemThuong) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->DiemThuong->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->DiemThuong->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->DiemThuong->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong', true, '<?php echo $Page->DiemThuong->RangeFrom; ?>', '<?php echo $Page->DiemThuong->RangeTo; ?>');" id="x_DiemThuong<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
+		<div class="ewTableHeaderBtn ewPointer Doanh_Thu_TongTien" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->TongTien) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->TongTien->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->TongTien->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->TongTien->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, 'Doanh_Thu_TongTien', true, '<?php echo $Page->TongTien->RangeFrom; ?>', '<?php echo $Page->TongTien->RangeTo; ?>');" id="x_TongTien<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
 		</div>
 <?php } ?>
 	</td>
@@ -2605,49 +2232,13 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 		$Page->RenderRow();
 ?>
 	<tr<?php echo $Page->RowAttributes(); ?>>
-<?php if ($Page->MaTK->Visible) { ?>
-		<td data-field="MaTK"<?php echo $Page->MaTK->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_MaTK"<?php echo $Page->MaTK->ViewAttributes() ?>><?php echo $Page->MaTK->ListViewValue() ?></span></td>
+<?php if ($Page->NgayLap->Visible) { ?>
+		<td data-field="NgayLap"<?php echo $Page->NgayLap->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_Doanh_Thu_NgayLap"<?php echo $Page->NgayLap->ViewAttributes() ?>><?php echo $Page->NgayLap->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->TenDangNhap->Visible) { ?>
-		<td data-field="TenDangNhap"<?php echo $Page->TenDangNhap->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_TenDangNhap"<?php echo $Page->TenDangNhap->ViewAttributes() ?>><?php echo $Page->TenDangNhap->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->MatKhau->Visible) { ?>
-		<td data-field="MatKhau"<?php echo $Page->MatKhau->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_MatKhau"<?php echo $Page->MatKhau->ViewAttributes() ?>><?php echo $Page->MatKhau->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->LoaiTK->Visible) { ?>
-		<td data-field="LoaiTK"<?php echo $Page->LoaiTK->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_LoaiTK"<?php echo $Page->LoaiTK->ViewAttributes() ?>><?php echo $Page->LoaiTK->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->_Email->Visible) { ?>
-		<td data-field="_Email"<?php echo $Page->_Email->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n__Email"<?php echo $Page->_Email->ViewAttributes() ?>><?php echo $Page->_Email->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->HoTen->Visible) { ?>
-		<td data-field="HoTen"<?php echo $Page->HoTen->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_HoTen"<?php echo $Page->HoTen->ViewAttributes() ?>><?php echo $Page->HoTen->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->DiaChi->Visible) { ?>
-		<td data-field="DiaChi"<?php echo $Page->DiaChi->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_DiaChi"<?php echo $Page->DiaChi->ViewAttributes() ?>><?php echo $Page->DiaChi->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->NgaySinh->Visible) { ?>
-		<td data-field="NgaySinh"<?php echo $Page->NgaySinh->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_NgaySinh"<?php echo $Page->NgaySinh->ViewAttributes() ?>><?php echo $Page->NgaySinh->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->SDT->Visible) { ?>
-		<td data-field="SDT"<?php echo $Page->SDT->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_SDT"<?php echo $Page->SDT->ViewAttributes() ?>><?php echo $Page->SDT->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->CMND->Visible) { ?>
-		<td data-field="CMND"<?php echo $Page->CMND->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_CMND"<?php echo $Page->CMND->ViewAttributes() ?>><?php echo $Page->CMND->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->DiemThuong->Visible) { ?>
-		<td data-field="DiemThuong"<?php echo $Page->DiemThuong->CellAttributes() ?>>
-<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_ThF4ng_Tin_TE0i_Kho1EA3n_DiemThuong"<?php echo $Page->DiemThuong->ViewAttributes() ?>><?php echo $Page->DiemThuong->ListViewValue() ?></span></td>
+<?php if ($Page->TongTien->Visible) { ?>
+		<td data-field="TongTien"<?php echo $Page->TongTien->CellAttributes() ?>>
+<span data-class="tpx<?php echo $Page->GrpCount ?>_<?php echo $Page->RecCount ?>_Doanh_Thu_TongTien"<?php echo $Page->TongTien->ViewAttributes() ?>><?php echo $Page->TongTien->ListViewValue() ?></span></td>
 <?php } ?>
 	</tr>
 <?php
@@ -2664,6 +2255,8 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 </tbody>
 <tfoot>
 <?php
+	$Page->TongTien->Count = $Page->GrandCnt[2];
+	$Page->TongTien->SumValue = $Page->GrandSmry[2]; // Load SUM
 	$Page->ResetAttrs();
 	$Page->RowType = EWR_ROWTYPE_TOTAL;
 	$Page->RowTotalType = EWR_ROWTOTAL_GRAND;
@@ -2672,6 +2265,15 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 	$Page->RenderRow();
 ?>
 	<tr<?php echo $Page->RowAttributes() ?>><td colspan="<?php echo ($Page->GrpColumnCount + $Page->DtlColumnCount) ?>"><?php echo $ReportLanguage->Phrase("RptGrandSummary") ?> <span class="ewDirLtr">(<?php echo ewr_FormatNumber($Page->TotCount,0,-2,-2,-2); ?><?php echo $ReportLanguage->Phrase("RptDtlRec") ?>)</span></td></tr>
+	<tr<?php echo $Page->RowAttributes() ?>>
+<?php if ($Page->NgayLap->Visible) { ?>
+		<td data-field="NgayLap"<?php echo $Page->NgayLap->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->TongTien->Visible) { ?>
+		<td data-field="TongTien"<?php echo $Page->TongTien->CellAttributes() ?>><span class="ewAggregate"><?php echo $ReportLanguage->Phrase("RptSum") ?></span><?php echo $ReportLanguage->Phrase("AggregateColon") ?>
+<span data-class="tpts_Doanh_Thu_TongTien"<?php echo $Page->TongTien->ViewAttributes() ?>><?php echo $Page->TongTien->SumViewValue ?></span></td>
+<?php } ?>
+	</tr>
 	</tfoot>
 <?php } elseif (!$Page->ShowHeader && TRUE) { // No header displayed ?>
 <?php if ($Page->Export <> "pdf") { ?>
@@ -2694,7 +2296,7 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <?php } ?>
 <?php if ($Page->Export == "" && !($Page->DrillDown && $Page->TotalGrps > 0)) { ?>
 <div class="panel-footer ewGridLowerPanel">
-<?php include "ThF4ng_Tin_TE0i_Kho1EA3nsmrypager.php" ?>
+<?php include "Doanh_Thusmrypager.php" ?>
 <div class="clearfix"></div>
 </div>
 <?php } ?>

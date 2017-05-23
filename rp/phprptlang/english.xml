@@ -348,7 +348,7 @@
     <phrase id="thisyear" value="This year" />
   </global>
   <project>
-    <phrase id="bodytitle" value="MiuMiuShop" />
+    <phrase id="bodytitle" value="Miu Miu Shop" />
     <phrase id="footertext" value="&amp;copy;2017 e.World Technology Ltd. All rights reserved." />
     <menu id="1">
       <phrase id="menutext" value="cthd" />
@@ -363,31 +363,37 @@
       <phrase id="menutext" value="loaitk" />
     </menu>
     <menu id="5">
-      <phrase id="menutext" value="sanpham" />
-    </menu>
-    <menu id="6">
-      <phrase id="menutext" value="tai khoan" />
-    </menu>
-    <menu id="7">
-      <phrase id="menutext" value="taikhoan" />
-    </menu>
-    <menu id="8">
-      <phrase id="menutext" value="thanhtoan" />
-    </menu>
-    <menu id="9">
-      <phrase id="menutext" value="thuonghieu" />
-    </menu>
-    <menu id="10">
-      <phrase id="menutext" value="vanchuyen" />
-    </menu>
-    <menu id="11">
       <phrase id="menutext" value="san pham" />
     </menu>
+    <menu id="6">
+      <phrase id="menutext" value="sanpham" />
+    </menu>
+    <menu id="7">
+      <phrase id="menutext" value="tai khoan" />
+    </menu>
+    <menu id="8">
+      <phrase id="menutext" value="taikhoan" />
+    </menu>
+    <menu id="9">
+      <phrase id="menutext" value="thanhtoan" />
+    </menu>
+    <menu id="10">
+      <phrase id="menutext" value="thuonghieu" />
+    </menu>
+    <menu id="11">
+      <phrase id="menutext" value="vanchuyen" />
+    </menu>
     <menu id="12">
-      <phrase id="menutext" value="Thông Tin Sản Phẩm" />
+      <phrase id="menutext" value="Thông Tin Tài Khoản" />
     </menu>
     <menu id="13">
-      <phrase id="menutext" value="Thông Tin Tài Khoản" />
+      <phrase id="menutext" value="Thông Tin Sản Phẩm" />
+    </menu>
+    <menu id="14">
+      <phrase id="menutext" value="hoa don" />
+    </menu>
+    <menu id="15">
+      <phrase id="menutext" value="Doanh Thu" />
     </menu>
     <table id="cthd">
       <phrase id="tblcaption" value="cthd" />
@@ -397,8 +403,8 @@
       <field id="masp">
         <phrase id="fldcaption" value="Ma SP" />
       </field>
-      <field id="soluongban">
-        <phrase id="fldcaption" value="So Luong Ban" />
+      <field id="soluong">
+        <phrase id="fldcaption" value="So Luong" />
       </field>
       <field id="thanhtien">
         <phrase id="fldcaption" value="Thanh Tien" />
@@ -465,6 +471,45 @@
       </field>
       <field id="ghichu">
         <phrase id="fldcaption" value="Ghi Chu" />
+      </field>
+    </table>
+    <table id="san_pham">
+      <phrase id="tblcaption" value="san pham" />
+      <field id="masp">
+        <phrase id="fldcaption" value="Ma SP" />
+      </field>
+      <field id="tensp">
+        <phrase id="fldcaption" value="Ten SP" />
+      </field>
+      <field id="tenct">
+        <phrase id="fldcaption" value="Ten CT" />
+      </field>
+      <field id="noisx">
+        <phrase id="fldcaption" value="Noi SX" />
+      </field>
+      <field id="dungtich">
+        <phrase id="fldcaption" value="Dung Tich" />
+      </field>
+      <field id="gianhap">
+        <phrase id="fldcaption" value="Gia Nhap" />
+      </field>
+      <field id="giaban">
+        <phrase id="fldcaption" value="Gia Ban" />
+      </field>
+      <field id="slton">
+        <phrase id="fldcaption" value="SLTon" />
+      </field>
+      <field id="tenviettat">
+        <phrase id="fldcaption" value="Ten Viet Tat" />
+      </field>
+      <field id="tenloaisp">
+        <phrase id="fldcaption" value="Ten Loai SP" />
+      </field>
+      <field id="tenthuonghieu">
+        <phrase id="fldcaption" value="Ten Thuong Hieu" />
+      </field>
+      <field id="soluong">
+        <phrase id="fldcaption" value="So Luong" />
       </field>
     </table>
     <table id="sanpham">
@@ -644,148 +689,127 @@
         <phrase id="fldcaption" value="Ghi Chu" />
       </field>
     </table>
-    <table id="san_pham">
-      <phrase id="tblcaption" value="san pham" />
-      <field id="masp">
-        <phrase id="fldcaption" value="Ma SP" />
-      </field>
-      <field id="tensp">
-        <phrase id="fldcaption" value="Ten SP" />
-      </field>
-      <field id="tenct">
-        <phrase id="fldcaption" value="Ten CT" />
-      </field>
-      <field id="noisx">
-        <phrase id="fldcaption" value="Noi SX" />
-      </field>
-      <field id="dungtich">
-        <phrase id="fldcaption" value="Dung Tich" />
-      </field>
-      <field id="gianhap">
-        <phrase id="fldcaption" value="Gia Nhap" />
-      </field>
-      <field id="giaban">
-        <phrase id="fldcaption" value="Gia Ban" />
-      </field>
-      <field id="slton">
-        <phrase id="fldcaption" value="SLTon" />
-      </field>
-      <field id="ttct">
-        <phrase id="fldcaption" value="TTCT" />
-      </field>
-      <field id="uudiem">
-        <phrase id="fldcaption" value="Uu Diem" />
-      </field>
-      <field id="nhuocdiem">
-        <phrase id="fldcaption" value="Nhuoc Diem" />
-      </field>
-      <field id="tenviettat">
-        <phrase id="fldcaption" value="Ten Viet Tat" />
-      </field>
-      <field id="tenloaisp">
-        <phrase id="fldcaption" value="Ten Loai SP" />
-      </field>
-      <field id="tenthuonghieu">
-        <phrase id="fldcaption" value="Ten Thuong Hieu" />
-      </field>
-      <field id="soluongban">
-        <phrase id="fldcaption" value="So Luong Ban" />
-      </field>
-    </table>
-    <table id="thf4ng_tin_s1ea3n_ph1ea9m">
-      <phrase id="tblcaption" value="Thông Tin Sản Phẩm" />
-      <field id="masp">
-        <phrase id="fldcaption" value="Ma SP" />
-      </field>
-      <field id="tensp">
-        <phrase id="fldcaption" value="Ten SP" />
-      </field>
-      <field id="tenct">
-        <phrase id="fldcaption" value="Ten CT" />
-      </field>
-      <field id="noisx">
-        <phrase id="fldcaption" value="Noi SX" />
-      </field>
-      <field id="dungtich">
-        <phrase id="fldcaption" value="Dung Tich" />
-      </field>
-      <field id="gianhap">
-        <phrase id="fldcaption" value="Gia Nhap" />
-      </field>
-      <field id="giaban">
-        <phrase id="fldcaption" value="Gia Ban" />
-      </field>
-      <field id="slton">
-        <phrase id="fldcaption" value="SLTon" />
-      </field>
-      <field id="ttct">
-        <phrase id="fldcaption" value="TTCT" />
-      </field>
-      <field id="uudiem">
-        <phrase id="fldcaption" value="Uu Diem" />
-      </field>
-      <field id="nhuocdiem">
-        <phrase id="fldcaption" value="Nhuoc Diem" />
-      </field>
-      <field id="tenviettat">
-        <phrase id="fldcaption" value="Ten Viet Tat" />
-      </field>
-      <field id="tenloaisp">
-        <phrase id="fldcaption" value="Ten Loai SP" />
-      </field>
-      <field id="tenthuonghieu">
-        <phrase id="fldcaption" value="Ten Thuong Hieu" />
-      </field>
-      <field id="soluongban">
-        <phrase id="fldcaption" value="So Luong Ban" />
-      </field>
-    </table>
     <table id="thf4ng_tin_te0i_kho1ea3n">
       <phrase id="tblcaption" value="Thông Tin Tài Khoản" />
       <field id="matk">
-        <phrase id="fldcaption" value="Ma TK" />
+        <phrase id="fldcaption" value="Mã TK" />
       </field>
       <field id="tendangnhap">
-        <phrase id="fldcaption" value="Ten Dang Nhap" />
+        <phrase id="fldcaption" value="Tên Đăng Nhập" />
       </field>
       <field id="matkhau">
-        <phrase id="fldcaption" value="Mat Khau" />
+        <phrase id="fldcaption" value="Mật Khẩu" />
       </field>
       <field id="loaitk">
-        <phrase id="fldcaption" value="Loai TK" />
+        <phrase id="fldcaption" value="Loại TK" />
       </field>
       <field id="_email">
         <phrase id="fldcaption" value="Email" />
       </field>
       <field id="hoten">
-        <phrase id="fldcaption" value="Ho Ten" />
+        <phrase id="fldcaption" value="Họ Tên" />
       </field>
       <field id="diachi">
-        <phrase id="fldcaption" value="Dia Chi" />
+        <phrase id="fldcaption" value="Địa Chỉ" />
       </field>
       <field id="ngaysinh">
-        <phrase id="fldcaption" value="Ngay Sinh" />
+        <phrase id="fldcaption" value="Ngày Sinh" />
       </field>
       <field id="sdt">
-        <phrase id="fldcaption" value="SDT" />
+        <phrase id="fldcaption" value="SĐT" />
       </field>
       <field id="cmnd">
         <phrase id="fldcaption" value="CMND" />
       </field>
       <field id="diemthuong">
-        <phrase id="fldcaption" value="Diem Thuong" />
+        <phrase id="fldcaption" value="Điểm Thưởng" />
       </field>
       <field id="tenloaitk">
-        <phrase id="fldcaption" value="Ten Loai TK" />
+        <phrase id="fldcaption" value="Tên Loại TK" />
       </field>
       <field id="chietkhau">
-        <phrase id="fldcaption" value="Chiet Khau" />
+        <phrase id="fldcaption" value="Chiết Khấu" />
       </field>
       <field id="diemchuan">
-        <phrase id="fldcaption" value="Diem Chuan" />
+        <phrase id="fldcaption" value="Điểm Chuẩn" />
       </field>
       <field id="ghichu">
-        <phrase id="fldcaption" value="Ghi Chu" />
+        <phrase id="fldcaption" value="Ghi Chú" />
+      </field>
+    </table>
+    <table id="thf4ng_tin_s1ea3n_ph1ea9m">
+      <phrase id="tblcaption" value="Thông Tin Sản Phẩm" />
+      <field id="masp">
+        <phrase id="fldcaption" value="Mã SP" />
+      </field>
+      <field id="tensp">
+        <phrase id="fldcaption" value="Tên SP" />
+      </field>
+      <field id="tenct">
+        <phrase id="fldcaption" value="Tên Chi Tiết" />
+      </field>
+      <field id="noisx">
+        <phrase id="fldcaption" value="Nơi Sản Xuất" />
+      </field>
+      <field id="dungtich">
+        <phrase id="fldcaption" value="Dung Tích" />
+      </field>
+      <field id="gianhap">
+        <phrase id="fldcaption" value="Giá Nhập" />
+      </field>
+      <field id="giaban">
+        <phrase id="fldcaption" value="Giá Bán" />
+      </field>
+      <field id="slton">
+        <phrase id="fldcaption" value="Số Lượng Tồn" />
+      </field>
+      <field id="tenviettat">
+        <phrase id="fldcaption" value="Tên Viết Tắt" />
+      </field>
+      <field id="tenloaisp">
+        <phrase id="fldcaption" value="Tên Loại SP" />
+      </field>
+      <field id="tenthuonghieu">
+        <phrase id="fldcaption" value="Tên Thương Hiệu" />
+      </field>
+      <field id="soluong">
+        <phrase id="fldcaption" value="Số Lượng Bán" />
+      </field>
+    </table>
+    <table id="hoa_don">
+      <phrase id="tblcaption" value="hoa don" />
+      <field id="mahd">
+        <phrase id="fldcaption" value="Ma HD" />
+      </field>
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="ngaylap">
+        <phrase id="fldcaption" value="Ngay Lap" />
+      </field>
+      <field id="tongtien">
+        <phrase id="fldcaption" value="Tong Tien" />
+      </field>
+      <field id="tinhtrang">
+        <phrase id="fldcaption" value="Tinh Trang" />
+      </field>
+    </table>
+    <table id="doanh_thu">
+      <phrase id="tblcaption" value="Doanh Thu" />
+      <field id="mahd">
+        <phrase id="fldcaption" value="Ma HD" />
+      </field>
+      <field id="matk">
+        <phrase id="fldcaption" value="Ma TK" />
+      </field>
+      <field id="ngaylap">
+        <phrase id="fldcaption" value="Ngày" />
+      </field>
+      <field id="tongtien">
+        <phrase id="fldcaption" value="Số Tiền" />
+      </field>
+      <field id="tinhtrang">
+        <phrase id="fldcaption" value="Tinh Trang" />
       </field>
     </table>
   </project>

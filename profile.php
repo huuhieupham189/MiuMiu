@@ -12,7 +12,7 @@
           <?php if(isset($_GET['id'])) 
                   {
                     $id=$_GET['id'];
-                    $sql="select * from taikhoan where matk='$id'";
+                    $sql="select * from taikhoan tk, loaitk ltk where tk.loaitk=ltk.maloaitk and tk.matk='$id'";
                     $ketqua=$conn->query($sql);
                     
                   while($dong=$ketqua->fetch_array()){
@@ -27,17 +27,17 @@
           <div class='panel panel-default'>
             <div class='panel-heading'>Địa chỉ nhận hàng mặc định <i class='glyphicon glyphicon-map-marker'></i></div>
             <div class='panel-body'>".$dong['DiaChi']."</div>
-          </div>";} }?>
+          </div>
           
           
-          <ul class="list-group">
-            <li class="list-group-item text-muted">Thống Kê <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Số Mặt Hàng Đã Mua</strong></span> 125</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Số Mặt Hàng Kí Gửi</strong></span> 78</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Tổng Điểm Tích Lũy</strong></span> 13000</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Loại Tài Khoản</strong></span> Kim Cương </li>
+          <ul class='list-group'>
+            <li class='list-group-item text-muted'>Thống Kê <i class='fa fa-dashboard fa-1x'></i></li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Số Mặt Hàng Đã Mua</strong></span> 125</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Số Mặt Hàng Kí Gửi</strong></span> 0</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Tổng Điểm Tích Lũy</strong></span> ".$dong['DiemThuong']."</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Loại Tài Khoản</strong></span> ".$dong['TenLoaiTK']." </li>
             
-          </ul> 
+          </ul> ";}}?>
                
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
