@@ -1,4 +1,3 @@
-
 <?php
 	if(isset($_GET['trang'])){
 		$trang=$_GET['trang'];
@@ -8,13 +7,13 @@
 	if($trang =='' || $trang =='1'){
 		$trang1=0;
 	}else{
-		$trang1=($trang*5)-5;
+		$trang1=($trang*10)-10;
 	}
 	$sql_lietkesp=" select TenSP,sanpham.MaSP,HinhAnh,GiaNhap,GiaBan,SLTon,thuonghieu.TenThuongHieu,loaisp.TenLoaiSP,sum(cthd.SoLuong) as soluong
 from sanpham left join cthd on sanpham.MaSP=cthd.MaSP ,thuonghieu,loaisp
 where loaisp.maloaisp=sanpham.maloaisp and thuonghieu.mathuonghieu=sanpham.mathuonghieu 
 GROUP by TenSP,sanpham.MaSP,HinhAnh,GiaNhap,GiaBan,SLTon,thuonghieu.TenThuongHieu,loaisp.TenLoaiSP
-order by soluong DESC limit $trang1,5";
+order by soluong DESC limit $trang1,10";
 	$row_lietkesp=$conn->query($sql_lietkesp);
 
 ?>
@@ -68,7 +67,7 @@ order by soluong DESC limit $trang1,5";
 	$sql_trang=$conn->query("select * from sanpham");
 	$count_trang=$sql_trang->num_rows;
     
-	$a=ceil($count_trang/5);
+	$a=ceil($count_trang/10);
 	for($b=1;$b<=$a;$b++){
 		
 		if($trang==$b){

@@ -46,7 +46,19 @@
 					}elseif(($tam == 'gallery')&&($tam1 == 'sua')){
 						include('modules/gallery/sua.php');
 
-					}else{
+					}elseif(($tam == 'nhansu')&&($tam1 == 'lietke')){
+						include('modules/quanlytaikhoan/lietke.php');}
+					elseif(($tam == 'nhansu')&&($tam1 == 'sua')){
+						include('modules/quanlytaikhoan/sua.php');}
+					elseif(($tam == 'nhansu')&&($tam1 == 'them')){
+						include('modules/quanlytaikhoan/them.php');}
+						elseif(($tam == 'nhaphanphoi')&&($tam1 == 'lietke')){
+						include('modules/quanlynhaphanphoi/lietke.php');}
+					elseif(($tam == 'nhaphanphoi')&&($tam1 == 'sua')){
+						include('modules/quanlynhaphanphoi/sua.php');}
+					elseif(($tam == 'nhaphanphoi')&&($tam1 == 'them')){
+						include('modules/quanlynhaphanphoi/them.php');}
+					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
 			?>
