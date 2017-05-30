@@ -24,9 +24,8 @@ order by soluong DESC limit $trang1,10";
 
 <table  border="1">
   <tr>
-    <td>ID</td>
-    <td>Tên sản phẩm</td>
-    <td>Mã sp</td>
+    <td>STT</td>
+    <td>Tên sản phẩm</td>    
     <td>Hình ảnh</td>
     <td>Giá nhập</td>
     <td>Giá bán</td>
@@ -44,7 +43,7 @@ order by soluong DESC limit $trang1,10";
   	
     <td><?php  echo $i;?></td>
     <td><?php echo $dong['TenSP'] ?></td>
-    <td><?php echo $dong['MaSP'] ?></td>
+   
     <td><img src="modules/quanlysanpham/uploads/<?php echo $dong['HinhAnh'] ?>" width="80" height="80" />
     <a href="index.php?quanly=gallery&ac=lietke&id=<?php echo $dong['MaSP'] ?>" style="text-align:center;text-decoration:none; font-size:18px;color:#06F;">Gallery</a>
     </td>

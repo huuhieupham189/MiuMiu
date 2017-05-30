@@ -40,7 +40,7 @@
   <tr>
   	
     
-    <td><?php echo $dong['MaTK'] ?></td>
+    <td><?php echo $i ?></td>
     <td><?php echo $dong['TenDangNhap'] ?></td>
     <td><?php echo $dong['MatKhau'] ?></td>
     <td><?php echo $dong['TenLoaiTK'] ?></td>

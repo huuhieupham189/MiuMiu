@@ -34,7 +34,7 @@
 								<img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Xin chào,</small>
-									Bun
+									<?php echo $_SESSION['dangnhap'];  ?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -42,14 +42,7 @@
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 
-								<li>
-									<a href="profile.html">
-										<i class="ace-icon fa fa-user"></i>
-										Thông Tin
-									</a>
-								</li>
-
-								<li class="divider"></li>
+								
 
 								<li>
 									<a href="#">

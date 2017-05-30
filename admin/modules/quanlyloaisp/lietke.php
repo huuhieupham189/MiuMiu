@@ -9,7 +9,7 @@
 
 <table width="100%" border="1">
   <tr>
-    <td>ID</td>
+    <td>STT</td>
     <td>Tên loại sản phẩm</td>
     <td>Ghi chú</td>
     <td colspan="2">Quản lý</td>
