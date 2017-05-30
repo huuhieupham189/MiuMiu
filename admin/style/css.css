@@ -1,6 +1,6 @@
 /* CSS Document */
 body{
-	background:#fff;
+	background-color: #e4e6e9;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 *{
@@ -10,8 +10,8 @@ body{
 table{
 	border-collapse:collapse;
 	width:100%;
-	background-color:#FC6;
-	border:1px solid #F00;
+	background-color:ghostwhite;
+	border:1px solid black;
 }
 textarea{
 	width:100%;
@@ -125,7 +125,7 @@ input{
 	padding-left:10px;
 	color:#000;
 	margin-top:2px;
-	background:#F90;
+	background-color:ghostwhite
 }
 #timkiem{
 	width:200px;

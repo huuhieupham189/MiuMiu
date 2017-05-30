@@ -20,9 +20,9 @@ order by soluong DESC limit $trang1,10";
 
 <div class="button_themsp">
 <a href="index.php?quanly=sanpham&ac=them">Thêm Mới</a> 
-</div>
 
-<table width="100%" border="1">
+
+<table  border="1">
   <tr>
     <td>ID</td>
     <td>Tên sản phẩm</td>
@@ -79,4 +79,4 @@ order by soluong DESC limit $trang1,10";
 	}
 	}
 	?>
-</div>
+</div></div>

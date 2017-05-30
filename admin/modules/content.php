@@ -1,12 +1,14 @@
- <div class="content">
-    	<div class="box_contains">
+
+
         	<?php
 				if(isset($_GET['quanly'])&&$_GET['ac']){
 					$tam=$_GET['quanly'];
 					$tam1=$_GET['ac'];
 					}else{
-						$tam='';
-					}if(($tam == 'loaisp')&&($tam1 == 'them')){
+						$tam='thongso';
+						$tam1='lietke';}
+					
+					if(($tam == 'loaisp')&&($tam1 == 'them')){
 						include('modules/quanlyloaisp/them.php');
 					}elseif(($tam == 'loaisp')&&($tam1 == 'lietke')){
 						
@@ -58,11 +60,13 @@
 						include('modules/quanlynhaphanphoi/sua.php');}
 					elseif(($tam == 'nhaphanphoi')&&($tam1 == 'them')){
 						include('modules/quanlynhaphanphoi/them.php');}
+					elseif(($tam == 'thongso')&&($tam1 == 'lietke')){
+						include('modules/thongso.php');}
+					
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
+					
 			?>
         
-        </div>
-    </div>
-    <div class="clear"></div>
+    
