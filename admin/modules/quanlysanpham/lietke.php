@@ -10,10 +10,15 @@
 	}else{
 		$trang1=($trang*5)-5;
 	}
-	$sql_lietkesp="select * from sanpham,thuonghieu,loaisp where loaisp.maloaisp=sanpham.maloaisp and thuonghieu.mathuonghieu=sanpham.mathuonghieu order by sanpham.MaSP desc limit $trang1,5";
+	$sql_lietkesp=" select TenSP,sanpham.MaSP,HinhAnh,GiaNhap,GiaBan,SLTon,thuonghieu.TenThuongHieu,loaisp.TenLoaiSP,sum(cthd.SoLuong) as soluong
+from sanpham left join cthd on sanpham.MaSP=cthd.MaSP ,thuonghieu,loaisp
+where loaisp.maloaisp=sanpham.maloaisp and thuonghieu.mathuonghieu=sanpham.mathuonghieu 
+GROUP by TenSP,sanpham.MaSP,HinhAnh,GiaNhap,GiaBan,SLTon,thuonghieu.TenThuongHieu,loaisp.TenLoaiSP
+order by soluong DESC limit $trang1,5";
 	$row_lietkesp=$conn->query($sql_lietkesp);
 
 ?>
+
 <div class="button_themsp">
 <a href="index.php?quanly=sanpham&ac=them">Thêm Mới</a> 
 </div>

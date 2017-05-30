@@ -25,7 +25,7 @@
 					if(isset($_POST['login'])){
 						$username=$_POST['user'];
 						$password=$_POST['pass'];
-						$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' limit 1";
+						$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk<6 limit 1";
 						
 						$result=$conn->query($sql);
 						while($dong=$result->fetch_array()) {$_SESSION['matk']=$dong['MaTK'];}

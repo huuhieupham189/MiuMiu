@@ -15,7 +15,7 @@
 </head>
 <?php
  session_start();
- if(!isset($_SESSION['dangnhap'])){
+ if(!isset($_SESSION['dangnhap'])&&$_SESSION['loaitk']){
 	 header('location:login.php');
  }
 ?>

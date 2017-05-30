@@ -27,12 +27,16 @@ session_start();
 if(isset($_POST['login'])){
 	$username=$_POST['user'];
 	$password=$_POST['pass'];
-	$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk='1' limit 1";
+	$sql="SELECT * from taikhoan where tendangnhap='$username' and matkhau='$password' and loaitk>=6 limit 1";
 	
 	$result=$conn->query($sql);
 	if($result->num_rows > 0){
-		$_SESSION['dangnhap']=$username;
-		header('location:index.php');
+		while($dong=$result->fetch_array())
+		{
+			$_SESSION["dangnhap"]=$dong["HoTen"];
+			$_SESSION["loaitk"]=$dong["LoaiTK"];
+		}
+		header('location:index.php?id='.$_SESSION["loaitk"].'');
 	}
 	
 }
