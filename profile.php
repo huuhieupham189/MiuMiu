@@ -68,6 +68,7 @@
                       <th>Thanh Toán</th>
                       <th>Tình Trạng </th>
                       <th>Ghi Chú </th>
+                      <th colspan="2">Quản lý</th>
                     </tr>
                   </thead>
                   <?php
@@ -84,8 +85,13 @@
                       <td>".number_format($dong['TongTien'])."VND</td>
                       <td>".number_format($dong['TongTien'])."VND</td>
                       <td>".$dong['TinhTrang']."</td>
-                      <td>".$dong['GhiChu']."</td>
-                    </tr>";}
+                      <td>".$dong['GhiChu']."</td>";
+                      if($dong['TinhTrang']=='Chờ')
+                      echo"
+                      <td><a href='suahoadon.php?id=".$dong['MaHD']."' ><center><img src='admin/imgs/edit.png' width='30' height='30' /></center></a></td>
+                     <td><a href='xuly.php?id=".$dong['MaHD']."' class='delete_link'><center><img src='admin/imgs/delete.png' width='30' height='30'   /></center></a></td>
+                     ";
+                   echo" </tr>";}
                    ?> 
                    
                   </tbody>

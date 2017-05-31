@@ -25,10 +25,10 @@ include('config.php');
 								<div id='Eyes' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Kẻ Mày</a></li>
-											<li><a href=''>Kẻ Mắt</a></li>
-											<li><a href=''>Phấn Mắt</a></li>
-											<li><a href=''>Mascara</a></li>
+											<li><a href='index.php?xem=sanpham&id=7'>Kẻ Mày</a></li>
+											<li><a href='index.php?xem=sanpham&id=8'>Kẻ Mắt</a></li>
+											<li><a href='index.php?xem=sanpham&id=9'>Phấn Mắt</a></li>
+											<li><a href='index.php?xem=sanpham&id=10'>Mascara</a></li>
 										</ul>
 									</div>
 								</div>
@@ -45,10 +45,10 @@ include('config.php');
 								<div id='Face' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Kem BB/CC</a></li>
-											<li><a href=''>Kem Nền</a></li>
-											<li><a href=''>Phấn</a></li>
-											<li><a href=''>Tạo Khối</a></li>
+											<li><a href='index.php?xem=sanpham&id=3'>Kem BB/CC</a></li>
+											<li><a href='index.php?xem=sanpham&id=4'>Kem Nền</a></li>
+											<li><a href='index.php?xem=sanpham&id=5'>Phấn</a></li>
+											<li><a href='index.php?xem=sanpham&id=6'>Tạo Khối</a></li>
 											
 										</ul>
 									</div>
@@ -67,8 +67,8 @@ include('config.php');
 								<div id='Lip' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href=''>Son Màu </a></li>
-											<li><a href=''>Son Dưỡng </a></li>
+											<li><a href='index.php?xem=sanpham&id=1'>Son Môi </a></li>
+											<li><a href='index.php?xem=sanpham&id=2'>Son Dưỡng </a></li>
 										</ul>
 
 									</div>
@@ -78,12 +78,12 @@ include('config.php');
 							
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
-									<h4 class='panel-title'><a href='#'>Tẩy Trang</a></h4>
+									<h4 class='panel-title'><a href='index.php?xem=sanpham&id=11'>Tẩy Trang</a></h4>
 								</div>
 							</div>
 							<div class='panel panel-default'>
 								<div class='panel-heading'>
-									<h4 class='panel-title'><a href='#'>Mặt Nạ</a></h4>
+									<h4 class='panel-title'><a href='index.php?xem=sanpham&id=12'>Mặt Nạ</a></h4>
 								</div>
 							</div>
 							

@@ -68,7 +68,7 @@
 						$tendangnhap=$_POST['tendangnhap'];
 						$matkhau=$_POST['matkhau'];
 						$email=$_POST['email'];
-					$sqlstr="INSERT into taikhoan (tendangnhap,matkhau,loaitk,email) VALUE ('$tendangnhap','$matkhau','2','$email')";
+					$sqlstr="INSERT into taikhoan (tendangnhap,matkhau,loaitk,email) VALUE ('$tendangnhap','$matkhau','1','$email')";
 					$result=$conn->query($sqlstr);
 					if($result)
 					echo "<p><a href='#'>Chúc mừng bạn đăng kí thành công!</a></p>";
