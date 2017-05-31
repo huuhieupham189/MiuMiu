@@ -4,6 +4,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	   <link rel="shortcut icon" href="../images/icon/logo.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<link rel="stylesheet" href="../assets/css/bootstrap.css" />
 		<link rel="stylesheet" href="../assets/css/font-awesome.css" />

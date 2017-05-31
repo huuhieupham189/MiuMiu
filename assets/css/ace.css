@@ -1124,7 +1124,7 @@ pre.prettyprint {
   -webkit-box-shadow: none;
   box-shadow: none;
   min-height: 45px;
-  background: #292c2f;
+  background-color: #292c2f;
 }
 .navbar .navbar-text,
 .navbar .navbar-link {

@@ -19,10 +19,10 @@
 
 									Xin chào
 									<strong class="green">
-										<?php echo $_SESSION['dangnhap'] ?>
+										<?php echo $_SESSION['dangnhap']?>
 										
 									</strong>,
-									chúc bạn một ngày tốt lành.
+									chúc bạn một ngày tốt lành!
 								</div>
 
 								<?php include('thongkechitiet.php'); ?>
