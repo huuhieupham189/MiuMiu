@@ -19,7 +19,7 @@
                     echo"
             <li class='list-group-item text-muted'>Thông Tin Cá Nhân</li>
             <li class='list-group-item text-right'><span class='pull-left'><strong>Tên </strong></span>".$dong['HoTen']."</li>
-            <li class='list-group-item text-right'><span class='pull-left'><strong>Ngày Sinh</strong></span>".$dong['NgaySinh']."</li>
+            <li  class='list-group-item text-right'><span class='pull-left'><strong>Ngày Sinh</strong></span>".$dong['NgaySinh']."</li>
             <li class='list-group-item text-right'><span class='pull-left'><strong>Email</strong></span>".$dong['Email']."</li>'
            
           </ul> 
@@ -74,9 +74,13 @@
                   <?php
                   $sql="select * from taikhoan tk,hoadon hd where tk.matk=hd.matk and tk.matk='$id' ";
                   $kq=$conn->query($sql);
+                 
                   $stt=0;
                   while($dong=$kq->fetch_array()){
                   $stt++;
+                  $sql1 = "select * from hoadon where mahd='".$dong['MaHD']."' ";
+                	$row=$conn->query($sql1);
+	                $dong1=$row->fetch_array();
                   echo"<tbody id='items'>
                     <tr>
                       <td>".$stt."</td>
@@ -88,9 +92,73 @@
                       <td>".$dong['GhiChu']."</td>";
                       if($dong['TinhTrang']=='Chờ')
                       echo"
-                      <td><a href='suahoadon.php?id=".$dong['MaHD']."' ><center><img src='admin/imgs/edit.png' width='30' height='30' /></center></a></td>
+                      <td><a data-toggle='modal' data-target='#myModal".$dong['MaHD']."' ><center><img src='admin/imgs/edit.png' width='30' height='30' /></center></a></td>
                      <td><a href='xuly.php?id=".$dong['MaHD']."' class='delete_link'><center><img src='admin/imgs/delete.png' width='30' height='30'   /></center></a></td>
-                     ";
+                     
+                     <div id='myModal".$dong['MaHD']."' class='modal fade' role='dialog'>
+                        <div class='modal-dialog'>
+                        
+                            <!-- Modal content-->
+                            <div class='modal-content'>
+                              <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                  <h4 class='modal-title'>Chỉnh Sửa Hóa Đơn</h4>
+                              </div>
+                           <div class='modal-body'>
+                                <form action='xuly.php?id=".$dong['MaHD']."' method='post' enctype='multipart/form-data'>
+                                    <div>
+                                        <div class='col-xs-6'>
+                                            <label for='MaVC'><h4>Mã Vận Chuyển</h4></label>
+                                            <input type='text' class='form-control' name='mavc' id='MaVC' value='".$dong1['MaVC']."' title=''>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <div class='col-xs-6'>
+                                            <label for='MaTT'><h4>Mã Thanh Toán</h4></label>
+                                            <input type='text' class='form-control' name='matt' id='MaTT' value='".$dong1['MaTT']."' title=''>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <div class='col-xs-6'>
+                                            <label for='SDT'><h4>Ngày Lập</h4></label>
+                                            <input type='date' class='form-control' name='ngaylap' id='NgayLap' value='".$dong1['NgayLap']."' title=''>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <div class='col-xs-6'>
+                                            <label for='TongTien'><h4>Tổng Tiền Thanh Toán</h4></label>
+                                            <input type='text' class='form-control' name='tongtien' id='TongTien' value='".$dong1['TongTien']."' title=''>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <div class='col-xs-6'>
+                                            <label for='DiaChi'><h4>Địa Chỉ Giao Hàng</h4></label>
+                                            <input type='text' class='form-control' name='diachi' id='DiaChi' value='".$dong1['DiaChi']."' title='enter your email.'>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>      
+                                        <div class='col-xs-6'>
+                                            <label for='TinhTrang'><h4>Tình Trạng</h4></label>
+                                            <input type='text' class='form-control' id='tinhtrang' name='tinhtrang' value='".$dong1['TinhTrang']."' title=''>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>      
+                                        <div class='col-xs-12'>
+                                            <label for='GhiChu'><h4>Ghi Chú</h4></label>
+                                            <input type='text' class='form-control' id='ghichu' name='ghichu' value='".$dong1['GhiChu']."' title=''>
+                                        </div>
+                                    </div>
+                                    <input type='submit' name='sua' value='Sửa hóa đơn'>
+                              </form>
+                                
+                            </div>
+                            </div>
+                          
+                        </div>
+                      </div>
+                    </div>                   
+                     
+                    " ;
                    echo" </tr>";}
                    ?> 
                    
@@ -123,7 +191,7 @@
             		
                	
                   <hr>
-                  <form class="form" action="" method="post" id="registrationForm">
+                  <form class="form" action="xulyprofile.php" method="post" id="registrationForm">
                       <div class="form-group">
                           <?php
                             $sql="select * from taikhoan where matk='$id'";
@@ -139,7 +207,7 @@
                           
                           <div class='col-xs-6'>
                             <label for='NgaySinh'><h4>Ngày Sinh</h4></label>
-                              <input type='text' class='form-control' name='ngaysinh' id='NgaySinh' value='".$dong['NgaySinh']."' title=''>
+                              <input type='date' class='form-control' name='ngaysinh' id='NgaySinh' value='".$dong['NgaySinh']."' title=''>
                           </div>
                       </div>
           
@@ -202,17 +270,3 @@
         </div><!--/col-9-->
     </div><!--/row-->
 </section>
-<?php
-if(isset($_POST['save']))
-{
-  $hoten=$_POST['hoten'];
-  $ngaysinh=$_POST['ngaysinh'];
-  
-  $sdt=$_POST['sdt'];
-  $diachi=$_POST['diachi'];
-  $email=$_POST['email'];
-  $cmnd=$_POST['cmnd'];
-  $sql="update taikhoan set hoten='$hoten',ngaysinh='$ngaysinh',sdt='$sdt',diachi='$diachi',email='$email',cmnd='$cmnd' where matk='$id'";
-  $conn->query($sql);
-}
-?>

@@ -6,7 +6,7 @@
 							  from cthd ct,sanpham sp
 								where ct.masp=sp.masp
 								group by sp.masp 
-								ORDER BY ct.SoLuong  DESC limit 6';
+								ORDER BY ct.SoLuong  DESC limit 9';
 				$result=$conn->query($sql);
 				if ($result->num_rows > 0) {
 				while($row = $result->fetch_array()){        		

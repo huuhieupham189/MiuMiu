@@ -140,14 +140,14 @@
 							$sql="select * from taikhoan tk ,loaitk ltk where tk.loaitk=ltk.maloaitk and tendangnhap='".$_SESSION['ten']."'";
 							$giamgia=$conn->query($sql);
 							while($dong=$giamgia->fetch_array()){
-								$a=$dong['ChietKhau'];
+								$a=$dong['ChietKhau']*100;
 							}
 							echo $a."%";
 							?>
 							</span></li>
 							<li>Phí Vận Chuyển  <span>0</span></li>
 							<li>Tổng Tiền <span><?php if(isset($_SESSION['giohang'])){
-							$tongtien=$thanhtien*(1-$a);
+							$tongtien=$thanhtien*(1-$a/100);
 							echo number_format($tongtien)."VND ";
 							}else{ $tongtien=0; echo "0VND";}
 							 ?></span></li>
@@ -166,8 +166,13 @@
 									$ghichu=$_POST['ghichu'];
 									$sqltr="insert into hoadon (MaVC,MaTT,MaTK,NgayLap,TongTien,DiaChi,TinhTrang,GhiChu)  values('$vanchuyen','$loaithanhtoan','$matk','".date('Y-m-d')."','$tongtien','$diachi','Chờ','$ghichu')";
 									$ketqua=$conn->query($sqltr);
+									$lastid=$conn->insert_id;
+									$diemthuong = $tongtien / 10000;
+									$sqlupdate="update taikhoan set diemthuong= diemthuong + $diemthuong where taikhoan.MaTK=$matk";
+									$kq=$conn->query($sqlupdate);
 									if($ketqua){
-										$lastid=$conn->insert_id;
+										
+										
 										foreach($_SESSION['giohang'] as $list){
 											$sql="select * from sanpham where masp='".$list['id']."'";
 											$sanpham=$conn->query($sql);

@@ -13,9 +13,9 @@ include("config.php");
 	
 		//echo $mavc." ".$matt." ".$ngaylap." ".$tongtien." ".$diachi." ".$tinhtrang." ".$ghichu;
 		$sql_sua = "update hoadon set mavc='$mavc',matt='$matt',ngaylap='$ngaylap',tongtien='$tongtien',diachi='$diachi',tinhtrang='$tinhtrang',ghichu='$ghichu' where mahd='$id'";
-		$conn->query($sql_sua);
-        
-		header('location:index.php?xem=profile&id='.$_SESSION['matk'].'');
+	
+        if($conn->query($sql_sua)) {
+		header('location:index.php?xem=profile&id='.$_SESSION['matk'].'');}
         }
      else{
      
@@ -23,6 +23,6 @@ include("config.php");
          $sql="delete from hoadon where mahd='$id'";$sql1="delete from cthd where mahd='$id'";
          $conn->query($sql);
          $conn->query($sql1);
-       header('location:../../index.php?xem=profile&id='.$_SESSION['matk'].'');
+      header('location:index.php?xem=profile&id='.$_SESSION['matk'].'');
      }
 ?>

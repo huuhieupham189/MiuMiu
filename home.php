@@ -65,7 +65,7 @@
 							  from cthd ct,sanpham sp
 								where ct.masp=sp.masp
 								group by sp.masp 
-								ORDER BY ct.SoLuong  DESC limit 3";
+								ORDER BY ct.SoLuong  DESC limit 9";
 						$ketqua=$conn->query($sql);
 						while($dong=$ketqua->fetch_array()){
 						echo"<div class='col-sm-4'>

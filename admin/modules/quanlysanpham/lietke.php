@@ -20,6 +20,7 @@ order by soluong DESC limit $trang1,10";
 
 <div class="button_themsp">
 <a href="index.php?quanly=sanpham&ac=them">Thêm Mới</a> 
+</div>
 <div>
 
 
