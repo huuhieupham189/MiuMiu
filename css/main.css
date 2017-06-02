@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
+  background-image : url('../images/bg.jpg');
   position: relative;
   font-weight:400px;
 }

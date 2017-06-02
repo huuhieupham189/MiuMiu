@@ -68,12 +68,34 @@
 								ORDER BY ct.SoLuong  DESC limit 9";
 						$ketqua=$conn->query($sql);
 						while($dong=$ketqua->fetch_array()){
+						$sqll="select TiSo from khuyenmai where MaSP=".$dong['masp']." and NgayKT >= CURDATE()";
+						$kq=$conn->query($sqll);
+						$km=0;
+						while ($d=$kq->fetch_array()) {
+							   $km=$d['TiSo'];
+							   $tile=$km*100;}
 						echo"<div class='col-sm-4'>
 							<div class='product-image-wrapper'>
 								<div class='single-products'>
-										<div class='productinfo text-center'>
+										<div class='productinfo text-center'>";
+										if ($km > 0) 
+										echo"
+										<img style='width:100px; position:absolute;margin-left:150px;'src='icon.ico'>
 											<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>
-										<h2>".number_format($dong['GiaBan'])."VND"."</h2>
+											";
+										else echo"<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>";
+											$giakm=$dong['GiaBan'];
+						 				if ($km > 0) 	
+						 					{ $giakm= $giakm*(1-$km);
+						 					echo"	
+												<span>
+													
+													<h2>".number_format($giakm)." VNĐ </h2>
+												</span>";}
+											else echo"<span>
+															<h2>".number_format($dong['GiaBan'])." VNĐ</h2>
+													</span>";
+										echo"
 										<p><strong>".$dong['TenSP']."<strong></p>
 										<p>".$dong['TenCT']."</p>
 										

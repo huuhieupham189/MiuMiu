@@ -14,7 +14,11 @@
                     $id=$_GET['id'];
                     $sql="select * from taikhoan tk, loaitk ltk where tk.loaitk=ltk.maloaitk and tk.matk='$id'";
                     $ketqua=$conn->query($sql);
-                    
+                    $sqlsl="select taikhoan.MaTk, sum(SoLuong) as soluongban from taikhoan,hoadon,cthd where hoadon.matk=taikhoan.matk and cthd.mahd=hoadon.mahd and taikhoan.matk='$id' group by taikhoan.MaTK ";
+                    $kqq=$conn->query($sqlsl);
+                    while ($don=$kqq->fetch_array())
+                    {   $sl= $don['soluongban'];
+                    }
                   while($dong=$ketqua->fetch_array()){
                     echo"
             <li class='list-group-item text-muted'>Thông Tin Cá Nhân</li>
@@ -32,7 +36,7 @@
           
           <ul class='list-group'>
             <li class='list-group-item text-muted'>Thống Kê <i class='fa fa-dashboard fa-1x'></i></li>
-            <li class='list-group-item text-right'><span class='pull-left'><strong>Số Mặt Hàng Đã Mua</strong></span> 125</li>
+            <li class='list-group-item text-right'><span class='pull-left'><strong>Số Mặt Sản Phẩm Đã Mua</strong></span> ".$sl."</li>
             <li class='list-group-item text-right'><span class='pull-left'><strong>Số Mặt Hàng Kí Gửi</strong></span> 0</li>
             <li class='list-group-item text-right'><span class='pull-left'><strong>Tổng Điểm Tích Lũy</strong></span> ".$dong['DiemThuong']."</li>
             <li class='list-group-item text-right'><span class='pull-left'><strong>Loại Tài Khoản</strong></span> ".$dong['TenLoaiTK']." </li>
@@ -78,7 +82,7 @@
                   $stt=0;
                   while($dong=$kq->fetch_array()){
                   $stt++;
-                  $sql1 = "select * from hoadon where mahd='".$dong['MaHD']."' ";
+                  $sql1 = "select * from hoadon, vanchuyen, thanhtoan where hoadon.MaVC=vanchuyen.MaVC and hoadon.MaTT = thanhtoan.MaTT and mahd='".$dong['MaHD']."' ";
                 	$row=$conn->query($sql1);
 	                $dong1=$row->fetch_array();
                   echo"<tbody id='items'>
@@ -108,26 +112,26 @@
                                 <form action='xuly.php?id=".$dong['MaHD']."' method='post' enctype='multipart/form-data'>
                                     <div>
                                         <div class='col-xs-6'>
-                                            <label for='MaVC'><h4>Mã Vận Chuyển</h4></label>
-                                            <input type='text' class='form-control' name='mavc' id='MaVC' value='".$dong1['MaVC']."' title=''>
+                                            <label for='MaVC'><h4>Loại Vận Chuyển</h4></label>
+                                            <input type='text' class='form-control' name='mavc' id='MaVC' value='".$dong1['TenVC']."' title=''>
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <div class='col-xs-6'>
-                                            <label for='MaTT'><h4>Mã Thanh Toán</h4></label>
-                                            <input type='text' class='form-control' name='matt' id='MaTT' value='".$dong1['MaTT']."' title=''>
+                                            <label for='MaTT'><h4>Loại Thanh Toán</h4></label>
+                                            <input type='text' class='form-control' name='matt' id='MaTT' value='".$dong1['TenTT']."' title='' >
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <div class='col-xs-6'>
                                             <label for='SDT'><h4>Ngày Lập</h4></label>
-                                            <input type='date' class='form-control' name='ngaylap' id='NgayLap' value='".$dong1['NgayLap']."' title=''>
+                                            <input type='date' class='form-control' name='ngaylap' id='NgayLap' value='".$dong1['NgayLap']."' title=''disabled>
                                         </div>
                                     </div>
                                     <div class='form-group'>
                                         <div class='col-xs-6'>
                                             <label for='TongTien'><h4>Tổng Tiền Thanh Toán</h4></label>
-                                            <input type='text' class='form-control' name='tongtien' id='TongTien' value='".$dong1['TongTien']."' title=''>
+                                            <input type='text' class='form-control' name='tongtien' id='TongTien' value='".$dong1['TongTien']."' title=''disabled>
                                         </div>
                                     </div>
                                     <div class='form-group'>

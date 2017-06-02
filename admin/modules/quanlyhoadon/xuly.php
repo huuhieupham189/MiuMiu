@@ -17,9 +17,37 @@ include("../config.php");
         }
      if($_GET['value']==1)
      {
-        
-         $sql="update hoadon set tinhtrang='Đã duyệt' where mahd='$id'";
+         
+         // Update Trang Thai = Da Duyet
+         $sql="update hoadon set tinhtrang='Đã duyệt' where MaHD='$id'";
          $conn->query($sql);
+         // Update diem thuong cua user
+         $sqlgetdiemthuong="select * from hoadon where MaHD='$id'";
+          $dt=$conn->query($sqlgetdiemthuong);
+         while($d=$dt->fetch_array()){
+         $diem=$d['TongTien']/100000;
+         $ma = $d['MaTK'];}
+
+		$sqlupdate="update taikhoan set DiemThuong= DiemThuong + $diem where taikhoan.MaTK=$ma";
+		$kq=$conn->query($sqlupdate);
+        // update so luong ton cua san pham
+
+        $sqlslt="select * from cthd where MaHD=$id";
+        $slt=$conn->query($sqlslt);
+        while ($sp =$slt->fetch_array())
+        {
+            $masp= $sp['MaSP'];
+            $soluong= $sp['SoLuong'];
+            
+        }
+
+            $sqlupdateslt="update sanpham set SLTon= SLTon- $soluong where MaSP=$masp";
+            $conn->query($sqlupdateslt);
+        
+
+
+
+
          header('location:../../index.php?quanly=hoadon&ac=lietke');
      }  else 
      {

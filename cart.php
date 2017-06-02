@@ -25,6 +25,13 @@
 					if($sanpham->num_rows>0){
 					
 					while($dong=$sanpham->fetch_array()){
+
+						$sqll="select TiSo from khuyenmai where MaSP=".$list['id']." and NgayKT >= CURDATE()";
+						$kq=$conn->query($sqll);
+						$km=0;
+						while ($d=$kq->fetch_array()) {
+							   $km=$d['TiSo'];}
+						$giakm=$dong['GiaBan']*(1-$km);
 						
 					
 						echo "<tr>
@@ -35,7 +42,7 @@
 								<h4><a href=''>".$dong['TenSP']."</a></h4>
 							</td>
 							<td class='cart_price'>
-								<p>".number_format($dong['GiaBan'])."VND 	</p>
+								<p>".number_format($giakm)."VND 	</p>
 							</td>
 							<td class='cart_quantity'>
 								<div class='cart_quantity_button'>
@@ -43,7 +50,7 @@
 									<input class='cart_quantity_input' type='text' name='quantity' value='".$list['soluong']."' autocomplete='off' size='1' disabled>
 									<a class='cart_quantity_down' href='update_cart.php?tru=".$list['id']."'> - </a>
 								</div>";
-								$tien=$dong['GiaBan']*$list['soluong'];
+								$tien=$giakm*$list['soluong'];
 								$thanhtien+=$tien;
 							echo"</td>
 							<td class='cart_total'>
@@ -167,9 +174,7 @@
 									$sqltr="insert into hoadon (MaVC,MaTT,MaTK,NgayLap,TongTien,DiaChi,TinhTrang,GhiChu)  values('$vanchuyen','$loaithanhtoan','$matk','".date('Y-m-d')."','$tongtien','$diachi','Chờ','$ghichu')";
 									$ketqua=$conn->query($sqltr);
 									$lastid=$conn->insert_id;
-									$diemthuong = $tongtien / 10000;
-									$sqlupdate="update taikhoan set diemthuong= diemthuong + $diemthuong where taikhoan.MaTK=$matk";
-									$kq=$conn->query($sqlupdate);
+
 									if($ketqua){
 										
 										
