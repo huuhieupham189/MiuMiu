@@ -192,10 +192,10 @@ echo'
     <td>Thương hiệu</td>
     <td colspan="2">Quản lý</td>
   </tr>';
-
+   $k=1000;
 
   while($dong=$row_lietkesp->fetch_array()){
-  
+  $k--;
   echo'
   <tr>
   
@@ -218,11 +218,13 @@ echo'
         if($dong['MaSP']==$_SESSION['sanphamnhap'][$t]['id']) $kiemtra=1;
       }
     }
+ 
+
       // if($kiemtra==0){
-    echo'<td><button type="button"  data-toggle="modal" data-target="#myModal'.$i.'"';if($kiemtra==0)echo '><img src="imgs/images.png" width="30" height="30" /></button></td>';else echo'width="30" height="30">';
+    echo'<td><button type="button"  data-toggle="modal" data-target="#myModal'.$k.'"';if($kiemtra==0)echo '><img src="imgs/images.png" width="30" height="30" /></button></td>';else echo'width="30" height="30">';
     echo'<td><a href="modules/quanlynhapkho/xuly.php?id='.$dong['MaSP'].'"class="delete_link"><center><img src="imgs/delete.png" width="30" height="30"   /></center></a></td>
   </tr>
-<div id="myModal'.$i.'" class="modal fade" role="dialog">
+<div id="myModal'.$k.'" class="modal fade" role="dialog">
   <div class="modal-dialog modal-sm">';
 
     $sql_hieusp = "select * from nhaphanphoi where mathuonghieu='".$dong['MaThuongHieu']."'";
