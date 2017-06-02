@@ -1,6 +1,6 @@
 <?php
 	if(isset($_POST['logout'])){
-		unset($_SESSION['dangnhap']);
+		session_destroy();
 		header('location:login.php');
 	}
 ?>
@@ -108,6 +108,14 @@
 								<a href="index.php?quanly=nhaphanphoi&ac=lietke">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Quản Lý Nhà Phân Phối
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+								<li class="">
+								<a href="index.php?quanly=nhapkho&ac=lietke">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Quản Lý Nhập Kho
 								</a>
 
 								<b class="arrow"></b>

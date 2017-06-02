@@ -7,9 +7,9 @@
 	if($trang =='' || $trang =='1'){
 		$trang1=0;
 	}else{
-		$trang1=($trang*5)-5;
+		$trang1=($trang*10)-10;
 	}
-	$sql_lietkehd="select * from hoadon limit $trang1,5";
+	$sql_lietkehd="select * from hoadon order by mahd desc limit $trang1,10 ";
 	$row_lietkehd=$conn->query($sql_lietkehd);
 
 ?>
@@ -57,7 +57,7 @@
 	$sql_trang=$conn->query("select * from hoadon");
 	$count_trang=$sql_trang->num_rows;
     
-	$a=ceil($count_trang/5);
+	$a=ceil($count_trang/10);
 	for($b=1;$b<=$a;$b++){
 		
 		if($trang==$b){

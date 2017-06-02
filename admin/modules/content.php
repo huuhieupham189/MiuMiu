@@ -62,7 +62,12 @@
 						include('modules/quanlynhaphanphoi/them.php');}
 					elseif(($tam == 'thongso')&&($tam1 == 'lietke')){
 						include('modules/thongso.php');}
-					
+					elseif(($tam == 'nhapkho')&&($tam1 == 'lietke')){
+						include('modules/quanlynhapkho/lietke.php');}
+						elseif(($tam == 'nhapkho')&&($tam1 == 'them')){
+						include('modules/quanlynhapkho/them.php');}
+							elseif(($tam == 'nhapkho')&&($tam1 == 'nhap')){
+						include('modules/quanlynhapkho/nhap.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
