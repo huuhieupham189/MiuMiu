@@ -128,7 +128,7 @@
 						<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-credit-card"></i>
-							<span class="menu-text">Quản Lý Tài Chính </span>
+							<span class="menu-text">Quản Lý Tài Vụ </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -186,24 +186,7 @@
 
 				
 
-					<li class="">
-						<a href="calendar.html" >
-							<i class="menu-icon fa fa-calendar"></i>
-
-							<span class="menu-text">
-								Calendar
-
-								<!-- #section:basics/sidebar.layout.badge -->
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-
-								<!-- /section:basics/sidebar.layout.badge -->
-							</span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
+				
 
 				
 				</ul><!-- /.nav-list -->
