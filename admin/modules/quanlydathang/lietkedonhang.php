@@ -27,7 +27,7 @@
 	}else{
 		$trang1=($trang*10)-10;
 	}
-	$sql_lietkesp=" select * from nhaphanphoi where congno>0 limit $trang1,10";
+	$sql_lietkesp=" select * from nhaphanphoi where congno <> 0 limit $trang1,10";
 	$row_lietkesp=$conn->query($sql_lietkesp);
 
 
@@ -86,7 +86,7 @@ echo'
 <div class="trang">
 	Trang :
     <?php
-	$sql_trang=$conn->query("select * from nhaphanphoi where congno>0  limit $trang1,10");
+	$sql_trang=$conn->query("select * from nhaphanphoi where congno <>0  limit $trang1,10");
 	$count_trang=$sql_trang->num_rows;
     
 	$a=ceil($count_trang/10);

@@ -63,6 +63,8 @@ echo $countnpp;
              }
              $sql="insert into hoadonnhaphang (manpp,ngaylap,tongtien,tinhtrang) value('".$manpp."','".date('Y-m-d')."','".$tongtien."','chưa thanh toán')";
              $conn->query($sql);
+             $sqlupdate="update nhaphanphoi set CongNo=CongNo + $tongtien where MaNPP=$manpp";
+             $conn->query($sqlupdate);
              $id=$conn->insert_id;
               for($j=0;$j<$count;$j++)
              {if($_SESSION['sanphamnhap'][$j]['manpp']==$a[$i]){

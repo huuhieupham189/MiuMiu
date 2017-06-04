@@ -6,8 +6,16 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+@font-face {
+    font-family: 'myFont';
+    src: url('fonts/UVNMoiHong.ttf');
+}
+
+body.addFont {
+    font-family: 'myFont';
+}
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'myFont', sans-serif;
   background-image : url('../images/bg.jpg');
   position: relative;
   font-weight:400px;
