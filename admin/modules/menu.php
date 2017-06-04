@@ -120,6 +120,14 @@
 
 								<b class="arrow"></b>
 							</li>
+							<li class="">
+								<a href="index.php?quanly=thanhtoan&ac=lietkedh">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Quản Lý Thanh Toán
+								</a>
+
+								<b class="arrow"></b>
+							</li>
 
 						
 						</ul>

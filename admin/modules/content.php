@@ -68,6 +68,8 @@
 						include('modules/quanlynhapkho/them.php');}
 							elseif(($tam == 'nhapkho')&&($tam1 == 'nhap')){
 						include('modules/quanlynhapkho/nhap.php');}
+						elseif(($tam == 'thanhtoan')&&($tam1 == 'lietkedh')){
+						include('modules/quanlydathang/lietkedonhang.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}

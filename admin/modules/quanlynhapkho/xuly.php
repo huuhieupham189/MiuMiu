@@ -61,7 +61,7 @@ echo $countnpp;
                 echo " ".$tongtien;
                 }             
              }
-             $sql="insert into hoadonnhaphang (manpp,ngaylap,tongtien) value('".$manpp."','".date('Y-m-d')."','".$tongtien."')";
+             $sql="insert into hoadonnhaphang (manpp,ngaylap,tongtien,tinhtrang) value('".$manpp."','".date('Y-m-d')."','".$tongtien."','chưa thanh toán')";
              $conn->query($sql);
              $id=$conn->insert_id;
               for($j=0;$j<$count;$j++)
