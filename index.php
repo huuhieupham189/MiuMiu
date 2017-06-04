@@ -43,14 +43,36 @@ include('config.php');
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<?php if(isset($_SESSION['ten'])){ $matk=$_SESSION['matk']; echo "<li><a href='index.php?xem=profile&id=$matk'><i class='fa fa-user'></i> Xin chào ".$_SESSION['ten']."</a></li>
-								<!--/ <li><a href='index.php?xem=checkout'><i class='fa fa-crosshairs'></i> Checkout</a></li>-->
-								";if(isset($_SESSION['giohang'])) $count=count($_SESSION['giohang']);else $count=''; echo"<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'> ".$count."</i> Giỏ Hàng</a></li>
-								<li><a href='index.php?xem=logout'><i class='fa fa-sign-out' aria-hidden='true'></i> Đăng xuất</a></li>";}?>
-								<?php if(!isset($_SESSION['ten'])) echo "<li><a href='index.php?xem=login'><i class='fa fa-lock'></i> Đăng Nhập</a></li>";?>
-								
+					
+							
+							<ul class="nav ace-nav">
+							<?php if(isset($_SESSION['ten'])) {$matk=$_SESSION['matk']; 
+							
+							echo'	
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+							
+								<span class="user-info">
+									<i class="fa fa-user"></i> Xin chào, '.$_SESSION['ten'].'
+								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li><a href="index.php?xem=profile&id='.$matk.'"><i class="fa fa-user"></i>Thông tin tài khoản</a></li>
+							<li><a href="index.php?xem=kigui"><i class="fa fa-plus-square" aria-hidden="true"></i> Kí gửi sản phẩm</a></li>
+							<li><a href="index.php?xem=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a></li>
+							
 							</ul>
+						</li>';}
+						?>
+
+						<?php 
+						if(isset($_SESSION['ten'])){if(isset($_SESSION['giohang'])) $count=count($_SESSION['giohang']);else $count=''; echo"<li><a href='index.php?xem=cart'><i class='fa fa-shopping-cart'> ".$count."</i> Giỏ Hàng</a></li>";}?>
+								<?php if(!isset($_SESSION['ten'])) echo "<li><a href='index.php?xem=login'><i class='fa fa-lock'></i> Đăng Nhập</a></li>";?>
+						<!-- /section:basics/navbar.user_menu -->
+					</ul>
 						</div>
 					</div>
 				</div>

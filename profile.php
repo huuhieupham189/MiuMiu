@@ -57,9 +57,65 @@
             <li class="active"><a href="#QLDH" data-toggle="tab">Quản Lý Đơn Hàng</a></li>
             <li><a href="#messages" data-toggle="tab">Thông Tin Khuyến Mãi</a></li>
             <li><a href="#settings" data-toggle="tab">Sửa Thông Tin </a></li>
+            <li><a href="#kigui" data-toggle="tab">Thông tin kí gửi </a></li>
           </ul>
               
+
           <div class="tab-content">
+           <div class="tab-pane" id="kigui">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                   <tr>
+                        <td>STT</td>
+                        <td>Tên sản phẩm</td>    
+                        <td>Hình ảnh</td>
+                        <td>Giá nhập</td>
+                        <td>Giá bán</td>
+                        <td>Số lượng tồn</td>
+                        <td>Loại hàng</td>
+                        
+                        <td colspan="2">Quản lý</td>
+                    </tr>
+                  </thead>
+                  <?php
+                  $sql="select * from kigui kg,sanpham sp,loaisp where kg.matk='$id' and sp.masp=kg.masp and loaisp.maloaisp=sp.maloaisp";
+                  $kq=$conn->query($sql);
+                 
+                  $i=0;
+                  while($dong=$kq->fetch_array()){
+                      $i++;
+                 ?>
+                  <tbody id='items'>
+                    <tr>
+  	
+                        <td><?php  echo $i;?></td>
+                        <td><?php echo $dong['TenSP'] ?></td>
+                    
+                        <td><img src="admin/modules/quanlysanpham/uploads/<?php echo $dong['HinhAnh'] ?>" width="80" height="80" /></td>
+                        <td><?php echo number_format($dong['GiaNhap']) ?></td>
+                        <td><?php echo number_format($dong['GiaBan']) ?></td>
+                        <td><?php echo $dong['SLTon'] ?></td>
+                        <td><?php echo $dong['TenLoaiSP'] ?></td>
+                           
+                        <td><a href="index.php?xem=kiguisua&id=<?php echo $dong['MaSP'] ?>" ><center><img src="admin/imgs/edit.png" width="30" height="30" /></center></a></td>
+                        <td><a href="xulykigui.php?id=<?php echo $dong['MaSP']?>" class="delete_link"><center><img src="admin/imgs/delete.png" width="30" height="30"   /></center></a></td>
+                    </tr>                  
+                     
+                   <?php }?>
+                  </tbody>
+                </table>
+                <hr>
+                <div class="row">
+                  <div class="col-md-4 col-md-offset-4 text-center">
+                  	<ul class="pagination" id="myPager"></ul>
+                  </div>
+                </div>
+              </div><!--/table-resp-->
+              
+              
+              
+             </div><!--/tab-pane-->
             <div class="tab-pane active" id="QLDH">
               <div class="table-responsive">
                 <table class="table table-hover">
@@ -269,6 +325,9 @@
               </div>
                
               </div><!--/tab-pane-->
+
+              
+             
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
