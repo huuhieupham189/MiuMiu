@@ -22,7 +22,7 @@
 							echo"
 								
 								<div class='view-product'>
-								<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:250px;'src='icon.ico'>
+								<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:250px;'src='images/icon/sale.ico'>
 								<img src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' alt='' />								
 							</div>							
 						</div>

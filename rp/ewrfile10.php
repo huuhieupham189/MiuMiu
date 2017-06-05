@@ -20,7 +20,7 @@ class crfile {
 	var $PageID = "file";
 
 	// Project ID
-	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
+	var $ProjectID = "{705b20ae-0753-4f10-b61e-0599083300cb}";
 
 	// Page object name
 	var $PageObjName = "file";
@@ -52,11 +52,6 @@ class crfile {
 		$table = (@$_GET["t"] <> "") ? ewr_StripSlashes($_GET["t"]) : "";
 		if ($table <> "" && EWR_ENCRYPT_FILE_PATH)
 			$table = ewr_Decrypt($table, $key);
-
-		// Security
-		$Security = new crAdvancedSecurity();
-		if (!$Security->IsLoggedIn()) $Security->AutoLogin();
-		if (!$Security->IsLoggedIn()) exit(); // No permission
 
 		// Global Page Loading event (in userfn*.php)
 		//**Page_Loading();

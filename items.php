@@ -35,7 +35,7 @@
 										<div class='single-products'>
 											<div class='productinfo text-center'>";
 										if ($km>0)
-										echo"	<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='icon.ico'>
+										echo"	<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 												<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($giaban)."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>
@@ -81,7 +81,7 @@
 										<div class='single-products'>
 											<div class='productinfo text-center'>";
 									if ($km>0) echo"
-													<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='icon.ico'>
+													<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 												<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($GiaBan)."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>

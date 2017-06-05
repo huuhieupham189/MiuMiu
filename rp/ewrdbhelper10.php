@@ -28,7 +28,7 @@ class crbanhangonline_db extends crDbHelper {
 	var $DbName = 'banhangonline';
 
 	// ADODB (Access/SQL Server)
-	var $CodePage = 65001; // Code page
+	var $CodePage = 0; // Code page
 
 	// Database
 	var $StartQuote = "`";
@@ -38,7 +38,7 @@ class crbanhangonline_db extends crDbHelper {
 	 * Note: Read http://dev.mysql.com/doc/refman/5.0/en/charset-connection.html
 	 * before using this setting.
 	 */
-	var $MySqlCharset = "utf8";
+	var $MySqlCharset = "";
 
 	// Connect to database
 	function &Connect($info = NULL) {

@@ -17,7 +17,7 @@ class crmodallookup {
 	var $PageID = "modallookup";
 
 	// Project ID
-	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
+	var $ProjectID = "{705b20ae-0753-4f10-b61e-0599083300cb}";
 
 	// Page object name
 	var $PageObjName = "modallookup";

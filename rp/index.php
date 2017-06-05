@@ -20,7 +20,7 @@ class crrptdefault {
 	var $PageID = 'rptdefault';
 
 	// Project ID
-	var $ProjectID = "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
+	var $ProjectID = "{705b20ae-0753-4f10-b61e-0599083300cb}";
 
 	// Page object name
 	var $PageObjName = 'rptdefault';
@@ -175,9 +175,6 @@ class crrptdefault {
 		global $gsExport, $gsExportFile, $gsEmailContentType, $ReportLanguage, $Security;
 		global $gsCustomExport;
 
-		// Security
-		$Security = new crAdvancedSecurity();
-
 		// Global Page Loading event (in userfn*.php)
 		Page_Loading();
 
@@ -229,20 +226,7 @@ class crrptdefault {
 		// If session expired, show session expired message
 		if (@$_GET["expired"] == "1")
 			$this->setFailureMessage($ReportLanguage->Phrase("SessionExpired"));
-		if (!$Security->IsLoggedIn()) $Security->AutoLogin();
-		if ($Security->IsLoggedIn())
-			$this->Page_Terminate("ThF4ng_Tin_TE0i_Kho1EA3nsmry.php"); // Exit and go to default page
-		if ($Security->IsLoggedIn())
-			$this->Page_Terminate("ThF4ng_Tin_S1EA3n_Ph1EA9msmry.php");
-		if ($Security->IsLoggedIn())
-			$this->Page_Terminate("hoa_donrpt.php");
-		if ($Security->IsLoggedIn())
-			$this->Page_Terminate("Doanh_Thusmry.php");
-		if ($Security->IsLoggedIn()) {
-			$this->setFailureMessage("<p>" . $ReportLanguage->Phrase("NoPermission") . "</p><p><a href=\"rlogout.php\">" . $ReportLanguage->Phrase("BackToLogin") . "</a></p>");
-		} else {
-			$this->Page_Terminate("rlogin.php"); // Exit and go to login page
-		}
+		$this->Page_Terminate("cthdrpt.php"); // Exit and go to default page
 	}
 
 	// Page Load event

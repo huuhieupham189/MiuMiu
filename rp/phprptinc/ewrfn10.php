@@ -70,7 +70,7 @@ function CurrentLanguageID() {
 function CurrentProjectID() {
 	if (isset($GLOBALS["Page"]))
 		return $GLOBALS["Page"]->ProjectID;
-	return "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}";
+	return "{705b20ae-0753-4f10-b61e-0599083300cb}";
 }
 
 // Get current page object
@@ -117,8 +117,6 @@ class crLanguage {
 			$this->LanguageId = EWR_LANGUAGE_DEFAULT_ID;
 		}
 		$gsLanguage = $this->LanguageId;
-		global $EWR_CSS_FLIP, $EWR_RTL_LANGUAGES;
-		$EWR_CSS_FLIP = in_array($gsLanguage, $EWR_RTL_LANGUAGES);
 		$this->Load($this->LanguageId);
 
 		// Call Language Load event
@@ -3651,23 +3649,6 @@ class crAdvancedSecurity {
 			if ($customValidateUser) {
 				$_SESSION[EWR_SESSION_STATUS] = "login";
 				$this->setCurrentUserName($usr); // Load user name
-			}
-		}
-
-		// Check hard coded admin first
-		if (!$validateUser) {
-			if (EWR_CASE_SENSITIVE_PASSWORD) {
-				$validateUser = (!$customValidateUser && EWR_ADMIN_USER_NAME == $usr && EWR_ADMIN_PASSWORD == $pwd) ||
-								($customValidateUser && EWR_ADMIN_USER_NAME == $usr);
-			} else {
-				$validateUser = (!$customValidateUser && strtolower(EWR_ADMIN_USER_NAME) == strtolower($usr)
-								&& strtolower(EWR_ADMIN_PASSWORD) == strtolower($pwd)) ||
-								($customValidateUser && strtolower(EWR_ADMIN_USER_NAME) == strtolower($usr));
-			}
-			if ($validateUser) {
-				$_SESSION[EWR_SESSION_STATUS] = "login";
-				$_SESSION[EWR_SESSION_SYSTEM_ADMIN] = 1; // System Administrator
-				$this->setCurrentUserName("Administrator"); // Load user name
 			}
 		}
 		if ($customValidateUser) {

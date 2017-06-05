@@ -13,18 +13,18 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-12">
-									<img src="images/home/slide1.png" class="girl img-responsive" alt="" />
+									<img src="images/home/b1.jpg" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-12">
-									<img src="images/home/slide2.png" class="girl img-responsive" alt="" />
+									<img src="images/home/b2.jpg" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							
 							<div class="item">
 								<div class="col-sm-12">
-									<img src="images/home/slide3.png" class="girl img-responsive" alt="" />
+									<img src="images/home/b3.jpg" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							
@@ -51,7 +51,7 @@
 						
 						
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="" />
+							<img src="images/home/shipping.jpg" style="width:100%; background-color: none;" alt="" />
 						</div><!--/shipping-->
 					
 					</div>
@@ -80,7 +80,7 @@
 										<div class='productinfo text-center'>";
 										if ($km > 0) 
 										echo"
-										<img style='width:100px; position:absolute;margin-left:150px;'src='icon.ico'>
+										<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 											<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>
 											";
 										else echo"<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>";

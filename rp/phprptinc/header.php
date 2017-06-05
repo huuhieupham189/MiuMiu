@@ -1,4 +1,3 @@
-<?php if (@$gsExport == "email" || @$gsExport == "pdf") ob_clean(); ?>
 <?php
 
 // Responsive layout
@@ -16,8 +15,6 @@ if (ewr_IsResponsiveLayout()) {
 <html>
 <head>
 	<title><?php echo $ReportLanguage->ProjectPhrase("BodyTitle") ?></title>
-<meta charset="utf-8">
-<?php if (@$gsExport == "" || @$gsExport == "print" || @$gsExport == "email" && @$gsEmailContentType == "url") { ?>
 <script type="text/javascript">
 var EWR_RELATIVE_PATH = "<?php echo $EWR_RELATIVE_PATH ?>";
 
@@ -37,7 +34,7 @@ var EWR_SESSION_KEEP_ALIVE_INTERVAL = <?php echo EWR_SESSION_KEEP_ALIVE_INTERVAL
 var EWR_SESSION_URL = EWR_RELATIVE_PATH + "ewrsession10.php"; // Session URL
 var EWR_IS_LOGGEDIN = <?php echo IsLoggedIn() ? "true" : "false" ?>; // Is logged in
 var EWR_IS_AUTOLOGIN = <?php echo ewr_IsAutoLogin() ? "true" : "false" ?>; // Is logged in with option "Auto login until I logout explicitly"
-var EWR_TIMEOUT_URL = EWR_RELATIVE_PATH + "rlogout.php"; // Timeout URL
+var EWR_TIMEOUT_URL = EWR_RELATIVE_PATH + "index.php"; // Timeout URL
 var EWR_DISABLE_BUTTON_ON_SUBMIT = true;
 var EWR_IMAGES_FOLDER = "phprptimages/"; // Image folder
 var EWR_LOOKUP_FILE_NAME = "ewrajax10.php"; // Lookup file name
@@ -50,7 +47,6 @@ var EWR_PDF_STYLESHEET_FILENAME = "<?php echo (EWR_PDF_STYLESHEET_FILENAME == ""
 var EWR_TOKEN = "<?php echo @$gsToken ?>";
 var EWR_CSS_FLIP = <?php echo ($EWR_CSS_FLIP) ? "true" : "false" ?>;
 </script>
-<?php } ?>
 <?php if (@$gsExport == "" || @$gsExport == "print") { ?>
 <script type="text/javascript">
 if (!window.jQuery || !jQuery.fn.alert) {
@@ -71,12 +67,7 @@ ewr_GetCss("<?php echo ewr_CssFile(EWR_PROJECT_STYLESHEET_FILENAME) ?>");
 <?php echo file_get_contents($cssfile) ?>
 </style>
 <?php } ?>
-<?php if (@$gsExport == "") { ?>
-<?php } ?>
-<?php if (@$gsExport == "" || @$gsExport == "print" || @$gsExport == "email" && @$gsEmailContentType == "url") { ?>
 <script type="text/javascript">if (!window.jQuery) ewr_GetScript("jquery/jquery-1.12.4.min.js");</script>
-<?php } ?>
-<?php if (@$gsExport == "" || @$gsExport == "print" || @$gsExport == "email" && @$gsEmailContentType == "url") { ?>
 <?php if (@$gsCustomExport == "") { ?>
 <script type="text/javascript" src="<?php echo $EWR_RELATIVE_PATH . EWR_FUSIONCHARTS_PATH ?>fusioncharts.js"></script>
 <script type="text/javascript" src="<?php echo $EWR_RELATIVE_PATH . EWR_FUSIONCHARTS_PATH ?>fusioncharts.ssgrid.js"></script>
@@ -103,8 +94,6 @@ if (window._jQuery) ewr_Extend(jQuery);
 if (window.jQuery && !jQuery.fn.alert) ewr_GetScript("bootstrap3/js/bootstrap.min.js");
 if (window.jQuery && !jQuery.typeahead) ewr_GetScript("phprptjs/typeahead.bundle.min.js");
 </script>
-<?php } ?>
-<?php if (@$gsExport == "" || @$gsExport == "print") { ?>
 <script type="text/javascript">
 var EWR_MOBILE_DETECT = new MobileDetect(window.navigator.userAgent);
 var EWR_IS_MOBILE = EWR_MOBILE_DETECT.mobile() ? true : false;
@@ -116,16 +105,10 @@ var ewrVar = <?php echo json_encode($EWR_CLIENT_VAR); ?>;
 
 // Write your client script here, no need to add script tags.
 </script>
-<?php } ?>
 <meta name="generator" content="PHP Report Maker v10.0.2">
 </head>
-<?php if ($EWR_CSS_FLIP) { ?>
-<body dir="rtl">
-<?php } else { ?>
 <body>
-<?php } ?>
 <?php if (@!$gbSkipHeaderFooter) { ?>
-<?php if (@$gsExport == "") { ?>
 <div class="ewLayout">
 	<!-- header (begin) --><!-- ** Note: Only licensed users are allowed to change the logo ** -->
 	<div id="ewHeaderRow" class="<?php echo $gsHeaderRowClass ?>"><img src="<?php echo $EWR_RELATIVE_PATH ?>phprptimages/phprptmkrlogo10.png" alt=""></div>
@@ -178,5 +161,4 @@ var ewrVar = <?php echo json_encode($EWR_CLIENT_VAR); ?>;
 			<div id="ewContentColumn" class="ewContentColumn">
 				<!-- right column (begin) -->
 				<h4 class="<?php echo $gsSiteTitleClass ?>"><?php echo $ReportLanguage->ProjectPhrase("BodyTitle") ?></h4>
-<?php } ?>
 <?php } ?>

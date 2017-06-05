@@ -22,7 +22,7 @@
 								<div class='single-products'>
 									<div class='productinfo text-center'>";
 						if ($km>0)
-						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='icon.ico'>
+						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 										<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($GiaBan)."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>
@@ -70,7 +70,7 @@
 									<div class='productinfo text-center'>";
 
 										if ($km>0)
-						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='icon.ico'>
+						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 										<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($GiaBan)."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>
@@ -119,7 +119,7 @@
 								<div class='single-products'>
 									<div class='productinfo text-center'>";
 										if ($km>0)
-						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='icon.ico'>
+						echo"			<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 										<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
 										<h2>".number_format($GiaBan)."VND"."</h2>
 										<p><strong>".$row['TenSP']."<strong></p>

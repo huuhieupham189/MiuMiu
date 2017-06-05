@@ -11,7 +11,7 @@ if (EWR_DEBUG_ENABLED) {
 	@ini_set("display_errors", "1"); // Display errors
 	error_reporting(E_ALL ^ E_NOTICE); // Report all errors except E_NOTICE
 }
-define("EWR_PROJECT_ID", "{f7ff2bd7-f7a1-4d6f-a653-75acc9a37b4e}", TRUE); // Project ID
+define("EWR_PROJECT_ID", "{705b20ae-0753-4f10-b61e-0599083300cb}", TRUE); // Project ID
 define("EWR_PROJECT_NAME", "project1", TRUE); // Project Name
 define("EWR_CONFIG_FILE_FOLDER", EWR_PROJECT_NAME . "", TRUE); // Config file folder
 define("EWR_IS_WINDOWS", (strtolower(substr(PHP_OS, 0, 3)) === 'win'), TRUE); // Is Windows OS
@@ -48,8 +48,8 @@ $EWR_CONN[0] = &$EWR_CONN["DB"];
 $EWR_ERROR_FN = 'ewr_ErrorFn';
 
 // ADODB (Access/SQL Server)
-define("EWR_CODEPAGE", 65001, TRUE); // Code page
-define("EWR_CHARSET", "utf-8", TRUE); // Project charset
+define("EWR_CODEPAGE", 0, TRUE); // Code page
+define("EWR_CHARSET", "", TRUE); // Project charset
 define("EWR_DBMSNAME", 'MySQL', TRUE); // DBMS Name
 define("EWR_IS_MSACCESS", FALSE, TRUE); // Access
 define("EWR_IS_MSSQL", FALSE, TRUE); // SQL Server
@@ -79,7 +79,7 @@ define("EWR_SESSION_TIMEOUT_COUNTDOWN", 60, TRUE); // Session timeout count down
 // General
 $EWR_ROOT_RELATIVE_PATH = "."; // Relative path of app root
 define("EWR_UNFORMAT_YEAR", 50, TRUE); // Unformat year
-define("EWR_RANDOM_KEY", 'tVa80aAQPkjtk9v5', TRUE); // Random key for encryption
+define("EWR_RANDOM_KEY", 'R75KK6RBJQleKCWe', TRUE); // Random key for encryption
 define("EWR_PROJECT_STYLESHEET_FILENAME", "phprptcss/project1.css", TRUE); // Project stylesheet file name
 define("EWR_CHART_WIDTH", 550, TRUE);
 define("EWR_CHART_HEIGHT", 440, TRUE);
@@ -95,14 +95,14 @@ define("EWR_USE_DRILLDOWN_PANEL", TRUE, TRUE); // Use popup panel for drill down
  * functions are enabled and your encoding is supported. See PHP manual for
  * details.
  */
-define("EWR_ENCODING", "UTF-8", TRUE); // Character encoding
+define("EWR_ENCODING", "", TRUE); // Character encoding
 define("EWR_IS_DOUBLE_BYTE", in_array(EWR_ENCODING, array("GBK", "BIG5", "SHIFT_JIS")), TRUE); // Double-byte character encoding
 /**
  * MySQL charset (for SET NAMES statement, not used by default)
  * Note: Read http://dev.mysql.com/doc/refman/5.0/en/charset-connection.html
  * before using this setting.
  */
-define("EWR_MYSQL_CHARSET", "utf8", TRUE);
+define("EWR_MYSQL_CHARSET", "", TRUE);
 /**
  * Password (MD5 and case-sensitivity)
  * Note: If you enable MD5 password, make sure that the passwords in your
@@ -189,8 +189,8 @@ define("EWR_SESSION_SUCCESS_MESSAGE", EWR_PROJECT_NAME . "_Success_Message", TRU
 define("EWR_SESSION_WARNING_MESSAGE", EWR_PROJECT_NAME . "_Warning_Message", TRUE); // Warning message
 
 // Hard-coded admin
-define("EWR_ADMIN_USER_NAME", "admin", TRUE);
-define("EWR_ADMIN_PASSWORD", "admin", TRUE);
+define("EWR_ADMIN_USER_NAME", "", TRUE);
+define("EWR_ADMIN_PASSWORD", "", TRUE);
 define("EWR_USE_CUSTOM_LOGIN", TRUE, TRUE); // Use custom login
 define("EWR_ALLOW_LOGIN_BY_URL", FALSE, TRUE); // Allow login by URL
 define("EWR_ALLOW_LOGIN_BY_SESSION", FALSE, TRUE); // Allow login by session variables

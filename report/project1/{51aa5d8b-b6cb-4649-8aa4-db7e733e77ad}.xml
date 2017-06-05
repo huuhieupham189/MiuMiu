@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2017/06/04" author="e.World Technology Ltd.">
+  <project id="{51aa5d8b-b6cb-4649-8aa4-db7e733e77ad}" file="C:\Users\Windows 10\Desktop\project1.prp" name="project1" product="PHPReportMaker" version="10.0" datetime="2017/06/04 22:16:59" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="cthd" name="cthd" caption="cthd" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="date" name="date" caption="date" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="hoa_don" name="hoa_don" caption="hoa don" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="hoadon" name="hoadon" caption="hoadon" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="hoadonnhaphang" name="hoadonnhaphang" caption="hoadonnhaphang" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="khuyenmai" name="khuyenmai" caption="khuyenmai" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="kigui" name="kigui" caption="kigui" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="loaisp" name="loaisp" caption="loaisp" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="loaitk" name="loaitk" caption="loaitk" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="nhaphanphoi" name="nhaphanphoi" caption="nhaphanphoi" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="phieuchitien" name="phieuchitien" caption="phieuchitien" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="phieunhaphang" name="phieunhaphang" caption="phieunhaphang" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="san_pham" name="san_pham" caption="san pham" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="sanpham" name="sanpham" caption="sanpham" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="tai_khoan" name="tai_khoan" caption="tai khoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="taikhoan" name="taikhoan" caption="taikhoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="thanhtoan" name="thanhtoan" caption="thanhtoan" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="thuonghieu" name="thuonghieu" caption="thuonghieu" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="vanchuyen" name="vanchuyen" caption="vanchuyen" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="view1" name="view1" caption="view 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="view2" name="view2" caption="view 2" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="viewcongno" name="viewcongno" caption="viewcongno" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="Qu1EA3n_LFD_CF4ng_N1EE3" name="Quản Lý Công Nợ" caption="Quản Lý Công Nợ" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>
