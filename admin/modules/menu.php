@@ -63,6 +63,15 @@
 
 								<b class="arrow"></b>
 							</li>
+							<li class="">
+								<a href="index.php?quanly=kigui&ac=lietke">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Quản Lý Kí Gửi
+                               
+								</a>
+
+								<b class="arrow"></b>
+							</li>
 						</ul>
 					</li>
 

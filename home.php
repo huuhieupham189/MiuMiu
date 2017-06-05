@@ -51,7 +51,7 @@
 						
 						
 						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" style="width:100%; background-color: none;" alt="" />
+							<a href="index.php?xem=sanpham&kigui=1"><img src="images/home/shipping.jpg" style="width:100%; background-color: none;" alt="" /></a>
 						</div><!--/shipping-->
 					
 					</div>

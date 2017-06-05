@@ -15,7 +15,7 @@
 	if(isset($_POST['them'])){
 			$giaban=$gia*1.3;
            
-		 $sql_them=("insert into sanpham (tensp,tenviettat,hinhanh,gianhap,giaban,slton,ttct,maloaisp) values('$tensp','$tenviettat','$hinhanh','$gia','$giaban','$slton','$ttct','13')");
+		 $sql_them=("insert into sanpham (tensp,tenviettat,hinhanh,gianhap,giaban,slton,ttct,maloaisp,mathuonghieu) values('$tensp','$tenviettat','$hinhanh','$gia','$giaban','$slton','$ttct','13','9')");
 		if($conn->query($sql_them)){
             $id=$conn->insert_id;
             $sql="insert into kigui (matk,masp) values('".$_SESSION['matk']."','$id')";

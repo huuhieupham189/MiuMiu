@@ -187,6 +187,11 @@
 												$soluong=$list['soluong'];
 												$sql="insert into CTHD value('$lastid','$masp','$soluong','$tien')";
 												$conn->query($sql);
+												$sqlupdate="update sanpham set SLTon = SLTon - $soluong where MaSP=$masp";
+												$conn->query($sqlupdate);
+
+
+
 											}}
 											echo "<a href='index.php'>Chúc mừng bạn đặt hàng thành công. Nhấp để mua tiếp!</a>";
 											unset($_SESSION['giohang']);

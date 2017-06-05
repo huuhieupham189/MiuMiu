@@ -70,6 +70,10 @@
 						include('modules/quanlynhapkho/nhap.php');}
 						elseif(($tam == 'thanhtoan')&&($tam1 == 'lietkedh')){
 						include('modules/quanlydathang/lietkedonhang.php');}
+						elseif(($tam == 'kigui')&&($tam1 == 'lietke')){
+						include('modules/quanlykigui/lietke.php');}
+						elseif(($tam == 'kigui')&&($tam1 == 'thongtinct')){
+						include('modules/quanlykigui/thongtinct.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}

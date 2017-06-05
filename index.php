@@ -98,10 +98,15 @@ include('config.php');
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Nội dung tìm kiếm"/>
-						</div>
+					<div class="col-sm-2">
+						  <form method='post' action='index.php?xem=sanpham'>
+						  <input type='text' class='form-control' name='timkiem' id='timkiem' placeholder='Tìm kiếm sản phẩm' title=''></div>
+						  <div class='col-sm-1' >
+						 <button type="submit" name='search' class="btn btn-info">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button> </div></form>
+	
+						
 					</div>
 				</div>
 			</div>
