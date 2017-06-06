@@ -28,6 +28,14 @@
 						</div>
 						<div class='col-sm-8'>
 							<div class='product-information'><!--/product-information-->";	
+						elseif ($dong['SLTon']==0) 
+						echo"<div class='view-product'>
+							<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:250px;'src='images/icon/soldout.png'>
+								<img src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' alt='' />								
+							</div>							
+						</div>
+						<div class='col-sm-8'>";
+
 						else echo"
 							<div class='view-product'>
 								<img src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' alt='' />								

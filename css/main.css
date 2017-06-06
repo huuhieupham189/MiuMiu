@@ -211,8 +211,8 @@ a#scrollUp i{
 
 
 .shop-menu ul li a {
-  background: #FFFFFF;
-  color: #696763;
+  background: none;
+  color: #891437;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 300;
@@ -228,8 +228,8 @@ a#scrollUp i{
 
 
 .shop-menu ul li a:hover {
-	color:#891437;
-	background:#fff;
+	color:grey;
+	background:none;
 }
 
 

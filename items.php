@@ -30,7 +30,7 @@
 										$km=$d['TiSo'];
 										$tile=$km*100;}
 										$giaban=$row['GiaBan']*(1-$km);
-								echo"<div class='col-sm-4'>
+								echo"<div class='col-sm-4' style='height: 500px;'>
 									<div class='product-image-wrapper'>
 										<div class='single-products'>
 											<div class='productinfo text-center'>";
@@ -42,6 +42,19 @@
 										<p>".$row['TenCT']."</p>
 											<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
 											<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
+										</div>
+											
+										</div>
+									</div>
+								</div>";
+								elseif ($row['SLTon']==0) 
+								echo"	<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='images/icon/soldout.png'>
+												<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
+										<h2>".number_format($giaban)."VND"."</h2>
+										<p><strong>".$row['TenSP']."<strong></p>
+										<p>".$row['TenCT']."</p>
+											<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+											
 										</div>
 											
 										</div>
@@ -76,7 +89,7 @@
 										$tile=$km*100;}
 										$giaban=$row['GiaBan']*(1-$km);
 								
-								echo"<div class='col-sm-4'>
+								echo"<div class='col-sm-4' style='height: 500px;'>
 									<div class='product-image-wrapper'>
 										<div class='single-products'>
 											<div class='productinfo text-center'>";
@@ -88,6 +101,19 @@
 										<p>".$row['TenCT']."</p>
 												<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
 												<a href='update_cart.php?id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Đặt Mua</a>
+										</div>
+											
+										</div>
+									</div>
+								</div>";
+								elseif ($row['SLTon']==0)
+								echo"	<img style='border-style: none;width:100px; height:auto; position:absolute;margin-left:150px;'src='images/icon/soldout.png'>
+												<img  src='admin/modules/quanlysanpham/uploads/".$row['HinhAnh']."' width='250' height='250'/>
+										<h2>".number_format($giaban)."VND"."</h2>
+										<p><strong>".$row['TenSP']."<strong></p>
+										<p>".$row['TenCT']."</p>
+											<a href='index.php?xem=product&id=".$row['MaSP']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+										
 										</div>
 											
 										</div>

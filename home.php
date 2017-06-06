@@ -61,7 +61,7 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Sản Phẩm Bán Chạy Nhất</h2>
 						<?php
-						$sql="SELECT sp.masp,HinhAnh,GiaBan,TenSP,TenCT,sum(SoLuong) as SoLuongBan
+						$sql="SELECT sp.masp,HinhAnh,GiaBan,TenSP,TenCT,SLTon,sum(SoLuong) as SoLuongBan
 							  from cthd ct,sanpham sp
 								where ct.masp=sp.masp
 								group by sp.masp 
@@ -74,7 +74,7 @@
 						while ($d=$kq->fetch_array()) {
 							   $km=$d['TiSo'];
 							   $tile=$km*100;}
-						echo"<div class='col-sm-4'>
+						echo"<div class='col-sm-4' style='height: 500px;'>
 							<div class='product-image-wrapper'>
 								<div class='single-products'>
 										<div class='productinfo text-center'>";
@@ -83,9 +83,14 @@
 										<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/sale.ico'>
 											<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>
 											";
+										elseif ($dong['SLTon']==0) echo
+										"	<img style='width:100px; position:absolute;margin-left:150px;'src='images/icon/soldout.png'>
+											<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>
+											";
 										else echo"<img  src='admin/modules/quanlysanpham/uploads/".$dong['HinhAnh']."' width='250' height='250'/>";
 											$giakm=$dong['GiaBan'];
-						 				if ($km > 0) 	
+						 				
+										 if ($km > 0) 	
 						 					{ $giakm= $giakm*(1-$km);
 						 					echo"	
 												<span>
@@ -95,6 +100,18 @@
 											else echo"<span>
 															<h2>".number_format($dong['GiaBan'])." VNĐ</h2>
 													</span>";
+										if ($dong['SLTon']==0 )
+										echo "
+										<p><strong>".$dong['TenSP']."<strong></p>
+										<p>".$dong['TenCT']."</p>
+										
+										<a href='index.php?xem=product&id=".$dong['masp']."' class='btn btn-default add-to-cart'><i class='fa fa-plus'></i>Xem Thêm</a>
+							
+										</div>
+								</div>	
+							</div>
+						</div>"; 
+									else
 										echo"
 										<p><strong>".$dong['TenSP']."<strong></p>
 										<p>".$dong['TenCT']."</p>
@@ -106,7 +123,8 @@
 								</div>
 								
 							</div>
-						</div>";}
+						</div>";
+						}
 						?>
 				
 						
