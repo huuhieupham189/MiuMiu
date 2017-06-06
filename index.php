@@ -30,10 +30,10 @@ include('config.php');
 </head><!--/head-->
 
 <body >
-	<header id="header"><!--header-->
+	<header id="header" ><!--header-->
 	
 		
-		<div class="header-middle"><!--header-middle-->
+		<div class="header-middle" style="opacity : 1.3;"><!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
