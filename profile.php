@@ -70,11 +70,10 @@
                         <td>STT</td>
                         <td>Tên sản phẩm</td>    
                         <td>Hình ảnh</td>
-                        <td>Giá nhập</td>
                         <td>Giá bán</td>
                         <td>Số lượng tồn</td>
-                        <td>Loại hàng</td>
-                        
+                        <td>Số lượng đã bán</td>
+                        <td>Số tiền bán</td>
                         <td colspan="2">Quản lý</td>
                     </tr>
                   </thead>
@@ -84,6 +83,13 @@
                  
                   $i=0;
                   while($dong=$kq->fetch_array()){
+                    $sql1="select sum(soluong) as so 
+                                  from cthd 
+                                  where masp='".$dong['MaSP']."'
+                                  group by masp";
+                                  $kq1=$conn->query($sql1);
+                                  $dong1=$kq1->fetch_array();
+                                  $so=$dong1['so'];
                       $i++;
                  ?>
                   <tbody id='items'>
@@ -94,10 +100,9 @@
                     
                         <td><img src="admin/modules/quanlysanpham/uploads/<?php echo $dong['HinhAnh'] ?>" width="80" height="80" /></td>
                         <td><?php echo number_format($dong['GiaNhap']) ?></td>
-                        <td><?php echo number_format($dong['GiaBan']) ?></td>
                         <td><?php echo $dong['SLTon'] ?></td>
-                        <td><?php echo $dong['TenLoaiSP'] ?></td>
-                           
+                        <td><?php echo number_format($so) ?></td>
+                        <td><?php echo number_format($dong['GiaNhap']*$so) ?></td>  
                         <td><a href="index.php?xem=kiguisua&id=<?php echo $dong['MaSP'] ?>" ><center><img src="admin/imgs/edit.png" width="30" height="30" /></center></a></td>
                         <td><a href="xulykigui.php?id=<?php echo $dong['MaSP']?>" class="delete_link"><center><img src="admin/imgs/delete.png" width="30" height="30"   /></center></a></td>
                     </tr>                  
@@ -128,7 +133,7 @@
                       <th>Thanh Toán</th>
                       <th>Tình Trạng </th>
                       <th>Ghi Chú </th>
-                      <th colspan="2">Quản lý</th>
+                      <th colspan="1">Quản lý</th>
                     </tr>
                   </thead>
                   <?php
@@ -152,73 +157,8 @@
                       <td>".$dong['GhiChu']."</td>";
                       if($dong['TinhTrang']=='Chờ')
                       echo"
-                      <td><a data-toggle='modal' data-target='#myModal".$dong['MaHD']."' ><center><img src='admin/imgs/edit.png' width='30' height='30' /></center></a></td>
-                     <td><a href='xuly.php?id=".$dong['MaHD']."' class='delete_link'><center><img src='admin/imgs/delete.png' width='30' height='30'   /></center></a></td>
-                     
-                     <div id='myModal".$dong['MaHD']."' class='modal fade' role='dialog'>
-                        <div class='modal-dialog'>
-                        
-                            <!-- Modal content-->
-                            <div class='modal-content'>
-                              <div class='modal-header'>
-                                  <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                                  <h4 class='modal-title'>Chỉnh Sửa Hóa Đơn</h4>
-                              </div>
-                           <div class='modal-body'>
-                                <form action='xuly.php?id=".$dong['MaHD']."' method='post' enctype='multipart/form-data'>
-                                    <div>
-                                        <div class='col-xs-6'>
-                                            <label for='MaVC'><h4>Loại Vận Chuyển</h4></label>
-                                            <input type='text' class='form-control' name='mavc' id='MaVC' value='".$dong1['TenVC']."' title=''>
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>
-                                        <div class='col-xs-6'>
-                                            <label for='MaTT'><h4>Loại Thanh Toán</h4></label>
-                                            <input type='text' class='form-control' name='matt' id='MaTT' value='".$dong1['TenTT']."' title='' >
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>
-                                        <div class='col-xs-6'>
-                                            <label for='SDT'><h4>Ngày Lập</h4></label>
-                                            <input type='date' class='form-control' name='ngaylap' id='NgayLap' value='".$dong1['NgayLap']."' title=''disabled>
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>
-                                        <div class='col-xs-6'>
-                                            <label for='TongTien'><h4>Tổng Tiền Thanh Toán</h4></label>
-                                            <input type='text' class='form-control' name='tongtien' id='TongTien' value='".$dong1['TongTien']."' title=''disabled>
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>
-                                        <div class='col-xs-6'>
-                                            <label for='DiaChi'><h4>Địa Chỉ Giao Hàng</h4></label>
-                                            <input type='text' class='form-control' name='diachi' id='DiaChi' value='".$dong1['DiaChi']."' title='enter your email.'>
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>      
-                                        <div class='col-xs-6'>
-                                            <label for='TinhTrang'><h4>Tình Trạng</h4></label>
-                                            <input type='text' class='form-control' id='tinhtrang' name='tinhtrang' value='".$dong1['TinhTrang']."' title=''>
-                                        </div>
-                                    </div>
-                                    <div class='form-group'>      
-                                        <div class='col-xs-12'>
-                                            <label for='GhiChu'><h4>Ghi Chú</h4></label>
-                                            <input type='text' class='form-control' id='ghichu' name='ghichu' value='".$dong1['GhiChu']."' title=''>
-                                        </div>
-                                    </div>
-                                    <input type='submit' name='sua' value='Sửa hóa đơn'>
-                              </form>
-                                
-                            </div>
-                            </div>
-                          
-                        </div>
-                      </div>
-                    </div>                   
-                     
-                    " ;
+                     <td><a href='xuly.php?id=".$dong['MaHD']."' class='delete_link'><center><img src='admin/imgs/delete.png' width='30' height='30'   /></center></a></td>" ;
+                     else echo"<td><a href='inhoadon.php?id=".$dong['MaHD']."' class='delete_link'><center><img src='admin/imgs/print.png' width='30' height='30'   /></center></a></td>";
                    echo" </tr>";}
                    ?> 
                    
