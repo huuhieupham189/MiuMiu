@@ -65,7 +65,6 @@
 								echo"
 									<form action='update_cart.php?id=".$dong['MaSP']."' method='post'>
 									<label>Số lượng: <input type='number' max=".$dong['SLTon']." min=1 name='soluong' /></label>
-							
 									<button type='submit' name='dathang' class='btn btn-fefault cart'>
 										<i class='fa fa-shopping-cart'></i>' 
 										 MUA NGAY

@@ -1,3 +1,9 @@
+  <form method='post' action='modules/quanlycongno/xulithang.php'>
+						  <input type='number' class='form-control' name='timkiem' id='timkiem' placeholder='Tìm kiếm sản phẩm' title=''max=12 min=1></div>
+						  <div class='col-sm-1' >
+						 <button type="submit" name='search' class="btn btn-info">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button> </div></form>
  <div class="table-responsive">  
     <h2 align="center">Tổng Hợp Công Nợ</h2><br /> 
     <table class="table table-bordered">
@@ -10,6 +16,7 @@
        <th>Dư Nợ Cuối Kỳ</th>
                     </tr>
      <?php
+     if(isset($_GET['id'])){
         $drop1="drop table Chi";
         $conn->query($drop1);
         $drop2="drop table Nhap";
@@ -105,9 +112,12 @@ WHERE Thang is null ";
                   Set Nocuoi= NoDau+NoCuoi
                   where Thang=$thang and Ten='$ten'";
           $conn->query($sqlup5);
-     
+           $sqlup3="update BCCongNo set sotiennhap = 0 where sotiennhap is null";
+  $conn->query($sqlup3); 
+  $sqlup3="update BCCongNo set sotienchi = 0 where sotienchi is null";
+  $conn->query($sqlup3);
      }}
-       $sqlse="Select * From BCCongNo";
+       $sqlse="Select * From BCCongNo where thang=".$_GET['id']."";
         $resultse=    $conn->query($sqlse);
         $num=$resultse->num_rows;
    
@@ -129,6 +139,36 @@ WHERE Thang is null ";
        
        </tr>  
         '; }}
+        else
+        echo '  
+       <tr>  
+         <td></td>  
+          <td>0</td> 
+              <td>0</td> 
+            <td>0</td>  
+           <td>0</td>  
+            <td>0</td>  
+         <td></td>
+
+
+       
+       </tr>  
+        ';  }
+        else   echo '  
+       <tr>  
+         <td></td>  
+          <td>0</td> 
+              <td>0</td> 
+            <td>0</td>  
+           <td>0</td>  
+            <td>0</td>  
+         <td></td>
+
+
+       
+       </tr>  
+        '; 
+
      ?>
     </table>
     <br />
