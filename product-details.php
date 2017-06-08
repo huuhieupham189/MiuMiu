@@ -120,8 +120,10 @@
                             
                            
 							 <div class='tab-pane fade' id='sale' >";
-                           
-							if ($km>0 ){ echo"
+                           $sql1="select * from khuyenmai where MaSP=".$_GET['id']." order by NgayKT DESC";
+							$kqq=$conn->query($sql1);
+							$num=$kqq->num_rows;
+							if ($num>0 ){ echo"
 								<div class='col-sm-1'></div>
 								<div class='col-sm-10'>
 									<h2>Thông Tin Khuyến Mãi</h2>
@@ -137,8 +139,7 @@
 										</tr>
 										</thead>
 										<tbody>";
-							$sql1="select * from khuyenmai where MaSP=".$_GET['id']." order by NgayKT DESC";
-							$kqq=$conn->query($sql1);
+							
 							while ($dt=$kqq->fetch_array()) {
 								if ($dt['NgayKT'] >= DATE("Y-m-d")) {$TrangThai="Đang Diễn Ra"; $bt="danger";}
 									else {$TrangThai="Đã Hết Hạn";$bt="success";}

@@ -16,6 +16,7 @@
                     $ketqua=$conn->query($sql);
                     $sqlsl="select taikhoan.MaTk, sum(SoLuong) as soluongban from taikhoan,hoadon,cthd where hoadon.matk=taikhoan.matk and cthd.mahd=hoadon.mahd and taikhoan.matk='$id' group by taikhoan.MaTK ";
                     $kqq=$conn->query($sqlsl);
+                    $sl=0;
                     while ($don=$kqq->fetch_array())
                     {   $sl= $don['soluongban'];
                     }

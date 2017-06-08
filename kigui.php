@@ -1,5 +1,7 @@
 
-<form action="xulykigui.php" method="post" enctype="multipart/form-data">
+<form action="xulykigui.php" method="post" enctype="multipart/form-data" class="container">
+<div class="col-sm-2"></div>
+<div class="col-sm-8">
 <h3>&nbsp;</h3>
 <table width="600" border="1">
   <tr>
@@ -39,4 +41,7 @@
     </div></td>
   </tr>
 </table>
+</div>
 </form>
+
+

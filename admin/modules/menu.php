@@ -172,9 +172,9 @@
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="index.php?quanly=soluongban&ac=lietke">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
+									Quản Lý Số Lượng Bán
 								</a>
 
 								<b class="arrow"></b>
