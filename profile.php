@@ -182,7 +182,13 @@
                
                <ul class="list-group">
                   <li class="list-group-item text-muted">Inbox</li>
-                  <li class="list-group-item text-right"><a href="#" class="pull-left">Giảm giá 50% các mặt hàng</a> 18.5.2017</li>
+                  <li class="list-group-item text-right"><a href="#" class="pull-left">Giảm giá <?php
+                  $sqlkm="select * from taikhoan tk, loaitk ltk where tk.loaitk=ltk.maloaitk and matk=".$_SESSION['matk']."";
+                  $km=$conn->query($sqlkm);
+                  $km=$km->fetch_array();
+
+                  echo $km['ChietKhau']*100;
+                  ?>% các mặt hàng</a> <?php echo date('d/m/Y'); ?></li>
                   
                   
                 </ul> 

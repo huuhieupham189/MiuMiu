@@ -73,7 +73,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="index.php?quanly=khuyenmai&ac=tao">
+								<a href="index.php?quanly=khuyenmai&ac=lietke">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Quản Lý Khuyến Mãi
                                

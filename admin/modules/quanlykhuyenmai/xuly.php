@@ -1,5 +1,6 @@
 <?php
 include("../config.php");
+if(!isset($_GET['id'])){
 if(isset($_POST['submit1'])) {
 $sql="select * from sanpham where maloaisp=".$_POST['maloaisp']."";
 $ketqua=$conn->query($sql);
@@ -30,5 +31,10 @@ header('location:../../index.php?quanly=khuyenmai&ac=tao');
         $conn->query($sql1);
 }
 header('location:../../index.php?quanly=khuyenmai&ac=tao');
+}}
+else{
+    $sql="delete from khuyenmai where makm=".$_GET['id']."";
+    $conn->query($sql);
+    header('location:../../index.php?quanly=khuyenmai&ac=lietke');
 }
 ?>

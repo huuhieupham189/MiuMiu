@@ -80,6 +80,8 @@
 						include('modules/quanlysoluongban/quanlysoluongban.php');}
 						elseif(($tam == 'khuyenmai')&&($tam1 == 'tao')){
 						include('modules/quanlykhuyenmai/taokhuyenmai.php');}
+						elseif(($tam == 'khuyenmai')&&($tam1 == 'lietke')){
+						include('modules/quanlykhuyenmai/lietke.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
