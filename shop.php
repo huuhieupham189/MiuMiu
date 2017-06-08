@@ -25,7 +25,7 @@ include('config.php');
 								<div id='Eyes' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href='index.php?xem=sanpham&id=7'>Kẻ Mày</a></li>
+								
 											<li><a href='index.php?xem=sanpham&id=8'>Kẻ Mắt</a></li>
 											<li><a href='index.php?xem=sanpham&id=9'>Phấn Mắt</a></li>
 											<li><a href='index.php?xem=sanpham&id=10'>Mascara</a></li>
@@ -45,10 +45,10 @@ include('config.php');
 								<div id='Face' class='panel-collapse collapse'>
 									<div class='panel-body'>
 										<ul>
-											<li><a href='index.php?xem=sanpham&id=3'>Kem BB/CC</a></li>
+									
 											<li><a href='index.php?xem=sanpham&id=4'>Kem Nền</a></li>
 											<li><a href='index.php?xem=sanpham&id=5'>Phấn</a></li>
-											<li><a href='index.php?xem=sanpham&id=6'>Tạo Khối</a></li>
+						
 											
 										</ul>
 									</div>

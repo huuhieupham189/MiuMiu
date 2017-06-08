@@ -154,9 +154,9 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="index.php?quanly=congno&ac=lietke">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									Quản Lý Công Nợ
 								</a>
 
 								<b class="arrow"></b>

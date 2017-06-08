@@ -98,7 +98,6 @@
                             <ul class='nav nav-tabs'>
                                 <li class='active' ><a href='#details' data-toggle='tab'>Thông Tin Chi Tiết</a></li>
                                 <li><a href='#sale' data-toggle='tab'>Thông Tin Khuyến Mãi</a></li>
-								<li><a href='#companyprofile' data-toggle='tab'>Thông Tin Thương Hiệu</a></li>
                                 <li ><a href='#reviews' data-toggle='tab'>Đánh Giá </a></li>
                             </ul>
                         </div>
@@ -120,9 +119,7 @@
 								
                             </div>
                             
-                            <div class='tab-pane fade' id='companyprofile' >
-                                
-                            </div>
+                           
 							 <div class='tab-pane fade' id='sale' >";
                            
 							if ($km>0 ){ echo"

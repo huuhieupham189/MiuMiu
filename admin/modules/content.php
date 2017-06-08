@@ -74,6 +74,8 @@
 						include('modules/quanlykigui/lietke.php');}
 						elseif(($tam == 'kigui')&&($tam1 == 'thongtinct')){
 						include('modules/quanlykigui/thongtinct.php');}
+						elseif(($tam == 'congno')&&($tam1 == 'lietke')){
+						include('modules/quanlycongno/quanlycongno.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
