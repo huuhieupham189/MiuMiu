@@ -76,6 +76,8 @@
 						include('modules/quanlykigui/thongtinct.php');}
 						elseif(($tam == 'congno')&&($tam1 == 'lietke')){
 						include('modules/quanlycongno/quanlycongno.php');}
+						elseif(($tam == 'khuyenmai')&&($tam1 == 'tao')){
+						include('modules/quanlykhuyenmai/taokhuyenmai.php');}
 					else{
 						include('modules/quanlysanpham/lietke.php');
 					}
